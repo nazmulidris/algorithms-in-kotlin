@@ -1,1 +1,1 @@
-# algo
+For more info, please check out the [Wiki](https://github.com/nazmulidris/algo/wiki).
