@@ -20,8 +20,8 @@ fun main(args: Array<String>) {
     var comparisonCount = 0
     val size = unsortedList.size
 
-    for (x in 0..size - 1) {
-        for (y in x + 1..size - 1) {
+    for (x in 0 until size) {
+        for (y in x + 1 until size) {
             println("x=$x, y=$y")
             with(unsortedList) {
                 comparisonCount++
