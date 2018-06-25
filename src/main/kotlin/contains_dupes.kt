@@ -21,21 +21,19 @@
  *
  * The [containsDupes] function is O(N2). For an input size of 6, 6x6 comparisons are made.
  */
-fun containsDupes(list: List<String>): RuntimeStats {
-    val stats = RuntimeStats()
+fun containsDupes(list: List<String>) = RuntimeStats().apply {
     with(list) {
         for (cursor1 in 0 until list.size) {
             for (cursor2 in 0 until list.size) {
-                stats.numberOfComparisons++
+                numberOfComparisons++
                 if (cursor1 != cursor2) {
                     if (get(cursor1) == get(cursor2)) {
-                        stats.numberOfDupes++
+                        numberOfDupes++
                     }
                 }
             }
         }
     }
-    return stats
 }
 
 data class RuntimeStats(var numberOfComparisons: Int = 0,
@@ -43,5 +41,5 @@ data class RuntimeStats(var numberOfComparisons: Int = 0,
 
 fun main(args: Array<String>) {
     val list = listOf("abc", "def", "xyz", "abc", "123", "567")
-    println("list ${list} contains dupes = ${containsDupes(list)}")
+    println("list $list contains dupes = ${containsDupes(list)}")
 }
