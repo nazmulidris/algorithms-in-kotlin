@@ -54,8 +54,9 @@ data class RuntimeStats(var numberOfComparisons: Int = 0,
                         var resultInt: Int = 0)
 
 /**
- * The [containsDupes] function is O(N^2). For an input size of 6, 6x6 comparisons are made due to
- * two inner loops iterating over the size of the input list.
+ * O(n^2)
+ * For an input size of 6, 6x6 comparisons are made due to two inner loops iterating over the
+ * size of the input list.
  * [More info in wiki](https://github.com/nazmulidris/algorithms-in-kotlin/wiki/Big-O-Notation).
  */
 fun containsDupes(list: List<String>) = RuntimeStats().apply {
