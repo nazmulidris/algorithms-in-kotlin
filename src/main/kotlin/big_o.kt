@@ -34,13 +34,24 @@ fun main(args: Array<String>) {
         val list = listOf("abc", "def", "123", "abc", "123", "567")
         println("list $list contains dupes = ${containsDupes(list)}")
     }
+
+    run {
+        println("o(2^n)")
+        val value = 20
+        with(RuntimeStats()) {
+            print("fibonacci($value) = ${fibonacci(value, this)}")
+            print(", $this")
+        }
+    }
 }
 
 /** Contains run time stats for measuring algorithm performance and holding return values */
 data class RuntimeStats(var numberOfComparisons: Int = 0,
+                        var numberOfOperations: Int = 0,
                         var numberOfDupes: Int = 0,
                         val dupeMap: MutableMap<String, Int> = mutableMapOf(),
-                        var result: Boolean = false)
+                        var resultBoolean: Boolean = false,
+                        var resultInt: Int = 0)
 
 /**
  * The [containsDupes] function is O(N^2). For an input size of 6, 6x6 comparisons are made due to
@@ -75,10 +86,16 @@ fun containsValue(list: List<String>, value: String): RuntimeStats =
             list.forEach { it ->
                 numberOfComparisons++
                 if (it == value) {
-                    result = true
+                    resultBoolean = true
                     return@apply
                 }
             }
-            result = false
+            resultBoolean = false
             return@apply
         }
+
+fun fibonacci(number: Int, stats: RuntimeStats): Int {
+    stats.numberOfOperations++
+    return if (number <= 1) number
+    else fibonacci(number - 1, stats) + fibonacci(number - 2, stats)
+}
