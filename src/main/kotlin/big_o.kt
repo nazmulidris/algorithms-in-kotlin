@@ -94,6 +94,7 @@ fun containsValue(list: List<String>, value: String): RuntimeStats =
             return@apply
         }
 
+/** O(2^n) */
 fun fibonacci(number: Int, stats: RuntimeStats): Int {
     stats.numberOfOperations++
     return if (number <= 1) number
