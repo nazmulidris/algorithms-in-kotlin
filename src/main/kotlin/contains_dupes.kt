@@ -19,7 +19,8 @@
  * of the input data set. This is common with algorithms that involve nested iterations over the data
  * set. Deeper nested iterations will result in O(N3), O(N4) etc.
  *
- * The [containsDupes] function is O(N2). For an input size of 6, 6x6 comparisons are made.
+ * The [containsDupes] function is O(N2). For an input size of 6, 6x6 comparisons are made due to
+ * two inner loops iterating over the size of the input list.
  */
 fun containsDupes(list: List<String>) = RuntimeStats().apply {
     with(list) {
