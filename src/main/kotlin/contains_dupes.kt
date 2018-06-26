@@ -23,8 +23,8 @@
  */
 fun containsDupes(list: List<String>) = RuntimeStats().apply {
     with(list) {
-        for (cursor1 in 0 until list.size) {
-            for (cursor2 in 0 until list.size) {
+        for (cursor1 in 0 until size) {
+            for (cursor2 in 0 until size) {
                 numberOfComparisons++
                 if (cursor1 != cursor2) {
                     if (get(cursor1) == get(cursor2)) {
