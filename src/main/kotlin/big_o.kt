@@ -26,7 +26,10 @@ fun main(args: Array<String>) {
         println("o(n)")
         val value = "efg"
         val list = listOf("abc", "def", "123", "xyz")
-        println("is '$value` in list $list = ${containsValue(list, value)}")
+        with(RuntimeStats()) {
+            print("is '$value` in list $list = ${containsValue(list, value, this)}")
+            println(", $this")
+        }
     }
 
     run {
@@ -49,9 +52,17 @@ fun main(args: Array<String>) {
 data class RuntimeStats(var numberOfComparisons: Int = 0,
                         var numberOfOperations: Int = 0,
                         var numberOfDupes: Int = 0,
-                        val dupeMap: MutableMap<String, Int> = mutableMapOf(),
-                        var resultBoolean: Boolean = false,
-                        var resultInt: Int = 0)
+                        val dupeMap: MutableMap<String, Int> = mutableMapOf()) {
+    override fun toString(): String = StringBuffer().let {
+        it.append("RuntimeStats(")
+        if (numberOfOperations > 0) it.append(" [#ops=$numberOfOperations] ")
+        if (numberOfComparisons > 0) it.append(" [#comps=$numberOfComparisons] ")
+        if (numberOfDupes > 0) it.append(" [#dupes=$numberOfDupes] ")
+        if (dupeMap.isNotEmpty()) it.append(" [dupeMap=$dupeMap] ")
+        it.append(")")
+        return it.toString()
+    }
+}
 
 /**
  * O(n^2)
@@ -83,18 +94,15 @@ fun containsDupes(list: List<String>) = RuntimeStats().apply {
 fun isFirstElementNull(list: List<String?>) = list[0] == null
 
 /** O(n) */
-fun containsValue(list: List<String>, value: String): RuntimeStats =
-        RuntimeStats().apply {
-            list.forEach { it ->
-                numberOfComparisons++
-                if (it == value) {
-                    resultBoolean = true
-                    return@apply
-                }
-            }
-            resultBoolean = false
-            return@apply
+fun containsValue(list: List<String>, value: String, stats: RuntimeStats): Boolean {
+    list.forEach { it ->
+        stats.numberOfComparisons++
+        if (it == value) {
+            return true
         }
+    }
+    return false
+}
 
 /** O(2^n) */
 fun fibonacci(number: Int, stats: RuntimeStats): Int {
