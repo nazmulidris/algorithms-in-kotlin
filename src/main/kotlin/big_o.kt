@@ -36,6 +36,12 @@ fun main(args: Array<String>) {
     }
 }
 
+/** Contains run time stats for measuring algorithm performance and holding return values */
+data class RuntimeStats(var numberOfComparisons: Int = 0,
+                        var numberOfDupes: Int = 0,
+                        val dupeMap: MutableMap<String, Int> = mutableMapOf(),
+                        var result: Boolean = false)
+
 /**
  * The [containsDupes] function is O(N^2). For an input size of 6, 6x6 comparisons are made due to
  * two inner loops iterating over the size of the input list.
@@ -59,12 +65,6 @@ fun containsDupes(list: List<String>) = RuntimeStats().apply {
         }
     }
 }
-
-/** Contains run time stats for measuring algorithm performance and holding return values */
-data class RuntimeStats(var numberOfComparisons: Int = 0,
-                        var numberOfDupes: Int = 0,
-                        val dupeMap: MutableMap<String, Int> = mutableMapOf(),
-                        var result: Boolean = false)
 
 /** O(1) */
 fun isFirstElementNull(list: List<String?>) = list[0] == null
