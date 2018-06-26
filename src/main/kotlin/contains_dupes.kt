@@ -29,6 +29,10 @@ fun containsDupes(list: List<String>) = RuntimeStats().apply {
                 if (cursor1 != cursor2) {
                     if (get(cursor1) == get(cursor2)) {
                         numberOfDupes++
+                        get(cursor1).let {
+                            val count = dupeMap[it] ?: 0
+                            dupeMap[it] = count + 1
+                        }
                     }
                 }
             }
@@ -37,9 +41,10 @@ fun containsDupes(list: List<String>) = RuntimeStats().apply {
 }
 
 data class RuntimeStats(var numberOfComparisons: Int = 0,
-                        var numberOfDupes: Int = 0)
+                        var numberOfDupes: Int = 0,
+                        val dupeMap: MutableMap<String, Int> = mutableMapOf())
 
 fun main(args: Array<String>) {
-    val list = listOf("abc", "def", "xyz", "abc", "123", "567")
+    val list = listOf("abc", "def", "123", "abc", "123", "567")
     println("list $list contains dupes = ${containsDupes(list)}")
 }
