@@ -64,7 +64,7 @@ fun containsDupes(list: List<String>) = RuntimeStats().apply {
 data class RuntimeStats(var numberOfComparisons: Int = 0,
                         var numberOfDupes: Int = 0,
                         val dupeMap: MutableMap<String, Int> = mutableMapOf(),
-                        var returnValue: Boolean = false)
+                        var result: Boolean = false)
 
 /** O(1) */
 fun isFirstElementNull(list: List<String?>) = list[0] == null
@@ -75,10 +75,10 @@ fun containsValue(list: List<String>, value: String): RuntimeStats =
             list.forEach { it ->
                 numberOfComparisons++
                 if (it == value) {
-                    returnValue = true
+                    result = true
                     return@apply
                 }
             }
-            returnValue = false
+            result = false
             return@apply
         }
