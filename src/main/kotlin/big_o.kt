@@ -46,6 +46,18 @@ fun main(args: Array<String>) {
             print(", $this")
         }
     }
+
+    run {
+        println("o(log n)")
+        val item = "disney"
+        val list = listOf(
+                "nazmul", "idris", "maret", "john", "harry", "tom", "tony", "pepper", "andrew")
+                .sorted()
+        with(RuntimeStats()) {
+            print("binarySearch($item, $list) = ${binarySearch(item, list, this)}")
+            print(", $this")
+        }
+    }
 }
 
 /** Contains run time stats for measuring algorithm performance and holding return values */
@@ -61,6 +73,30 @@ data class RuntimeStats(var numberOfComparisons: Int = 0,
         if (dupeMap.isNotEmpty()) it.append(" [dupeMap=$dupeMap] ")
         it.append(")")
         return it.toString()
+    }
+}
+
+/** O(log n) */
+fun binarySearch(item: String, list: List<String>, stats: RuntimeStats): Boolean {
+    stats.numberOfOperations++
+    // exit condition
+    if (list.size == 1) {
+        stats.numberOfComparisons++
+        return list[0] == item
+    }
+
+    // setup probe
+    val size = list.size
+    val probeIndex = size / 2
+    val probeItem = list[probeIndex]
+
+    // split and recurse
+    return if (item < probeItem) {
+        stats.numberOfComparisons++
+        binarySearch(item, list.subList(0, probeIndex), stats)
+    } else {
+        stats.numberOfComparisons++
+        binarySearch(item, list.subList(probeIndex, size), stats)
     }
 }
 
