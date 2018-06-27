@@ -80,8 +80,7 @@ fun containsDupes(list: List<String>) = RuntimeStats().apply {
                     if (get(cursor1) == get(cursor2)) {
                         numberOfDupes++
                         get(cursor1).let {
-                            val count = dupeMap[it] ?: 0
-                            dupeMap[it] = count + 1
+                            dupeMap[it] = dupeMap[it] ?: 0 + 1
                         }
                     }
                 }
