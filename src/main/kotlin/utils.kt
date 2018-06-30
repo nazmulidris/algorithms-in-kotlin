@@ -15,18 +15,18 @@
  */
 
 /** Contains run time stats for measuring algorithm performance and holding return values */
-data class RuntimeStats(var numberOfComparisons: Int = 0,
-                        var numberOfOperations: Int = 0,
-                        var numberOfSwaps: Int = 0,
-                        var numberOfDupes: Int = 0,
+data class RuntimeStats(var comparisons: Int = 0,
+                        var operations: Int = 0,
+                        var swaps: Int = 0,
+                        var dupes: Int = 0,
                         val dupeMap: MutableMap<String, Int> = mutableMapOf()) {
     override fun toString(): String = StringBuffer().let {
         it.append("RuntimeStats(")
-        if (numberOfOperations > 0) it.append(" [#ops=$numberOfOperations] ")
-        if (numberOfComparisons > 0) it.append(" [#comps=$numberOfComparisons] ")
-        if (numberOfSwaps > 0) it.append(" [#swaps=$numberOfSwaps] ")
-        if (numberOfDupes > 0) it.append(" [#dupes=$numberOfDupes] ")
-        if (dupeMap.isNotEmpty()) it.append(" [dupeMap=$dupeMap] ")
+        if (operations > 0) it.append(" [#${::operations.name}=$operations] ")
+        if (comparisons > 0) it.append(" [#${::comparisons.name}=$comparisons] ")
+        if (swaps > 0) it.append(" [#${::swaps.name}=$swaps] ")
+        if (dupes > 0) it.append(" [#${::dupes.name}=$dupes] ")
+        if (dupeMap.isNotEmpty()) it.append(" [${::dupeMap.name}=$dupeMap] ")
         it.append(")")
         return it.toString()
     }
