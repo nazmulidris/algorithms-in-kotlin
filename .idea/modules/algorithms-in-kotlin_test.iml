@@ -18,7 +18,9 @@
             <array />
           </option>
           <option name="pluginClasspaths">
-            <array />
+            <array>
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-gradle/1.2.50/1d0741bf9f0edc82d82216e936c49660ce8a5d90/kotlin-scripting-gradle-1.2.50.jar" />
+            </array>
           </option>
         </compilerArguments>
       </configuration>

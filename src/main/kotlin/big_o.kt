@@ -23,7 +23,7 @@ fun main(args: Array<String>) {
     }
 
     run {
-        println("o(n)")
+        println("\no(n)")
         val value = "efg"
         val list = listOf("abc", "def", "123", "xyz")
         with(RuntimeStats()) {
@@ -33,29 +33,29 @@ fun main(args: Array<String>) {
     }
 
     run {
-        println("o(n^2)")
+        println("\no(n^2)")
         val list = listOf("abc", "def", "123", "abc", "123", "567")
         println("list $list contains dupes = ${containsDupes(list)}")
     }
 
     run {
-        println("o(2^n)")
+        println("\no(2^n)")
         val value = 20
         with(RuntimeStats()) {
             print("fibonacci($value) = ${fibonacci(value, this)}")
-            print(", $this")
+            println(", $this")
         }
     }
 
     run {
-        println("o(log n)")
+        println("\no(log n)")
         val item = "disney"
         val list = listOf(
                 "nazmul", "idris", "maret", "john", "harry", "tom", "tony", "pepper", "andrew")
                 .sorted()
         with(RuntimeStats()) {
             print("binarySearch($item, $list) = ${binarySearch(item, list, this)}")
-            print(", $this")
+            println(", $this")
         }
     }
 }
