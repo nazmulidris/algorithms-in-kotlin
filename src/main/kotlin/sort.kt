@@ -15,18 +15,43 @@
  */
 
 fun main(args: Array<String>) {
-    val unsortedList = mutableListOf("a", "b", "d", "c")
-    var switchCount = 0
-    var comparisonCount = 0
+
+    // bubble sort
+    with(RuntimeStats()) {
+        println("bubble_sort")
+        val unsortedList = mutableListOf("a", "b", "d", "c")
+        val stats = RuntimeStats()
+        bubble_sort(unsortedList, stats)
+        print("sorted list=$unsortedList")
+        print(", + $stats")
+    }
+
+    // insertion sort
+    with(RuntimeStats()) {
+        println("\ninsertion_sort")
+        val unsortedList = mutableListOf("abc", "xyz", "def", "nop", "ghi", "lmk")
+        val stats = RuntimeStats()
+        insertion_sort(unsortedList, stats)
+        print("sorted list=$unsortedList")
+        print(", + $stats")
+    }
+
+}
+
+fun insertion_sort(unsortedList: MutableList<String>, stats: RuntimeStats) {
+
+}
+
+fun bubble_sort(unsortedList: MutableList<String>, stats: RuntimeStats) {
     val size = unsortedList.size
 
     for (x in 0 until size) {
         for (y in x + 1 until size) {
             println("x=$x, y=$y")
             with(unsortedList) {
-                comparisonCount++
+                stats.numberOfComparisons++
                 if (get(y) < get(x)) {
-                    switchCount++
+                    stats.numberOfSwaps++
                     val larger = get(y) // save larger value
                     val smaller = get(x) // save smaller value
                     set(x, larger)
@@ -35,8 +60,4 @@ fun main(args: Array<String>) {
             }
         }
     }
-
-    println("switchCount=$switchCount")
-    println("comparisonCount=$comparisonCount")
-    println(unsortedList)
 }

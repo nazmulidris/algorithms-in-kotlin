@@ -60,22 +60,6 @@ fun main(args: Array<String>) {
     }
 }
 
-/** Contains run time stats for measuring algorithm performance and holding return values */
-data class RuntimeStats(var numberOfComparisons: Int = 0,
-                        var numberOfOperations: Int = 0,
-                        var numberOfDupes: Int = 0,
-                        val dupeMap: MutableMap<String, Int> = mutableMapOf()) {
-    override fun toString(): String = StringBuffer().let {
-        it.append("RuntimeStats(")
-        if (numberOfOperations > 0) it.append(" [#ops=$numberOfOperations] ")
-        if (numberOfComparisons > 0) it.append(" [#comps=$numberOfComparisons] ")
-        if (numberOfDupes > 0) it.append(" [#dupes=$numberOfDupes] ")
-        if (dupeMap.isNotEmpty()) it.append(" [dupeMap=$dupeMap] ")
-        it.append(")")
-        return it.toString()
-    }
-}
-
 /** O(log n) */
 fun binarySearch(item: String, list: List<String>, stats: RuntimeStats): Boolean {
     stats.numberOfOperations++
