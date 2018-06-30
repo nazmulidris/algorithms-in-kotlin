@@ -14,16 +14,21 @@
  * limitations under the License.
  */
 
+package big_o
+
+import com.importre.crayon.brightCyan
+import utils.RuntimeStats
+
 fun main(args: Array<String>) {
 
     run {
-        println("o(1)")
+        println("o(1)".brightCyan())
         val list = listOf(null, "abc", "def")
         println("is first elem of list $list null? = ${isFirstElementNull(list)}")
     }
 
     run {
-        println("\no(n)")
+        println("o(n)".brightCyan())
         val value = "efg"
         val list = listOf("abc", "def", "123", "xyz")
         with(RuntimeStats()) {
@@ -33,13 +38,13 @@ fun main(args: Array<String>) {
     }
 
     run {
-        println("\no(n^2)")
+        println("o(n^2)".brightCyan())
         val list = listOf("abc", "def", "123", "abc", "123", "567")
         println("list $list contains dupes = ${containsDupes(list)}")
     }
 
     run {
-        println("\no(2^n)")
+        println("o(2^n)".brightCyan())
         val value = 20
         with(RuntimeStats()) {
             print("fibonacci($value) = ${fibonacci(value, this)}")
@@ -48,7 +53,7 @@ fun main(args: Array<String>) {
     }
 
     run {
-        println("\no(log n)")
+        println("o(log n)".brightCyan())
         val item = "disney"
         val list = listOf(
                 "nazmul", "idris", "maret", "john", "harry", "tom", "tony", "pepper", "andrew")

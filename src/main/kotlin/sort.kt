@@ -14,26 +14,31 @@
  * limitations under the License.
  */
 
+package sort
+
+import com.importre.crayon.brightCyan
+import utils.RuntimeStats
+
 fun main(args: Array<String>) {
 
     // bubble sort
     with(RuntimeStats()) {
-        println("bubble_sort")
+        println("bubble_sort".brightCyan())
         val unsortedList = mutableListOf("a", "b", "d", "c")
         val stats = RuntimeStats()
         bubble_sort(unsortedList, stats)
         print("sorted list=$unsortedList")
-        println(", + $stats")
+        println(", $stats")
     }
 
     // insertion sort
     with(RuntimeStats()) {
-        println("\ninsertion_sort")
+        println("insertion_sort".brightCyan())
         val unsortedList = mutableListOf("abc", "xyz", "def", "nop", "ghi", "lmk")
         val stats = RuntimeStats()
         insertion_sort(unsortedList, stats)
         print("sorted list=$unsortedList")
-        println(", + $stats")
+        println(", $stats")
     }
 
 }

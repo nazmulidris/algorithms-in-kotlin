@@ -14,9 +14,14 @@
  * limitations under the License.
  */
 
+package recursion
+
+import com.importre.crayon.brightCyan
+
 fun main(args: Array<String>) {
-    println("calculate factorial w/ recursion")
-    println("fact(5)=${fact(5)}")
+    println("calculate factorial w/ recursion".brightCyan())
+    val arg = 5
+    println("${::fact.name}($arg)=${fact(arg)}")
 }
 
 fun fact(n: Int): Int = if (n == 0) 1 else n * fact(n - 1)

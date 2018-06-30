@@ -14,20 +14,33 @@
  * limitations under the License.
  */
 
+package utils
+
+import com.importre.crayon.*
+
 /** Contains run time stats for measuring algorithm performance and holding return values */
 data class RuntimeStats(var comparisons: Int = 0,
                         var operations: Int = 0,
                         var swaps: Int = 0,
                         var dupes: Int = 0,
                         val dupeMap: MutableMap<String, Int> = mutableMapOf()) {
-    override fun toString(): String = StringBuffer().let {
-        it.append("RuntimeStats(")
-        if (operations > 0) it.append(" [#${::operations.name}=$operations] ")
-        if (comparisons > 0) it.append(" [#${::comparisons.name}=$comparisons] ")
-        if (swaps > 0) it.append(" [#${::swaps.name}=$swaps] ")
-        if (dupes > 0) it.append(" [#${::dupes.name}=$dupes] ")
-        if (dupeMap.isNotEmpty()) it.append(" [${::dupeMap.name}=$dupeMap] ")
-        it.append(")")
-        return it.toString()
-    }
+    override fun toString(): String = StringBuffer().also {
+        it.append("RuntimeStats".brightBlue().bgBrightBlack())
+        if (operations > 0) it.append(" [#${::operations.name}=$operations] "
+                .brightRed()
+        )
+        if (comparisons > 0) it.append(" [#${::comparisons.name}=$comparisons] "
+                .brightBlue()
+        )
+        if (swaps > 0) it.append(" [#${::swaps.name}=$swaps] "
+                .brightYellow()
+        )
+        if (dupes > 0) it.append(" [#${::dupes.name}=$dupes] "
+                .brightCyan()
+        )
+        if (dupeMap.isNotEmpty()) it.append(" [${::dupeMap.name}=$dupeMap] "
+                .brightGreen()
+        )
+        it.append(")".brightBlue().bgBrightBlack())
+    }.toString()
 }
