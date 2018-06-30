@@ -16,19 +16,20 @@
 
 package big_o
 
-import com.importre.crayon.brightCyan
+import com.importre.crayon.bgBrightBlack
+import com.importre.crayon.brightBlue
 import utils.RuntimeStats
 
 fun main(args: Array<String>) {
 
     run {
-        println("o(1)".brightCyan())
+        println("o(1)".brightBlue().bgBrightBlack())
         val list = listOf(null, "abc", "def")
         println("is first elem of list $list null? = ${isFirstElementNull(list)}")
     }
 
     run {
-        println("o(n)".brightCyan())
+        println("o(n)".brightBlue().bgBrightBlack())
         val value = "efg"
         val list = listOf("abc", "def", "123", "xyz")
         with(RuntimeStats()) {
@@ -38,13 +39,13 @@ fun main(args: Array<String>) {
     }
 
     run {
-        println("o(n^2)".brightCyan())
+        println("o(n^2)".brightBlue().bgBrightBlack())
         val list = listOf("abc", "def", "123", "abc", "123", "567")
         println("list $list contains dupes = ${containsDupes(list)}")
     }
 
     run {
-        println("o(2^n)".brightCyan())
+        println("o(2^n)".brightBlue().bgBrightBlack())
         val value = 20
         with(RuntimeStats()) {
             print("fibonacci($value) = ${fibonacci(value, this)}")
@@ -53,7 +54,7 @@ fun main(args: Array<String>) {
     }
 
     run {
-        println("o(log n)".brightCyan())
+        println("o(log n)".brightBlue().bgBrightBlack())
         val item = "disney"
         val list = listOf(
                 "nazmul", "idris", "maret", "john", "harry", "tom", "tony", "pepper", "andrew")

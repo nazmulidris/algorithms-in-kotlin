@@ -16,10 +16,11 @@
 
 package recursion
 
-import com.importre.crayon.brightCyan
+import com.importre.crayon.bgBrightBlack
+import com.importre.crayon.brightBlue
 
 fun main(args: Array<String>) {
-    println("calculate factorial w/ recursion".brightCyan())
+    println("calculate factorial w/ recursion".brightBlue().bgBrightBlack())
     val arg = 5
     println("${::fact.name}($arg)=${fact(arg)}")
 }

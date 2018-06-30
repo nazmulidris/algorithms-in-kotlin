@@ -25,22 +25,22 @@ data class RuntimeStats(var comparisons: Int = 0,
                         var dupes: Int = 0,
                         val dupeMap: MutableMap<String, Int> = mutableMapOf()) {
     override fun toString(): String = StringBuffer().also {
-        it.append("RuntimeStats".brightBlue().bgBrightBlack())
+        it.append("RuntimeStats".brightCyan())
         if (operations > 0) it.append(" [#${::operations.name}=$operations] "
                 .brightRed()
         )
         if (comparisons > 0) it.append(" [#${::comparisons.name}=$comparisons] "
-                .brightBlue()
+                .brightGreen()
         )
         if (swaps > 0) it.append(" [#${::swaps.name}=$swaps] "
                 .brightYellow()
         )
         if (dupes > 0) it.append(" [#${::dupes.name}=$dupes] "
-                .brightCyan()
+                .brightBlue()
         )
         if (dupeMap.isNotEmpty()) it.append(" [${::dupeMap.name}=$dupeMap] "
-                .brightGreen()
+                .brightWhite()
         )
-        it.append(")".brightBlue().bgBrightBlack())
+        it.append(")".brightCyan())
     }.toString()
 }

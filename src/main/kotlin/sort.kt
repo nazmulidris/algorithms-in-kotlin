@@ -16,14 +16,15 @@
 
 package sort
 
-import com.importre.crayon.brightCyan
+import com.importre.crayon.bgBrightBlack
+import com.importre.crayon.brightBlue
 import utils.RuntimeStats
 
 fun main(args: Array<String>) {
 
     // bubble sort
     with(RuntimeStats()) {
-        println("bubble_sort".brightCyan())
+        println("bubble_sort".brightBlue().bgBrightBlack())
         val unsortedList = mutableListOf("a", "b", "d", "c")
         val stats = RuntimeStats()
         bubble_sort(unsortedList, stats)
@@ -33,7 +34,7 @@ fun main(args: Array<String>) {
 
     // insertion sort
     with(RuntimeStats()) {
-        println("insertion_sort".brightCyan())
+        println("insertion_sort".brightBlue().bgBrightBlack())
         val unsortedList = mutableListOf("abc", "xyz", "def", "nop", "ghi", "lmk")
         val stats = RuntimeStats()
         insertion_sort(unsortedList, stats)
