@@ -23,7 +23,7 @@ fun main(args: Array<String>) {
         val stats = RuntimeStats()
         bubble_sort(unsortedList, stats)
         print("sorted list=$unsortedList")
-        print(", + $stats")
+        println(", + $stats")
     }
 
     // insertion sort
@@ -33,25 +33,44 @@ fun main(args: Array<String>) {
         val stats = RuntimeStats()
         insertion_sort(unsortedList, stats)
         print("sorted list=$unsortedList")
-        print(", + $stats")
+        println(", + $stats")
     }
 
 }
 
-fun insertion_sort(unsortedList: MutableList<String>, stats: RuntimeStats) {
-
+/** O(n^2) */
+fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
+    val size = list.size
+    var sortedUpToIndex = 0
+    for (cursor1 in 0 until size) {
+        stats.operations++
+        for (cursor2 in 0 until sortedUpToIndex) {
+            stats.operations++
+            val lhs = list[cursor1]
+            val rhs = list[cursor2]
+            // CAS
+            stats.comparisons++
+            if (rhs < lhs) {
+                stats.swaps++
+                list[cursor1] = rhs
+                list[cursor2] = lhs
+            }
+        }
+        sortedUpToIndex++
+    }
 }
 
-fun bubble_sort(unsortedList: MutableList<String>, stats: RuntimeStats) {
-    val size = unsortedList.size
+/** O(n^2) */
+fun bubble_sort(list: MutableList<String>, stats: RuntimeStats) {
+    val size = list.size
 
     for (x in 0 until size) {
         for (y in x + 1 until size) {
-            println("x=$x, y=$y")
-            with(unsortedList) {
-                stats.numberOfComparisons++
+            println("\tx=$x, y=$y")
+            with(list) {
+                stats.comparisons++
                 if (get(y) < get(x)) {
-                    stats.numberOfSwaps++
+                    stats.swaps++
                     val larger = get(y) // save larger value
                     val smaller = get(x) // save smaller value
                     set(x, larger)

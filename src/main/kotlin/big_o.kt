@@ -62,10 +62,10 @@ fun main(args: Array<String>) {
 
 /** O(log n) */
 fun binarySearch(item: String, list: List<String>, stats: RuntimeStats): Boolean {
-    stats.numberOfOperations++
+    stats.operations++
     // exit condition
     if (list.size == 1) {
-        stats.numberOfComparisons++
+        stats.comparisons++
         return list[0] == item
     }
 
@@ -76,10 +76,10 @@ fun binarySearch(item: String, list: List<String>, stats: RuntimeStats): Boolean
 
     // split and recurse
     return if (item < probeItem) {
-        stats.numberOfComparisons++
+        stats.comparisons++
         binarySearch(item, list.subList(0, probeIndex), stats)
     } else {
-        stats.numberOfComparisons++
+        stats.comparisons++
         binarySearch(item, list.subList(probeIndex, size), stats)
     }
 }
@@ -95,10 +95,10 @@ fun containsDupes(list: List<String>) = RuntimeStats().apply {
     with(list) {
         for (cursor1 in 0 until size) {
             for (cursor2 in 0 until size) {
-                numberOfComparisons++
+                comparisons++
                 if (cursor1 != cursor2) {
                     if (get(cursor1) == get(cursor2)) {
-                        numberOfDupes++
+                        dupes++
                         get(cursor1).let {
                             dupeMap[it] = dupeMap[it] ?: 0 + 1
                         }
@@ -115,7 +115,7 @@ fun isFirstElementNull(list: List<String?>) = list[0] == null
 /** O(n) */
 fun containsValue(list: List<String>, value: String, stats: RuntimeStats): Boolean {
     list.forEach { it ->
-        stats.numberOfComparisons++
+        stats.comparisons++
         if (it == value) {
             return true
         }
@@ -125,7 +125,7 @@ fun containsValue(list: List<String>, value: String, stats: RuntimeStats): Boole
 
 /** O(2^n) */
 fun fibonacci(number: Int, stats: RuntimeStats): Int {
-    stats.numberOfOperations++
+    stats.operations++
     return if (number <= 1) number
     else fibonacci(number - 1, stats) + fibonacci(number - 2, stats)
 }
