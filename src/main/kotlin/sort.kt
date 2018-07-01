@@ -45,12 +45,72 @@ fun main(args: Array<String>) {
     with(RuntimeStats()) {
         println("merge_sort O(n * log(n))".heading())
         val unsortedList = mutableListOf("123", "989", "000", "981", "778", "996", "993", "781")
-        val stats = RuntimeStats()
-        val sortedList = merge_sort(unsortedList, stats)
+        val sortedList = merge_sort(unsortedList, this)
         print("sorted list=$sortedList")
-        println(", $stats")
+        println(", $this")
     }
 
+    // quick sort
+    with(RuntimeStats()) {
+        val list = mutableListOf(100, 200, 300, 20, 30, 10, 50)
+        quick_sort(list = list, stats = this)
+        print("sorted list=$list")
+        println(", $this")
+    }
+
+}
+
+/** O(n * log(n)) */
+fun quick_sort(list: MutableList<Int>,
+               startIndex: Int = 0,
+               endIndex: Int = list.size - 1,
+               stats: RuntimeStats) {
+    if (startIndex < endIndex) {
+        val pivotIndex = partition(list, startIndex, endIndex, stats)
+        quick_sort(list, startIndex, pivotIndex - 1, stats) // Before pivot index
+        quick_sort(list, pivotIndex + 1, endIndex, stats) // After pivot index
+    }
+}
+
+/**
+ * This function takes last element as pivot, places the pivot element at its correct position in
+ * sorted list, and places all smaller (smaller than pivot) to left of pivot and all greater
+ * elements to right of pivot */
+fun partition(list: MutableList<Int>,
+              startIndex: Int = 0,
+              endIndex: Int = list.size - 1,
+              stats: RuntimeStats): Int {
+    // Element to be placed at the correct position in the list
+    val pivotValue = list[endIndex]
+
+    // Index of smaller element
+    var smallerElementIndex = startIndex
+
+    // Make a single pass through the list
+    for (index in startIndex until endIndex) {
+        // If current element is smaller than equal to pivotValue then swap it w/
+        // the element at smallerElementIndex
+        val valueAtIndex = list[index]
+        stats.comparisons++
+        if (valueAtIndex < pivotValue) {
+            list.swap(smallerElementIndex, index)
+            smallerElementIndex++
+            stats.swaps++
+        }
+    }
+
+    // Finally move the pivotValue into the right place on the list
+    list.swap(smallerElementIndex, endIndex)
+    stats.swaps++
+
+    // Return the index just after where the pivot value ended up
+    return smallerElementIndex
+}
+
+fun MutableList<Int>.swap(index1: Int, index2: Int) {
+    val tmp = this[index1] // 'this' corresponds to the list
+    this[index1] = this[index2]
+    this[index2] = tmp
 }
 
 /** O(n * log(n)) */
