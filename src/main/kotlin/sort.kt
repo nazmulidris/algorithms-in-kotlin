@@ -106,7 +106,6 @@ fun merge(leftList: MutableList<String>, rightList: MutableList<String>, stats: 
     return result
 }
 
-
 /** O(n^2) */
 fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
     val size = list.size
