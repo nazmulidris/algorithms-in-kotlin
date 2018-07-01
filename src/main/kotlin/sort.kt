@@ -78,6 +78,7 @@ fun merge(leftList: MutableList<String>, rightList: MutableList<String>, stats: 
     val result = mutableListOf<String>()
     var leftIndex = 0
     var rightIndex = 0
+
     while (leftIndex < leftList.size && rightIndex < rightList.size) {
         stats.comparisons++
         val lhs = leftList[leftIndex]
@@ -99,12 +100,14 @@ fun merge(leftList: MutableList<String>, rightList: MutableList<String>, stats: 
         result.add(leftList[leftIndex])
         leftIndex++
     }
+
     // Copy remaining elements of rightList (if any) into the result
     while (rightIndex < rightList.size) {
         stats.insertions++
         result.add(rightList[rightIndex])
         rightIndex++
     }
+
     return result
 }
 
