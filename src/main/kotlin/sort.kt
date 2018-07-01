@@ -52,6 +52,7 @@ fun main(args: Array<String>) {
 
     // quick sort
     with(RuntimeStats()) {
+        println("quick_sort O(n * log(n))".heading())
         val list = mutableListOf(100, 200, 300, 20, 30, 10, 50)
         quick_sort(list = list, stats = this)
         print("sorted list=$list")
