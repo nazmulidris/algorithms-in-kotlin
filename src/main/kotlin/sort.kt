@@ -23,7 +23,7 @@ fun main(args: Array<String>) {
 
     // bubble sort
     with(RuntimeStats()) {
-        println("bubble_sort".heading())
+        println("bubble_sort O(n^2)".heading())
         val unsortedList = mutableListOf("a", "b", "d", "c")
         val stats = RuntimeStats()
         bubble_sort(unsortedList, stats)
@@ -33,7 +33,7 @@ fun main(args: Array<String>) {
 
     // insertion sort
     with(RuntimeStats()) {
-        println("insertion_sort".heading())
+        println("insertion_sort O(n^2)".heading())
         val unsortedList = mutableListOf("abc", "xyz", "def", "nop", "ghi", "lmk")
         val stats = RuntimeStats()
         insertion_sort(unsortedList, stats)
@@ -43,7 +43,7 @@ fun main(args: Array<String>) {
 
     // merge sort
     with(RuntimeStats()) {
-        println("merge_sort".heading())
+        println("merge_sort O(n * log(n))".heading())
         val unsortedList = mutableListOf("123", "989", "000", "981", "778", "996", "993", "781")
         val stats = RuntimeStats()
         val sortedList = merge_sort(unsortedList, stats)
