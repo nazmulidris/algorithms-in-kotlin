@@ -39,7 +39,7 @@ data class RuntimeStats(var comparisons: Int = 0,
                 .brightBlue()
         )
         if (dupeMap.isNotEmpty()) it.append(" [${::dupeMap.name}=$dupeMap] "
-                .brightWhite()
+                .brightMagenta()
         )
         it.append(")".brightCyan())
     }.toString()
