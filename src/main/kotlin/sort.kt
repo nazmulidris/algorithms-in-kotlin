@@ -58,23 +58,18 @@ fun merge_sort(list: MutableList<String>, stats: RuntimeStats): MutableList<Stri
     stats.operations++
     // Can't split lists anymore, so stop recursion
     val length = list.size
-    stats.comparisons++
     if (length <= 1) return list
 
     // Split the list into two and recurse (divide)
     val middleIndex = length / 2
-    stats.operations++
     val leftList = merge_sort(list.subList(0, middleIndex), stats)
-    stats.operations++
     val rightList = merge_sort(list.subList(middleIndex, length), stats)
 
     // Merge the left and right lists (conquer)
-    stats.operations++
     return merge(leftList, rightList, stats)
 }
 
 fun merge(leftList: MutableList<String>, rightList: MutableList<String>, stats: RuntimeStats): MutableList<String> {
-    stats.operations++
     val result = mutableListOf<String>()
     var leftIndex = 0
     var rightIndex = 0
