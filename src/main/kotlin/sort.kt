@@ -44,7 +44,7 @@ fun main(args: Array<String>) {
     // merge sort
     with(RuntimeStats()) {
         println("merge_sort".heading())
-        val unsortedList = mutableListOf("123", "989", "000", "981", "778", "996")
+        val unsortedList = mutableListOf("123", "989", "000", "981", "778", "996", "993", "781")
         val stats = RuntimeStats()
         val sortedList = merge_sort(unsortedList, stats)
         print("sorted list=$sortedList")
@@ -55,30 +55,39 @@ fun main(args: Array<String>) {
 
 /** O(n * log(n)) */
 fun merge_sort(list: MutableList<String>, stats: RuntimeStats): MutableList<String> {
+    stats.operations++
     // Can't split lists anymore, so stop recursion
     val length = list.size
+    stats.comparisons++
     if (length <= 1) return list
 
     // Split the list into two and recurse (divide)
     val middleIndex = length / 2
+    stats.operations++
     val leftList = merge_sort(list.subList(0, middleIndex), stats)
+    stats.operations++
     val rightList = merge_sort(list.subList(middleIndex, length), stats)
 
     // Merge the left and right lists (conquer)
-    return merge(leftList, rightList)
+    stats.operations++
+    return merge(leftList, rightList, stats)
 }
 
-fun merge(leftList: MutableList<String>, rightList: MutableList<String>): MutableList<String> {
+fun merge(leftList: MutableList<String>, rightList: MutableList<String>, stats: RuntimeStats): MutableList<String> {
+    stats.operations++
     val result = mutableListOf<String>()
     var leftIndex = 0
     var rightIndex = 0
     while (leftIndex < leftList.size && rightIndex < rightList.size) {
+        stats.comparisons++
         val lhs = leftList[leftIndex]
         val rhs = rightList[rightIndex]
         if (lhs < rhs) {
+            stats.insertions++
             result.add(lhs)
             leftIndex++
         } else {
+            stats.insertions++
             result.add(rhs)
             rightIndex++
         }
@@ -86,11 +95,13 @@ fun merge(leftList: MutableList<String>, rightList: MutableList<String>): Mutabl
 
     // Copy remaining elements of leftList (if any) into the result
     while (leftIndex < leftList.size) {
+        stats.insertions++
         result.add(leftList[leftIndex])
         leftIndex++
     }
     // Copy remaining elements of rightList (if any) into the result
     while (rightIndex < rightList.size) {
+        stats.insertions++
         result.add(rightList[rightIndex])
         rightIndex++
     }
