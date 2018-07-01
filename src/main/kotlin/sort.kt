@@ -54,8 +54,8 @@ fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
             stats.operations++
             val lhs = list[cursor1]
             val rhs = list[cursor2]
-            // CAS
             stats.comparisons++
+            // CAS
             if (rhs < lhs) {
                 stats.swaps++
                 list[cursor1] = rhs
