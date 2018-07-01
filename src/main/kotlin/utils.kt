@@ -44,3 +44,5 @@ data class RuntimeStats(var comparisons: Int = 0,
         it.append(")".brightCyan())
     }.toString()
 }
+
+fun String.heading() = this.brightBlue().bgBrightBlack()
