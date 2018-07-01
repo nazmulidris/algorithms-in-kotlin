@@ -22,25 +22,27 @@ import com.importre.crayon.*
 data class RuntimeStats(var comparisons: Int = 0,
                         var operations: Int = 0,
                         var swaps: Int = 0,
+                        var insertions: Int = 0,
                         var dupes: Int = 0,
                         val dupeMap: MutableMap<String, Int> = mutableMapOf()) {
     override fun toString(): String = StringBuffer().also {
         it.append("RuntimeStats".brightCyan())
-        if (operations > 0) it.append(" [#${::operations.name}=$operations] "
-                .brightRed()
-        )
-        if (comparisons > 0) it.append(" [#${::comparisons.name}=$comparisons] "
+
+        val fields = listOf(::comparisons, ::operations, ::swaps, ::insertions, ::dupes)
+
+        for (field in fields) {
+            with(field) {
+                if (this.get() > 0)
+                    it.append(" [#${this.name}=${this.get()}] "
+                            .brightYellow()
+                    )
+            }
+        }
+
+        if (dupeMap.isNotEmpty()) it.append(" [${::dupeMap.name}=$dupeMap] "
                 .brightGreen()
         )
-        if (swaps > 0) it.append(" [#${::swaps.name}=$swaps] "
-                .brightYellow()
-        )
-        if (dupes > 0) it.append(" [#${::dupes.name}=$dupes] "
-                .brightBlue()
-        )
-        if (dupeMap.isNotEmpty()) it.append(" [${::dupeMap.name}=$dupeMap] "
-                .brightMagenta()
-        )
+
         it.append(")".brightCyan())
     }.toString()
 }
