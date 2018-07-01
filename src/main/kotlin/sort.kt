@@ -69,7 +69,8 @@ fun merge_sort(list: MutableList<String>, stats: RuntimeStats): MutableList<Stri
     return merge(leftList, rightList, stats)
 }
 
-fun merge(leftList: MutableList<String>, rightList: MutableList<String>, stats: RuntimeStats): MutableList<String> {
+fun merge(leftList: MutableList<String>, rightList: MutableList<String>, stats: RuntimeStats):
+        MutableList<String> {
     val result = mutableListOf<String>()
     var leftIndex = 0
     var rightIndex = 0
