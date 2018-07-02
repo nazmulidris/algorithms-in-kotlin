@@ -59,6 +59,39 @@ fun main(args: Array<String>) {
         println(", $this")
     }
 
+    // counting sort
+    with(RuntimeStats()) {
+        println("counting_sort O(n)".heading())
+        val list = mutableListOf(100, 200, 15, 30, 10, 50)
+        counting_sort(list, this)
+        print("sorted list=$list")
+        println(", $this")
+    }
+
+}
+
+/** O(n) */
+fun counting_sort(list: MutableList<Int>, stats: RuntimeStats) {
+    // Create temp array to count the # occurrences of each value in the list
+    // - The index of the countingArray maps to values of items in the list
+    // - countingArray[index] maps to # occurrences of that value
+    val countingArray = IntArray(if (list.max() == null) 0 else list.max()!! + 1)
+    for (item in list) {
+        stats.insertions++
+        countingArray[item]++
+    }
+
+    // Regenerate the list using the countingArray
+    var cursor = 0
+    for (index in 0 until countingArray.size) {
+        val value = index
+        val numberOfOccurrences = countingArray[index]
+        if (numberOfOccurrences > 0)
+            repeat(numberOfOccurrences) {
+                stats.insertions++
+                list[cursor++] = value
+            }
+    }
 }
 
 /** O(n * log(n)) */
