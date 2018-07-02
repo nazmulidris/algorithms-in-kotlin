@@ -16,12 +16,15 @@
 
 package recursion
 
+import utils.RuntimeStats
 import utils.heading
 
 fun main(args: Array<String>) {
-    println("calculate factorial w/ recursion".heading())
-    val arg = 5
-    println("${::fact.name}($arg)=${fact(arg)}")
+    with(RuntimeStats()) {
+        println("calculate factorial w/ recursion".heading())
+        val arg = 5
+        println("${::fact.name}($arg)=${fact(arg)}")
+    }
 }
 
 fun fact(n: Int): Int = if (n == 0) 1 else n * fact(n - 1)

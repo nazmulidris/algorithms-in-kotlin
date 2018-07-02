@@ -25,9 +25,9 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-// This is a gradle task that runs the big_o.kt main function
-// Note - big_o.kt is turned into Big_oKt by the Kotlin compiler
+// This is a gradle task that runs the run.kt main function
+// Note - run.kt is turned into RunKt by the Kotlin compiler
 task run(type: JavaExec) {
-    main ='RunnerKt'
+    main ='RunKt'
     classpath = sourceSets.main.runtimeClasspath
 }
