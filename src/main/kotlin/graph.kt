@@ -66,14 +66,53 @@ class Graph<T> {
         for (key in adjacencyList.keys) {
             append("$key -> ")
             append(adjacencyList[key]?.joinToString(prefix = "[", postfix = "]"))
+            append("\n")
         }
     }.toString()
 
 }
 
 /** Breadth first traversal leverages a Queue */
-fun <T> bfs_traversal(graph: Graph<T>, item: T): String {
-    return "bfs"
+fun <T> bfs_traversal(graph: Graph<T>, startNode: T): String {
+    // Mark all the vertices / nodes as not visited
+    val visitedNodeMap = mutableMapOf<T, Boolean>().apply {
+        graph.adjacencyList.keys.forEach { node -> put(node, false) }
+    }
+
+    // Create a queue for BFS
+    val queue: Queue<T> = LinkedList()
+
+    // Mark the current node as visited and enqueue it
+    startNode.also { node ->
+        queue.add(node)
+        visitedNodeMap[node] = true
+    }
+
+    // Store the sequence in which nodes are visited, for return value
+    val result = mutableListOf<T>()
+
+    // Traverse the graph
+    while (queue.isNotEmpty()) {
+        // Get the head of the queue
+        val currentNode = queue.poll()
+
+        // Get all the adjacent vertices of the node. For each of them:
+        // - If an adjacent has not been visited then mark it visited
+        // - Add it to the queue
+        val adjacencyList = graph.adjacencyList[currentNode]
+        adjacencyList?.forEach { node ->
+            val currentNodeHasBeenVisited = visitedNodeMap[node]!!
+            if (!currentNodeHasBeenVisited) {
+                visitedNodeMap[node] = true
+                queue.add(node)
+            }
+        }
+
+        // Store this for the result
+        result.add(currentNode)
+    }
+
+    return result.joinToString()
 }
 
 /** Depth first traversal leverages a Stack */
