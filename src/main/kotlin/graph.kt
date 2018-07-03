@@ -60,10 +60,12 @@ class Graph<T> {
     override fun toString(): String = StringBuffer().apply {
         for (key in adjacencyList.keys) {
             append("$key -> ")
-            val q: LinkedList<T>? = adjacencyList[key]
-            q?.forEach { append("$it, ") }
+            adjacencyList[key]?.forEach { append("$it, ") }
             append("\n")
         }
     }.toString()
 
 }
+
+// BFT
+// DFT
