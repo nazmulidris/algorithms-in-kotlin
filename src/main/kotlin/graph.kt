@@ -39,7 +39,7 @@ fun main(args: Array<String>) {
         // Node / vertex "3"
         addEdge("3", "4")
     }
-    println(graph.toString())
+    print(graph.toString())
 
     println("breadth first search traversal".heading())
     println(bfs_traversal(graph, "0"))
@@ -65,8 +65,7 @@ class Graph<T> {
     override fun toString(): String = StringBuffer().apply {
         for (key in adjacencyList.keys) {
             append("$key -> ")
-            append(adjacencyList[key]?.joinToString(prefix = "[", postfix = "]"))
-            append("\n")
+            append(adjacencyList[key]?.joinToString(prefix = "[", postfix = "]\n"))
         }
     }.toString()
 
