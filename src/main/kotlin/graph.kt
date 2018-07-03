@@ -42,7 +42,12 @@ fun main(args: Array<String>) {
     print(graph.toString())
 
     println("breadth first search traversal".heading())
-    println(bfs_traversal(graph, "0"))
+
+    print("bfs_traversal(graph, '0', 5) = ")
+    println(bfs_traversal(graph, "0", 5))
+
+    print("bfs_traversal(graph, '0', 1) = ")
+    println(bfs_traversal(graph, "0", 1))
 
     println("depth first search traversal".heading())
     println(dfs_traversal(graph, "0"))
@@ -74,19 +79,24 @@ class Graph<T> {
 /**
  * Breadth first traversal leverages a [Queue] (FIFO).
  */
-fun <T> bfs_traversal(graph: Graph<T>, startNode: T): String {
+fun <T> bfs_traversal(graph: Graph<T>, startNode: T, maxDepth: Int): String {
     // Mark all the vertices / nodes as not visited
-    val visitedNodeMap = mutableMapOf<T, Boolean>().apply {
+    val visitedMap = mutableMapOf<T, Boolean>().apply {
         graph.adjacencyList.keys.forEach { node -> put(node, false) }
+    }
+    // Keep track of the depth of each node, so that more than maxDepth nodes aren't visited
+    val depthMap = mutableMapOf<T, Int>().apply {
+        graph.adjacencyList.keys.forEach { node -> put(node, Int.MAX_VALUE) }
     }
 
     // Create a queue for BFS
     val queue: Queue<T> = LinkedList()
 
-    // Mark the current node as visited and enqueue it
+    // Init step - mark the current node as visited and enqueue it
     startNode.also { node ->
         queue.add(node)
-        visitedNodeMap[node] = true
+        visitedMap[node] = true
+        depthMap[node] = 0
     }
 
     // Store the sequence in which nodes are visited, for return value
@@ -97,20 +107,27 @@ fun <T> bfs_traversal(graph: Graph<T>, startNode: T): String {
         // Get the item at the front of the queue
         val currentNode = queue.poll()
 
-        // Get all the adjacent vertices of the node. For each of them:
-        // - If an adjacent has not been visited then mark it visited
-        // - Add it to the back of the queue
-        val adjacencyList = graph.adjacencyList[currentNode]
-        adjacencyList?.forEach { node ->
-            val currentNodeHasBeenVisited = visitedNodeMap[node]!!
-            if (!currentNodeHasBeenVisited) {
-                visitedNodeMap[node] = true
-                queue.add(node)
+        // Check to make sure maxDepth is respected
+        if (depthMap[currentNode]!! <= maxDepth) {
+
+            // Get all the adjacent vertices of the node. For each of them:
+            // - If an adjacent has not been visited then mark it visited
+            // - Add it to the back of the queue
+            val adjacencyList = graph.adjacencyList[currentNode]
+            adjacencyList?.forEach { adjacentNode ->
+                val currentNodeHasBeenVisited = visitedMap[adjacentNode]!!
+                if (!currentNodeHasBeenVisited) {
+                    visitedMap[adjacentNode] = true
+                    depthMap[adjacentNode] = depthMap[currentNode]!! + 1
+                    queue.add(adjacentNode)
+                }
             }
+
+            // Store this for the result
+            result.add(currentNode)
+
         }
 
-        // Store this for the result
-        result.add(currentNode)
     }
 
     return result.joinToString()
@@ -133,7 +150,7 @@ fun <T> dfs_traversal(graph: Graph<T>, startNode: T): String {
     // Create a queue for DFS
     val stack: Stack<T> = Stack()
 
-    // Mark the current node as visited and enqueue it
+    // Init step - mark the current node as visited and enqueue it
     startNode.also { node ->
         stack.push(node)
         visitedNodeMap[node] = true
@@ -151,11 +168,11 @@ fun <T> dfs_traversal(graph: Graph<T>, startNode: T): String {
         // - If an adjacent has not been visited then mark it visited
         // - Add it to the top of the stack (push it to the top)
         val adjacencyList = graph.adjacencyList[currentNode]
-        adjacencyList?.forEach { node ->
-            val currentNodeHasBeenVisited = visitedNodeMap[node]!!
+        adjacencyList?.forEach { adjacentNode ->
+            val currentNodeHasBeenVisited = visitedNodeMap[adjacentNode]!!
             if (!currentNodeHasBeenVisited) {
-                visitedNodeMap[node] = true
-                stack.push(node)
+                visitedNodeMap[adjacentNode] = true
+                stack.push(adjacentNode)
             }
         }
 
