@@ -16,7 +16,6 @@
 
 package graphs
 
-import utils.RuntimeStats
 import utils.heading
 import java.util.*
 
@@ -24,23 +23,29 @@ import java.util.*
  * [Image of the graph](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/undirectedgraph.png).
  */
 fun main(args: Array<String>) {
-    with(RuntimeStats()) {
-        println("graphs".heading())
-        val graph = Graph<String>().apply {
-            // Node / vertex "0"
-            addEdge("0", "1")
-            addEdge("0", "4")
-            // Node / vertex "1"
-            addEdge("1", "2")
-            addEdge("1", "3")
-            addEdge("1", "4")
-            // Node / vertex "2"
-            addEdge("2", "3")
-            // Node / vertex "3"
-            addEdge("3", "4")
-        }
-        println(graph.toString())
+    println("graphs".heading())
+
+    val graph = Graph<String>()
+    graph.apply {
+        // Node / vertex "0"
+        addEdge("0", "1")
+        addEdge("0", "4")
+        // Node / vertex "1"
+        addEdge("1", "2")
+        addEdge("1", "3")
+        addEdge("1", "4")
+        // Node / vertex "2"
+        addEdge("2", "3")
+        // Node / vertex "3"
+        addEdge("3", "4")
     }
+    println(graph.toString())
+
+    println("breadth first search traversal".heading())
+    println(bfs_traversal(graph, "0"))
+
+    println("depth first search traversal".heading())
+    println(dfs_traversal(graph, "0"))
 }
 
 /**
@@ -61,11 +66,15 @@ class Graph<T> {
         for (key in adjacencyList.keys) {
             append("$key -> ")
             append(adjacencyList[key]?.joinToString(prefix = "[", postfix = "]"))
-            append("\n")
         }
     }.toString()
 
 }
 
-// BFT
-// DFT
+fun <T> bfs_traversal(graph: Graph<T>, item: T): String {
+    return "bfs"
+}
+
+fun <T> dfs_traversal(graph: Graph<T>, item: T): String {
+    return "dfs"
+}
