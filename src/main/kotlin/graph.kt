@@ -72,7 +72,9 @@ class Graph<T> {
 
 }
 
-/** Breadth first traversal leverages a Queue */
+/**
+ * Breadth first traversal leverages a [Queue] (FIFO).
+ */
 fun <T> bfs_traversal(graph: Graph<T>, startNode: T): String {
     // Mark all the vertices / nodes as not visited
     val visitedNodeMap = mutableMapOf<T, Boolean>().apply {
@@ -93,12 +95,12 @@ fun <T> bfs_traversal(graph: Graph<T>, startNode: T): String {
 
     // Traverse the graph
     while (queue.isNotEmpty()) {
-        // Get the head of the queue
+        // Get the item at the front of the queue
         val currentNode = queue.poll()
 
         // Get all the adjacent vertices of the node. For each of them:
         // - If an adjacent has not been visited then mark it visited
-        // - Add it to the queue
+        // - Add it to the back of the queue
         val adjacencyList = graph.adjacencyList[currentNode]
         adjacencyList?.forEach { node ->
             val currentNodeHasBeenVisited = visitedNodeMap[node]!!
@@ -115,7 +117,14 @@ fun <T> bfs_traversal(graph: Graph<T>, startNode: T): String {
     return result.joinToString()
 }
 
-/** Depth first traversal leverages a Stack */
+/**
+ * Depth first traversal leverages a [Stack] (LIFO).
+ *
+ * It's possible to use recursion instead of using this iterative implementation using a [Stack].
+ * Also, this algorithm is almost the same above, except for [Stack] is LIFO and [Queue] is FIFO.
+ *
+ * [More info](https://stackoverflow.com/a/35031174/2085356).
+ */
 fun <T> dfs_traversal(graph: Graph<T>, startNode: T): String {
     // Mark all the vertices / nodes as not visited
     val visitedNodeMap = mutableMapOf<T, Boolean>().apply {
@@ -136,12 +145,12 @@ fun <T> dfs_traversal(graph: Graph<T>, startNode: T): String {
 
     // Traverse the graph
     while (stack.isNotEmpty()) {
-        // Get the head of the queue
+        // Get the top of the stack
         val currentNode = stack.pop()
 
         // Get all the adjacent vertices of the node. For each of them:
         // - If an adjacent has not been visited then mark it visited
-        // - Add it to the queue
+        // - Add it to the top of the stack (push it to the top)
         val adjacencyList = graph.adjacencyList[currentNode]
         adjacencyList?.forEach { node ->
             val currentNodeHasBeenVisited = visitedNodeMap[node]!!
