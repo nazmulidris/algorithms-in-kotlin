@@ -30,18 +30,19 @@ data class RuntimeStats(var comparisons: Int = 0,
 
         val fields = listOf(::comparisons, ::operations, ::swaps, ::insertions, ::dupes)
 
+        val stringList = mutableListOf<String>()
+
         for (field in fields) {
             with(field) {
                 if (this.get() > 0)
-                    it.append(" [#${this.name}=${this.get()}] "
-                            .brightYellow()
-                    )
+                    stringList.add("#${this.name}=${this.get()}".brightYellow())
             }
         }
 
-        if (dupeMap.isNotEmpty()) it.append(" [${::dupeMap.name}=$dupeMap] "
-                .brightGreen()
-        )
+        if (dupeMap.isNotEmpty())
+            stringList.add("${::dupeMap.name}=$dupeMap".brightGreen())
+
+        it.append(stringList.joinToString(separator = ", ", postfix = " }", prefix = "{ "))
 
         it.append(")".brightCyan())
     }.toString()
