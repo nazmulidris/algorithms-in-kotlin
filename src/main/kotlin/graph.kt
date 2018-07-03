@@ -71,10 +71,12 @@ class Graph<T> {
 
 }
 
+/** Breadth first traversal leverages a Queue */
 fun <T> bfs_traversal(graph: Graph<T>, item: T): String {
     return "bfs"
 }
 
+/** Depth first traversal leverages a Stack */
 fun <T> dfs_traversal(graph: Graph<T>, item: T): String {
     return "dfs"
 }
