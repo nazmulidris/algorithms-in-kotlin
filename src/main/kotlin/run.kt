@@ -19,5 +19,6 @@ fun main(args: Array<String>) {
         sort.main(this)
         big_o.main(this)
         recursion.main(this)
+        graphs.main(this)
     }
 }
