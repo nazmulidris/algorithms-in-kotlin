@@ -60,7 +60,7 @@ class Graph<T> {
     override fun toString(): String = StringBuffer().apply {
         for (key in adjacencyList.keys) {
             append("$key -> ")
-            adjacencyList[key]?.forEach { append("$it, ") }
+            append(adjacencyList[key]?.joinToString(prefix = "[", postfix = "]"))
             append("\n")
         }
     }.toString()
