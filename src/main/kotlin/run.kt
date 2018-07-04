@@ -20,5 +20,6 @@ fun main(args: Array<String>) {
         big_o.main(this)
         recursion.main(this)
         graphs.main(this)
+        string.main(this)
     }
 }
