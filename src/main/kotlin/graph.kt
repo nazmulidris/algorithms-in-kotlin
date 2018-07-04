@@ -104,7 +104,7 @@ fun <T> bfs_traversal(graph: Graph<T>, startNode: T, maxDepth: Int): String {
 
     // Traverse the graph
     while (queue.isNotEmpty()) {
-        // Get the item at the front of the queue
+        // Peek and remove the item at the head of the queue
         val currentNode = queue.poll()
 
         // Check to make sure maxDepth is respected
@@ -119,6 +119,7 @@ fun <T> bfs_traversal(graph: Graph<T>, startNode: T, maxDepth: Int): String {
                 if (!currentNodeHasBeenVisited) {
                     visitedMap[adjacentNode] = true
                     depthMap[adjacentNode] = depthMap[currentNode]!! + 1
+                    // Add item to the tail of the queue
                     queue.add(adjacentNode)
                 }
             }
