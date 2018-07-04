@@ -45,6 +45,7 @@ fun substring(str: CharArray, substr: CharArray): Boolean {
             // If there's a match at index between the str and substr then remember it
             if (str[index] == substr[cursor2]) matchCount++
         }
+        // Found 1 match so exit function
         if (matchCount == substr.size) return true
     }
 
