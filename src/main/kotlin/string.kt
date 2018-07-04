@@ -34,13 +34,16 @@ fun substring(str: CharArray, substr: CharArray): Boolean {
     // substr can't be longer than str
     if (substr.size > str.size) return false
 
-    // iterate str using cursor1 and for each index look ahead
+    // Iterate str using cursor1 and for each index look ahead
     // to see if matches exist for substr
     for (cursor1 in 0 until str.size) {
         var matchCount = 0
         for (cursor2 in 0 until substr.size) {
-            if (cursor1 + cursor2 > str.size - 1) return false
-            if (str[cursor1 + cursor2] == substr[cursor2]) matchCount++
+            val index = cursor1 + cursor2
+            // If index exceeds the size of str that means substr wasn't found
+            if (index > str.size - 1) return false
+            // If there's a match at index between the str and substr then remember it
+            if (str[index] == substr[cursor2]) matchCount++
         }
         if (matchCount == substr.size) return true
     }
