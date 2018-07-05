@@ -25,20 +25,18 @@ fun main(args: Array<String>) {
     with(RuntimeStats()) {
         println("bubble_sort O(n^2)".heading())
         val unsortedList = mutableListOf("a", "b", "d", "c")
-        val stats = RuntimeStats()
-        bubble_sort(unsortedList, stats)
+        bubble_sort(unsortedList, this)
         print("sorted list=$unsortedList")
-        println(", $stats")
+        println(", $this")
     }
 
     // insertion sort
     with(RuntimeStats()) {
         println("insertion_sort O(n^2)".heading())
         val unsortedList = mutableListOf("abc", "xyz", "def", "nop", "ghi", "lmk")
-        val stats = RuntimeStats()
-        insertion_sort(unsortedList, stats)
+        insertion_sort(unsortedList, this)
         print("sorted list=$unsortedList")
-        println(", $stats")
+        println(", $this")
     }
 
     // merge sort
