@@ -71,21 +71,21 @@ fun substring(str: CharArray, substr: CharArray): Any {
 
 /* O(n) */
 fun substring_optimized(str: CharArray, substr: CharArray): Boolean {
+
+    class StateMachine(val pattern: CharArray) {
+        var cursor = 0
+        fun add(character: Char) {
+            if (pattern[cursor] == character) cursor++
+            else cursor = 0
+        }
+
+        fun isMatch() = cursor == pattern.size
+    }
+
     val stateMachine = StateMachine(substr)
     for (cursor in 0 until str.size) {
         stateMachine.add(str[cursor])
         if (stateMachine.isMatch()) break
     }
     return stateMachine.isMatch()
-}
-
-class StateMachine(val pattern: CharArray) {
-    var cursor = 0
-
-    fun add(character: Char) {
-        if (pattern[cursor] == character) cursor++
-        else cursor = 0
-    }
-
-    fun isMatch() = cursor == pattern.size
 }
