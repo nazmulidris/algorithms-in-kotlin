@@ -28,6 +28,9 @@ fun main(args: Array<String>) {
         println("substring(\n\t${arg1.joinToString("・")}, " +
                         "\n\t${arg2.joinToString("・")}" +
                         "\n) = ${substring(arg1, arg2)}")
+        println("substring_optimized(\n\t${arg1.joinToString("・")}, " +
+                        "\n\t${arg2.joinToString("・")}" +
+                        "\n) = ${substring_optimized(arg1, arg2)}")
     }
 }
 
@@ -64,4 +67,25 @@ fun substring(str: CharArray, substr: CharArray): Any {
             append(", # matches = $numberOfMatches}")
         }.toString().brightBlue()
     }
+}
+
+/* O(n) */
+fun substring_optimized(str: CharArray, substr: CharArray): Boolean {
+    val stateMachine = StateMachine(substr)
+    for (cursor in 0 until str.size) {
+        stateMachine.add(str[cursor])
+        if (stateMachine.isMatch()) break
+    }
+    return stateMachine.isMatch()
+}
+
+class StateMachine(val pattern: CharArray) {
+    var cursor = 0
+
+    fun add(character: Char) {
+        if (pattern[cursor] == character) cursor++
+        else cursor = 0
+    }
+
+    fun isMatch() = cursor == pattern.size
 }
