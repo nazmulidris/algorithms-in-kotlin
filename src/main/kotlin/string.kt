@@ -43,7 +43,7 @@ fun main(args: Array<String>) {
 }
 
 /**
- * O(str.size * substr.size)
+ * O(m * n), where m = str.size, and n = substr.size
  *
  * This is an inefficient brute force algorithm which has quadratic complexity.
  */
@@ -81,7 +81,7 @@ fun substring(str: CharArray, substr: CharArray, stats: RuntimeStats): Any {
 }
 
 /**
- * O(n)
+ * O(m + n), where m = str.size, and n = substr.size
  *
  * This function uses a deterministic finite automation (DFA) method which entails the use of a
  * state machine to keep track of progress in a game.
