@@ -69,7 +69,12 @@ fun substring(str: CharArray, substr: CharArray): Any {
     }
 }
 
-/* O(n) */
+/**
+ * O(n)
+ *
+ * This function uses a deterministic finite automation (DFA) method which entails the use of a
+ * state machine to keep track of progress in a game.
+ */
 fun substring_optimized(str: CharArray, substr: CharArray): Boolean {
 
     class StateMachine(val pattern: CharArray) {
