@@ -118,9 +118,9 @@ fun substring_optimized(str: CharArray, substr: CharArray, stats: RuntimeStats):
         val occurrences = numberOfOccurrences
         val matchFound = numberOfOccurrences > 0
         override fun toString(): String = StringBuilder().apply {
-            append("occurrences = $occurrences")
-            append(", matchFound = $matchFound")
-        }.toString()
+            append("{occurrences = $occurrences")
+            append(", matchFound = $matchFound}")
+        }.toString().brightBlue()
     }
 
 }

@@ -26,7 +26,7 @@ data class RuntimeStats(var comparisons: Int = 0,
                         var dupes: Int = 0,
                         val dupeMap: MutableMap<String, Int> = mutableMapOf()) {
     override fun toString(): String = StringBuffer().also {
-        it.append("RuntimeStats".brightCyan())
+        it.append("RuntimeStats(".brightCyan())
 
         val fields = listOf(::comparisons, ::operations, ::swaps, ::insertions, ::dupes)
 
