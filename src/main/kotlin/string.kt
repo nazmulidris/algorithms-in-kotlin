@@ -16,6 +16,7 @@
 
 package string
 
+import com.importre.crayon.brightBlue
 import utils.RuntimeStats
 import utils.heading
 
@@ -23,19 +24,20 @@ fun main(args: Array<String>) {
     with(RuntimeStats()) {
         println("substring".heading())
         val arg1 = "Hello world".toCharArray()
-        var arg2 = "o w".toCharArray()
+        var arg2 = "o".toCharArray()
         println("substring(\n\t${arg1.joinToString("・")}, " +
                         "\n\t${arg2.joinToString("・")}" +
                         "\n) = ${substring(arg1, arg2)}")
     }
 }
 
-fun substring(str: CharArray, substr: CharArray): Boolean {
+fun substring(str: CharArray, substr: CharArray): Any {
     // substr can't be longer than str
     if (substr.size > str.size) return false
 
     // Iterate str using cursor1 and for each index look ahead
     // to see if matches exist for substr
+    var occurrences = 0
     for (cursor1 in 0 until str.size) {
         var matchCount = 0
         for (cursor2 in 0 until substr.size) {
@@ -45,9 +47,16 @@ fun substring(str: CharArray, substr: CharArray): Boolean {
             // If there's a match at index between the str and substr then remember it
             if (str[index] == substr[cursor2]) matchCount++
         }
-        // Found 1 match so exit function
-        if (matchCount == substr.size) return true
+        // Found a match
+        if (matchCount == substr.size) occurrences++
     }
 
-    return false
+    return object {
+        val numberOfMatches = occurrences
+        val matchFound = occurrences > 0
+        override fun toString(): String = StringBuilder().apply {
+            append("{match found = $matchFound")
+            append(", # matches = $numberOfMatches}")
+        }.toString().brightBlue()
+    }
 }
