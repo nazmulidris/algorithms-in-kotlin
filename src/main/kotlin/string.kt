@@ -43,7 +43,7 @@ fun substring(str: CharArray, substr: CharArray): Any {
         for (cursor2 in 0 until substr.size) {
             val index = cursor1 + cursor2
             // If index exceeds the size of str that means substr wasn't found
-            if (index > str.size - 1) return false
+            if (index > str.size - 1) break
             // If there's a match at index between the str and substr then remember it
             if (str[index] == substr[cursor2]) matchCount++
         }
