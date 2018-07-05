@@ -31,7 +31,11 @@ fun main(args: Array<String>) {
     }
 }
 
-/** O(str.size * substr.size) */
+/**
+ * O(str.size * substr.size)
+ *
+ * This is an inefficient brute force algorithm.
+ */
 fun substring(str: CharArray, substr: CharArray): Any {
     // substr can't be longer than str
     if (substr.size > str.size) return false
