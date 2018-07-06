@@ -17,6 +17,7 @@
 package dynamic
 
 import com.importre.crayon.brightBlue
+import com.importre.crayon.brightYellow
 import utils.heading
 
 fun main(args: Array<String>) {
@@ -31,7 +32,10 @@ fun main(args: Array<String>) {
 
     run {
         println("numCoins (recursive)".heading())
-        println(numCoins(49, listOf(5, 1, 7, 11).sortedDescending()))
+        val coins = mutableMapOf<Int, Int>()
+        val totalNumberOfCoins = numCoins(49, listOf(5, 1, 7, 11).sortedDescending(), coins)
+        print("total # coins = $totalNumberOfCoins")
+        println(", denomination breakdown = ${coins.toString().brightBlue()}")
     }
 
     run {
@@ -42,16 +46,30 @@ fun main(args: Array<String>) {
 
 }
 
-fun numCoins(total: Int, coins: List<Int>): Int {
-    println("numCoins($total, $coins)")
+fun numCoins(total: Int,
+             coins: List<Int>,
+             map: MutableMap<Int, Int>): Int {
+    // Show the function call stack
+    println("\tnumCoins($total, $coins)".brightYellow())
+
+    // Stop recursing when these simple exit conditions are met
     if (total == 0) return 0
     if (coins.isEmpty()) return 0
 
+    // Breakdown the problem further
     val coinDenomination = coins[0]
-    val coinsUsed = total / coinDenomination
+    var coinsUsed = total / coinDenomination
 
+    // Remember how many coins of which denomination are used
+    if (coinsUsed > 0) {
+        map[coinsUsed] = map[coinsUsed] ?: 0
+        map[coinsUsed] = map[coinsUsed]!! + 1
+    }
+
+    // Breakdown the problem into smaller chunk using recursion
     return coinsUsed + numCoins(total = total - coinsUsed * coinDenomination,
-                                coins = coins.subList(1, coins.size))
+                                coins = coins.subList(1, coins.size),
+                                map = map)
 }
 
 /**
