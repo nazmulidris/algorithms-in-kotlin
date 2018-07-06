@@ -151,7 +151,7 @@ fun <T> dfs_traversal(graph: Graph<T>, startNode: T): String {
     // Create a queue for DFS
     val stack: Stack<T> = Stack()
 
-    // Init step - mark the current node as visited and enqueue it
+    // Init step - mark the current node as visited and push it to the top of the stack
     startNode.also { node ->
         stack.push(node)
         visitedNodeMap[node] = true
@@ -162,7 +162,7 @@ fun <T> dfs_traversal(graph: Graph<T>, startNode: T): String {
 
     // Traverse the graph
     while (stack.isNotEmpty()) {
-        // Get the top of the stack
+        // Pop the node off the top of the stack
         val currentNode = stack.pop()
 
         // Get all the adjacent vertices of the node. For each of them:
