@@ -46,6 +46,10 @@ fun main(args: Array<String>) {
 
 }
 
+/**
+ * Use the process of induction to figure the min number of coins it takes to come up with the
+ * given [total]. The coin denominations you can used are in [coins].
+ */
 fun numCoins(total: Int,
              coins: List<Int>,
              map: MutableMap<Int, Int>): Int {
@@ -73,8 +77,11 @@ fun numCoins(total: Int,
 }
 
 /**
- * Use the process of induction to figure the min number of coins it takes to come up with the
- * given [total]. The coin denominations are 1, 5, 7, and 11.
+ * Brute force version of the recursive function [numCoins] above.
+ *
+ * - As you can see, there's a lot more code and complexity to compensate
+ *   for very simplistic logic.
+ * - The coin denominations are hard coded to be 1, 5, 7, 11.
  */
 fun numCoins_nonrecursive(total: Int, coins: Coins) {
     // Exit condition
