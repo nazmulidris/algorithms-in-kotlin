@@ -34,6 +34,12 @@ fun main(args: Array<String>) {
         println(numCoins(49, listOf(5, 1, 7, 11).sortedDescending()))
     }
 
+    run {
+        println("calculate factorial w/ recursion".heading())
+        val arg = 5
+        println("${::fact.name}($arg)=${fact(arg)}")
+    }
+
 }
 
 fun numCoins(total: Int, coins: List<Int>): Int {
@@ -101,3 +107,5 @@ data class Coins(var numberOf1s: Int = 0,
         append(result.joinToString(", ", "{", "}").brightBlue())
     }.toString()
 }
+
+fun fact(n: Int): Int = if (n == 0) 1 else n * fact(n - 1)

@@ -18,7 +18,6 @@ fun main(args: Array<String>) {
     with(listOf("").toTypedArray()) {
         sort.main(this)
         big_o.main(this)
-        recursion.main(this)
         graphs.main(this)
         string.main(this)
         dynamic.main(this)
