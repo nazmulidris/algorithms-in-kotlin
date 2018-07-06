@@ -48,32 +48,32 @@ fun main(args: Array<String>) {
 
 /**
  * Use the process of induction to figure the min number of coins it takes to come up with the
- * given [total]. The coin denominations you can used are in [coins].
+ * given [total]. The coin denominations you can used are in [denominations].
  */
 fun numCoins(total: Int,
-             coins: List<Int>,
-             map: MutableMap<Int, Int>): Int {
+             denominations: List<Int>,
+             coinsUsedMap: MutableMap<Int, Int>): Int {
     // Show the function call stack
-    println("\tnumCoins($total, $coins)".brightYellow())
+    println("\tnumCoins($total, $denominations)".brightYellow())
 
     // Stop recursing when these simple exit conditions are met
     if (total == 0) return 0
-    if (coins.isEmpty()) return 0
+    if (denominations.isEmpty()) return 0
 
     // Breakdown the problem further
-    val coinDenomination = coins[0]
+    val coinDenomination = denominations[0]
     var coinsUsed = total / coinDenomination
 
     // Remember how many coins of which denomination are used
     if (coinsUsed > 0) {
-        map[coinsUsed] = map[coinsUsed] ?: 0
-        map[coinsUsed] = map[coinsUsed]!! + 1
+        coinsUsedMap[coinsUsed] = coinsUsedMap[coinsUsed] ?: 0
+        coinsUsedMap[coinsUsed] = coinsUsedMap[coinsUsed]!! + 1
     }
 
     // Breakdown the problem into smaller chunk using recursion
     return coinsUsed + numCoins(total = total - coinsUsed * coinDenomination,
-                                coins = coins.subList(1, coins.size),
-                                map = map)
+                                denominations = denominations.subList(1, denominations.size),
+                                coinsUsedMap = coinsUsedMap)
 }
 
 /**
