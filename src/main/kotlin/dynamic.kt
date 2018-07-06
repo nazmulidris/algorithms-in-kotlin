@@ -21,13 +21,19 @@ import utils.heading
 
 fun main(args: Array<String>) {
     println("dynamic programming".heading())
-    val coins = Coins()
-    val total = 49
-    numCoins_nonrecursive(total, coins)
-    println("numCoins_nonrecursive($total) = $coins")
 
-    println("numCoins (recursive)".heading())
-    println(numCoins(49, listOf(11, 7, 5, 1)))
+    run {
+        val coins = Coins()
+        val total = 49
+        numCoins_nonrecursive(total, coins)
+        println("numCoins_nonrecursive($total) = $coins")
+    }
+
+    run {
+        println("numCoins (recursive)".heading())
+        println(numCoins(49, listOf(5, 1, 7, 11).sortedDescending()))
+    }
+
 }
 
 fun numCoins(total: Int, coins: List<Int>): Int {
@@ -36,10 +42,10 @@ fun numCoins(total: Int, coins: List<Int>): Int {
     if (coins.isEmpty()) return 0
 
     val coinDenomination = coins[0]
-    val numCoins = total / coinDenomination
+    val coinsUsed = total / coinDenomination
 
-    return numCoins + numCoins(total = total - numCoins * coinDenomination,
-                               coins = coins.subList(1, coins.size))
+    return coinsUsed + numCoins(total = total - coinsUsed * coinDenomination,
+                                coins = coins.subList(1, coins.size))
 }
 
 /**
