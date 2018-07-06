@@ -21,5 +21,7 @@ fun main(args: Array<String>) {
         recursion.main(this)
         graphs.main(this)
         string.main(this)
+        dynamic.main(this)
+
     }
 }
