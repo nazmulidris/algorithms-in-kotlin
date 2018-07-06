@@ -92,7 +92,7 @@ fun <T> bfs_traversal(graph: Graph<T>, startNode: T, maxDepth: Int): String {
     // Create a queue for BFS
     val queue: Queue<T> = LinkedList()
 
-    // Init step - mark the current node as visited and enqueue it
+    // Init step - mark the current node as visited and add it to the tail of the queue
     startNode.also { node ->
         queue.add(node)
         visitedMap[node] = true
