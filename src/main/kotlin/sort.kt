@@ -209,7 +209,7 @@ fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
     for (x in 0 until size) {
 
         for (y in 0 until sortedUpToIndex) {
-            println("\tx=$x [${list[x]}], y=$y [${list[y]}]")
+            print("\tx=$x [${list[x]}], y=$y [${list[y]}], sortedUpToIndex=$sortedUpToIndex")
             stats.operations++
             stats.comparisons++
             // CAS
@@ -217,6 +217,7 @@ fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
                 list.swap(x, y)
                 stats.swaps++
             }
+            println(" -> ${list.toString().blue()}")
         }
 
         sortedUpToIndex++
