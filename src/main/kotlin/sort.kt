@@ -212,6 +212,8 @@ fun merge(leftList: MutableList<String>, rightList: MutableList<String>, stats: 
  * insertion sort is that it's much faster at sorting lists which are mostly sorted (insertion
  * sort will place the value more-or-less where it needs to go rather than moving it over by
  * one as the bubble sort would).
+ *
+ * [Animated GIF of insertion sort](http://bit.ly/2u0gP3w).
  */
 fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
     val size = list.size
