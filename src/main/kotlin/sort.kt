@@ -141,10 +141,10 @@ fun partition(list: MutableList<Int>,
     return smallerElementIndex
 }
 
-fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
-    val tmp = this[index1] // 'this' corresponds to the list
-    this[index1] = this[index2]
-    this[index2] = tmp
+fun <T> MutableList<T>.swap(idx1: Int, idx2: Int) {
+    val tmp = this[idx1] // 'this' corresponds to the list
+    this[idx1] = this[idx2]
+    this[idx2] = tmp
 }
 
 /** O(n * log(n)) */
@@ -216,24 +216,30 @@ fun merge(leftList: MutableList<String>, rightList: MutableList<String>, stats: 
  * [Animated GIF of insertion sort](http://bit.ly/2u0gP3w).
  */
 fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
-    val size = list.size
-    var sortedUpToIndex = 0
+    for (x in 1 until list.size) {
+        stats.operations++
+        println("\tx=$x")
 
-    for (x in 0 until size) {
+        val key = list[x]
 
-        for (y in 0 until sortedUpToIndex) {
-            print("\tx=$x [${list[x]}], y=$y [${list[y]}], sortedUpToIndex=$sortedUpToIndex")
-            stats.operations++
+        // Move elements of arr[0..x-1], that are greater than key
+        // to one position ahead of their current position
+        for (y in x - 1 downTo 0) {
+
+            print("\t\tx=$x, y=$y")
+
             stats.comparisons++
-            // CAS
-            if (list[x] < list[y]) {
-                list.swap(x, y)
+            stats.operations++
+
+            if (list[y] > key) {
+                list.swap(y, y + 1)
                 stats.swaps++
             }
+
             println(" -> ${list.toString().blue()}")
+
         }
 
-        sortedUpToIndex++
     }
 
 }
