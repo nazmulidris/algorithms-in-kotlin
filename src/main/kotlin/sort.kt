@@ -33,7 +33,7 @@ fun main(args: Array<String>) {
     // insertion sort
     with(RuntimeStats()) {
         println("insertion_sort O(n^2)".heading())
-        val unsortedList = mutableListOf("abc", "xyz", "def", "nop", "ghi", "lmk")
+        val unsortedList = mutableListOf("a", "x", "d", "n", "g", "l")
         insertion_sort(unsortedList, this)
         print("sorted list=$unsortedList")
         println(", $this")
@@ -140,7 +140,7 @@ fun partition(list: MutableList<Int>,
     return smallerElementIndex
 }
 
-fun MutableList<Int>.swap(index1: Int, index2: Int) {
+fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
     val tmp = this[index1] // 'this' corresponds to the list
     this[index1] = this[index2]
     this[index2] = tmp
@@ -204,22 +204,23 @@ fun merge(leftList: MutableList<String>, rightList: MutableList<String>, stats: 
 fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
     val size = list.size
     var sortedUpToIndex = 0
+
     for (cursor1 in 0 until size) {
         stats.operations++
+
         for (cursor2 in 0 until sortedUpToIndex) {
             stats.operations++
-            val lhs = list[cursor1]
-            val rhs = list[cursor2]
             stats.comparisons++
             // CAS
-            if (rhs < lhs) {
+            if (list[cursor1] < list[cursor2]) {
+                list.swap(cursor1, cursor2)
                 stats.swaps++
-                list[cursor1] = rhs
-                list[cursor2] = lhs
             }
         }
+
         sortedUpToIndex++
     }
+
 }
 
 /** O(n^2) */
