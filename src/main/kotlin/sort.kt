@@ -16,6 +16,7 @@
 
 package sort
 
+import com.importre.crayon.blue
 import utils.RuntimeStats
 import utils.heading
 
@@ -24,7 +25,7 @@ fun main(args: Array<String>) {
     // bubble sort
     with(RuntimeStats()) {
         println("bubble_sort O(n^2)".heading())
-        val unsortedList = mutableListOf("c", "d", "x", "b", "a")
+        val unsortedList = mutableListOf("x", "d", "c", "b", "a")
         bubble_sort(unsortedList, this)
         print("sorted list=$unsortedList")
         println(", $this")
@@ -33,7 +34,7 @@ fun main(args: Array<String>) {
     // insertion sort
     with(RuntimeStats()) {
         println("insertion_sort O(n^2)".heading())
-        val unsortedList = mutableListOf("c", "d", "x", "b", "a")
+        val unsortedList = mutableListOf("x", "d", "c", "b", "a")
         insertion_sort(unsortedList, this)
         print("sorted list=$unsortedList")
         println(", $this")
@@ -230,13 +231,17 @@ fun bubble_sort(list: MutableList<String>, stats: RuntimeStats) {
     for (x in 0 until size) {
 
         for (y in x + 1 until size) {
-            println("\tx=$x [${list[x]}], y=$y [${list[y]}]")
+            print("\tx=$x [${list[x]}], y=$y [${list[y]}]")
+
             stats.operations++
             stats.comparisons++
             if (list[y] < list[x]) {
                 stats.swaps++
                 list.swap(y, x)
             }
+
+            println(" -> ${list.toString().blue()}")
+
         }
 
     }
