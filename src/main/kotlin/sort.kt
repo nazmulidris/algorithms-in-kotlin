@@ -206,7 +206,6 @@ fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
     var sortedUpToIndex = 0
 
     for (x in 0 until size) {
-        stats.operations++
 
         for (y in 0 until sortedUpToIndex) {
             println("\tx=$x [${list[x]}], y=$y [${list[y]}]")
@@ -229,13 +228,16 @@ fun bubble_sort(list: MutableList<String>, stats: RuntimeStats) {
     val size = list.size
 
     for (x in 0 until size) {
+
         for (y in x + 1 until size) {
             println("\tx=$x [${list[x]}], y=$y [${list[y]}]")
+            stats.operations++
             stats.comparisons++
             if (list[y] < list[x]) {
                 stats.swaps++
                 list.swap(y, x)
             }
         }
+
     }
 }
