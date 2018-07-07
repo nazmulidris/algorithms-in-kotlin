@@ -247,7 +247,7 @@ fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
  * second largest element is moved to the second last element position. Proceeding
  * this way for n iterations, the array gets sorted.
  *
- * [Animated GIF of bubble sort](http://bit.ly/2u29SPI)
+ * [Animated GIF of bubble sort](http://bit.ly/2u29SPI).
  */
 fun bubble_sort(list: MutableList<String>, stats: RuntimeStats) {
     val size = list.size
