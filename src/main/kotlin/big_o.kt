@@ -54,12 +54,13 @@ fun main(args: Array<String>) {
 
     run {
         println("o(log n)".heading())
+        println("binarySearch()")
         val item = "disney"
         val list = listOf(
                 "nazmul", "idris", "maret", "john", "harry", "tom", "tony", "pepper", "andrew")
                 .sorted()
         with(RuntimeStats()) {
-            print("binarySearch($item, $list) = ${binarySearch(item, list, this)}")
+            print("found: ${binarySearch(item, list, this)}")
             println(", $this")
         }
     }
@@ -67,6 +68,7 @@ fun main(args: Array<String>) {
 
 /** O(log n) */
 fun binarySearch(item: String, list: List<String>, stats: RuntimeStats): Boolean {
+    println("\tbinarySearch($item, $list)")
     stats.operations++
     // exit conditions (base cases)
     if (list.isEmpty()) {
@@ -83,6 +85,7 @@ fun binarySearch(item: String, list: List<String>, stats: RuntimeStats): Boolean
     val probeItem = list[probeIndex]
 
     // split and recurse
+    if (item == probeItem) return true
     if (item < probeItem) {
         stats.comparisons++
         return binarySearch(item, list.subList(0, probeIndex), stats)
