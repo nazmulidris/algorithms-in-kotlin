@@ -107,7 +107,8 @@ fun quick_sort(list: MutableList<Int>,
 /**
  * This function takes last element as pivot, places the pivot element at its correct position in
  * sorted list, and places all smaller (smaller than pivot) to left of pivot and all greater
- * elements to right of pivot */
+ * elements to right of pivot
+ */
 fun partition(list: MutableList<Int>,
               startIndex: Int = 0,
               endIndex: Int = list.size - 1,
