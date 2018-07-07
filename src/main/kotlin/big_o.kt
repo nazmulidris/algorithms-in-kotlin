@@ -83,12 +83,12 @@ fun binarySearch(item: String, list: List<String>, stats: RuntimeStats): Boolean
     val probeItem = list[probeIndex]
 
     // split and recurse
-    return if (item < probeItem) {
+    if (item < probeItem) {
         stats.comparisons++
-        binarySearch(item, list.subList(0, probeIndex), stats)
+        return binarySearch(item, list.subList(0, probeIndex), stats)
     } else {
         stats.comparisons++
-        binarySearch(item, list.subList(probeIndex, size), stats)
+        return binarySearch(item, list.subList(probeIndex, size), stats)
     }
 }
 
