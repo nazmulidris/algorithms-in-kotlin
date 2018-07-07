@@ -33,7 +33,7 @@ fun main(args: Array<String>) {
     // insertion sort
     with(RuntimeStats()) {
         println("insertion_sort O(n^2)".heading())
-        val unsortedList = mutableListOf("a", "x", "d", "n", "g", "l")
+        val unsortedList = mutableListOf("c", "d", "x", "b", "a")
         insertion_sort(unsortedList, this)
         print("sorted list=$unsortedList")
         println(", $this")
@@ -205,15 +205,16 @@ fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
     val size = list.size
     var sortedUpToIndex = 0
 
-    for (cursor1 in 0 until size) {
+    for (x in 0 until size) {
         stats.operations++
 
-        for (cursor2 in 0 until sortedUpToIndex) {
+        for (y in 0 until sortedUpToIndex) {
+            println("\tx=$x [${list[x]}], y=$y [${list[y]}]")
             stats.operations++
             stats.comparisons++
             // CAS
-            if (list[cursor1] < list[cursor2]) {
-                list.swap(cursor1, cursor2)
+            if (list[x] < list[y]) {
+                list.swap(x, y)
                 stats.swaps++
             }
         }
@@ -229,7 +230,7 @@ fun bubble_sort(list: MutableList<String>, stats: RuntimeStats) {
 
     for (x in 0 until size) {
         for (y in x + 1 until size) {
-            println("\tx=$x, y=$y")
+            println("\tx=$x [${list[x]}], y=$y [${list[y]}]")
             stats.comparisons++
             if (list[y] < list[x]) {
                 stats.swaps++
