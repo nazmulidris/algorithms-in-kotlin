@@ -24,7 +24,7 @@ fun main(args: Array<String>) {
     // bubble sort
     with(RuntimeStats()) {
         println("bubble_sort O(n^2)".heading())
-        val unsortedList = mutableListOf("a", "b", "d", "c")
+        val unsortedList = mutableListOf("c", "d", "x", "b", "a")
         bubble_sort(unsortedList, this)
         print("sorted list=$unsortedList")
         println(", $this")
@@ -230,15 +230,10 @@ fun bubble_sort(list: MutableList<String>, stats: RuntimeStats) {
     for (x in 0 until size) {
         for (y in x + 1 until size) {
             println("\tx=$x, y=$y")
-            with(list) {
-                stats.comparisons++
-                if (get(y) < get(x)) {
-                    stats.swaps++
-                    val larger = get(y) // save larger value
-                    val smaller = get(x) // save smaller value
-                    set(x, larger)
-                    set(y, smaller)
-                }
+            stats.comparisons++
+            if (list[y] < list[x]) {
+                stats.swaps++
+                list.swap(y, x)
             }
         }
     }
