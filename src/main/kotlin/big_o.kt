@@ -68,7 +68,10 @@ fun main(args: Array<String>) {
 /** O(log n) */
 fun binarySearch(item: String, list: List<String>, stats: RuntimeStats): Boolean {
     stats.operations++
-    // exit condition
+    // exit conditions (base cases)
+    if (list.isEmpty()) {
+        return false
+    }
     if (list.size == 1) {
         stats.comparisons++
         return list[0] == item
