@@ -201,7 +201,18 @@ fun merge(leftList: MutableList<String>, rightList: MutableList<String>, stats: 
     return result
 }
 
-/** O(n^2) */
+/**
+ * O(n^2)
+ *
+ * Insertion sort is like sorting a hand of cards. You first sort first 2 cards.
+ * Then place the 3rd card in its appropriate position in the 2 sorted cards.
+ * Then 4th card is added to sorted 3 cards in the correct position and so on.
+ *
+ * Both insertion sort and bubble sort are super slow. However, the the main advantage of
+ * insertion sort is that it's much faster at sorting lists which are mostly sorted (insertion
+ * sort will place the value more-or-less where it needs to go rather than moving it over by
+ * one as the bubble sort would).
+ */
 fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
     val size = list.size
     var sortedUpToIndex = 0
@@ -225,7 +236,15 @@ fun insertion_sort(list: MutableList<String>, stats: RuntimeStats) {
 
 }
 
-/** O(n^2) */
+/**
+ * O(n^2)
+ *
+ * In Bubble sort, you swap adjacent elements which are out of sorted order.
+ * So, the largest element is moved to the end of the array in the first iteration.
+ * In the next iteration, the same process is repeated till n-2 elements, so that
+ * second largest element is moved to the second last element position. Proceeding
+ * this way for n iterations, the array gets sorted.
+ */
 fun bubble_sort(list: MutableList<String>, stats: RuntimeStats) {
     val size = list.size
 
