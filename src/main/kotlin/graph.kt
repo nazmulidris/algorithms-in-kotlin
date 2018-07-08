@@ -90,7 +90,7 @@ fun <T> bfs_traversal(graph: Graph<T>, startNode: T, maxDepth: Int): String {
     }
 
     // Create a queue for BFS
-    val queue: Queue<T> = LinkedList()
+    val queue: Deque<T> = LinkedList()
 
     // Init step - mark the current node as visited and add it to the tail of the queue
     startNode.also { node ->
@@ -149,7 +149,7 @@ fun <T> dfs_traversal(graph: Graph<T>, startNode: T): String {
     }
 
     // Create a queue for DFS
-    val stack: Stack<T> = Stack()
+    val stack: Deque<T> = LinkedList()
 
     // Init step - mark the current node as visited and push it to the top of the stack
     startNode.also { node ->
