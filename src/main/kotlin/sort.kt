@@ -17,6 +17,7 @@
 package sort
 
 import com.importre.crayon.blue
+import com.importre.crayon.red
 import com.importre.crayon.yellow
 import utils.RuntimeStats
 import utils.heading
@@ -168,7 +169,7 @@ fun merge_sort(list: MutableList<String>, stats: RuntimeStats): MutableList<Stri
 fun merge(leftList: MutableList<String>,
           rightList: MutableList<String>,
           stats: RuntimeStats): MutableList<String> {
-    println("\tmerge(${leftList.toString().yellow()}, ${rightList.toString().blue()})")
+    print("\tmerge(${leftList.toString().yellow()}, ${rightList.toString().blue()})")
     val result = mutableListOf<String>()
     var leftIndex = 0
     var rightIndex = 0
@@ -201,6 +202,8 @@ fun merge(leftList: MutableList<String>,
         result.add(rightList[rightIndex])
         rightIndex++
     }
+
+    println(" -> ${result.toString().red()}")
 
     return result
 }
