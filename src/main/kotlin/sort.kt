@@ -17,6 +17,7 @@
 package sort
 
 import com.importre.crayon.blue
+import com.importre.crayon.yellow
 import utils.RuntimeStats
 import utils.heading
 
@@ -149,6 +150,7 @@ fun <T> MutableList<T>.swap(idx1: Int, idx2: Int) {
 
 /** O(n * log(n)) */
 fun merge_sort(list: MutableList<String>, stats: RuntimeStats): MutableList<String> {
+    println("merge_sort(${list.toString().blue()})")
     stats.operations++
     // Can't split lists anymore, so stop recursion
     val length = list.size
@@ -163,8 +165,10 @@ fun merge_sort(list: MutableList<String>, stats: RuntimeStats): MutableList<Stri
     return merge(leftList, rightList, stats)
 }
 
-fun merge(leftList: MutableList<String>, rightList: MutableList<String>, stats: RuntimeStats):
-        MutableList<String> {
+fun merge(leftList: MutableList<String>,
+          rightList: MutableList<String>,
+          stats: RuntimeStats): MutableList<String> {
+    println("\tmerge(${leftList.toString().yellow()}, ${rightList.toString().blue()})")
     val result = mutableListOf<String>()
     var leftIndex = 0
     var rightIndex = 0
