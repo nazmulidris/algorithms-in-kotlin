@@ -9,16 +9,13 @@
         <g id="LIFO" transform="translate(33.000000, 40.000000)">
             <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="33.5" y="151.5" width="289"
                   height="96"></rect>
-            <path d="M323.5,248.5 L339.5,302.5" id="Line" stroke="#979797" stroke-linecap="square"
-                  transform="translate(331.500000, 275.500000) scale(-1, -1) translate(-331.500000, -275.500000) "></path>
+            <path d="M344.5,248.5 L323.5,312.5" id="Line" stroke="#979797" fill="#979797"
+                  stroke-linecap="square" stroke-linejoin="bevel"
+                  transform="translate(334.000000, 280.500000) scale(1, -1) translate(-334.000000, -280.500000) "></path>
             <path id="Line-decoration-1"
-                  d="M339.5,302.5 L339.30824,291.292715 L333.555452,292.997245 L339.5,302.5 Z"
-                  stroke="#979797" stroke-linecap="square"></path>
-            <path d="M349.5,88.5 L323.5,150.5" id="Line-2" stroke="#979797"
-                  stroke-linecap="square"></path>
-            <path id="Line-2-decoration-1"
-                  d="M323.5,150.5 L330.443231,141.700481 L324.910065,139.380121 L323.5,150.5 Z"
-                  stroke="#979797" stroke-linecap="square"></path>
+                  d="M323.5,312.5 L329.717593,303.173611 L324.016648,301.302988 L323.5,312.5 Z"
+                  stroke="#979797" fill="#979797" stroke-linecap="square"
+                  stroke-linejoin="bevel"></path>
             <text id="Remove" font-family="SFMono-Regular, SF Mono" font-size="48"
                   font-weight="normal" fill="#000000">
                 <tspan x="323" y="366">Remove</tspan>
@@ -61,20 +58,31 @@
                   fill="#000000">
                 <tspan x="0" y="46">LIFO</tspan>
             </text>
+            <path d="M350.5,149.5 L322.5,94.5" id="Line-Copy-2" stroke="#979797" fill="#979797"
+                  stroke-linecap="square" stroke-linejoin="bevel"
+                  transform="translate(336.500000, 122.000000) scale(1, -1) translate(-336.500000, -122.000000) "></path>
+            <path id="Line-Copy-2-decoration-1"
+                  d="M322.5,94.5 L324.726287,105.485611 L330.073266,102.763513 L322.5,94.5 Z"
+                  stroke="#979797" fill="#979797" stroke-linecap="square"
+                  stroke-linejoin="bevel"></path>
         </g>
-        <g id="FIFO" transform="translate(737.000000, 41.000000)">
+        <g id="FIFO" transform="translate(737.000000, 37.000000)">
             <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="118.5" y="154.5" width="289"
                   height="96"></rect>
-            <path d="M101.5,251.5 L117.5,305.5" id="Line" stroke="#979797" stroke-linecap="square"
+            <path d="M101.5,251.5 L117.5,305.5" id="Line" stroke="#979797" fill="#979797"
+                  stroke-linecap="square" stroke-linejoin="bevel"
                   transform="translate(109.500000, 278.500000) scale(1, -1) translate(-109.500000, -278.500000) "></path>
             <path id="Line-decoration-1"
                   d="M117.5,305.5 L117.30824,294.292715 L111.555452,295.997245 L117.5,305.5 Z"
-                  stroke="#979797" stroke-linecap="square"></path>
-            <path d="M434.5,91.5 L408.5,153.5" id="Line-2" stroke="#979797"
-                  stroke-linecap="square"></path>
-            <path id="Line-2-decoration-1"
-                  d="M408.5,153.5 L415.443231,144.700481 L409.910065,142.380121 L408.5,153.5 Z"
-                  stroke="#979797" stroke-linecap="square"></path>
+                  stroke="#979797" fill="#979797" stroke-linecap="square"
+                  stroke-linejoin="bevel"></path>
+            <path d="M436.5,152.5 L407.5,89.5" id="Line-Copy" stroke="#979797" fill="#979797"
+                  stroke-linecap="square" stroke-linejoin="bevel"
+                  transform="translate(422.000000, 121.000000) scale(1, -1) translate(-422.000000, -121.000000) "></path>
+            <path id="Line-Copy-decoration-1"
+                  d="M407.5,89.5 L409.290808,100.564945 L414.741094,98.0560833 L407.5,89.5 Z"
+                  stroke="#979797" fill="#979797" stroke-linecap="square"
+                  stroke-linejoin="bevel"></path>
             <text id="Remove" font-family="SFMono-Regular, SF Mono" font-size="48"
                   font-weight="normal" fill="#000000">
                 <tspan x="29" y="369">Remove</tspan>
