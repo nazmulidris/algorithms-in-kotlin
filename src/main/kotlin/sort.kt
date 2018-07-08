@@ -266,9 +266,10 @@ fun bubble_sort(list: MutableList<String>, stats: RuntimeStats) {
     val size = list.size
 
     for (x in 0 until size) {
+        println("\tx=$x")
 
         for (y in x + 1 until size) {
-            print("\tx=$x [${list[x]}], y=$y [${list[y]}]")
+            print("\t\tx=$x [${list[x]}], y=$y [${list[y]}]")
 
             stats.operations++
             stats.comparisons++
