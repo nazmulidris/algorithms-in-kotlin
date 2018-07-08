@@ -155,6 +155,8 @@ fun <T> MutableList<T>.swap(idx1: Int, idx2: Int) {
  * This function doesn't actually do any sorting (this is performed in [merge]).
  * - O(log(n)) -> recursively splitting the given list into smaller lists.
  * - O(n) -> merging two pre-sorted lists quickly (the [merge] function).
+ *
+ * [Graphic depicting merge sort in action](http://bit.ly/2u1HuNp).
  */
 fun merge_sort(list: MutableList<String>, stats: RuntimeStats): MutableList<String> {
     println("merge_sort(${list.toString().blue()})")
