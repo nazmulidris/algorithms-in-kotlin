@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280px" height="454px" viewBox="0 0 1280 454" version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="LIFO" transform="translate(33.000000, 40.000000)">
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="33.5" y="151.5" width="289"
+                  height="96"></rect>
+            <path d="M323.5,248.5 L339.5,302.5" id="Line" stroke="#979797" stroke-linecap="square"
+                  transform="translate(331.500000, 275.500000) scale(-1, -1) translate(-331.500000, -275.500000) "></path>
+            <path id="Line-decoration-1"
+                  d="M339.5,302.5 L339.30824,291.292715 L333.555452,292.997245 L339.5,302.5 Z"
+                  stroke="#979797" stroke-linecap="square"></path>
+            <path d="M349.5,88.5 L323.5,150.5" id="Line-2" stroke="#979797"
+                  stroke-linecap="square"></path>
+            <path id="Line-2-decoration-1"
+                  d="M323.5,150.5 L330.443231,141.700481 L324.910065,139.380121 L323.5,150.5 Z"
+                  stroke="#979797" stroke-linecap="square"></path>
+            <text id="Remove" font-family="SFMono-Regular, SF Mono" font-size="48"
+                  font-weight="normal" fill="#000000">
+                <tspan x="323" y="366">Remove</tspan>
+            </text>
+            <text id="Add" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="323" y="76">Add</tspan>
+            </text>
+            <rect id="Rectangle-2-Copy" stroke="#979797" fill="#D8D8D8" x="33.5" y="151.5"
+                  width="57" height="96"></rect>
+            <rect id="Rectangle-2-Copy-2" stroke="#979797" fill="#D8D8D8" x="91.5" y="151.5"
+                  width="57" height="96"></rect>
+            <rect id="Rectangle-2-Copy-3" stroke="#979797" fill="#D8D8D8" x="149.5" y="151.5"
+                  width="57" height="96"></rect>
+            <rect id="Rectangle-2-Copy-4" stroke="#979797" fill="#D8D8D8" x="207.5" y="151.5"
+                  width="57" height="96"></rect>
+            <rect id="Rectangle-2-Copy-5" stroke="#979797" fill="#D8D8D8" x="265.5" y="151.5"
+                  width="57" height="96"></rect>
+            <text id="S" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="48" y="219">S</tspan>
+            </text>
+            <text id="T" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="106" y="219">T</tspan>
+            </text>
+            <text id="A" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="164" y="219">A</tspan>
+            </text>
+            <text id="C" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="222" y="219">C</tspan>
+            </text>
+            <text id="K" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="280" y="219">K</tspan>
+            </text>
+            <text font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="0" y="46">LIFO</tspan>
+            </text>
+        </g>
+        <g id="FIFO" transform="translate(737.000000, 41.000000)">
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="118.5" y="154.5" width="289"
+                  height="96"></rect>
+            <path d="M101.5,251.5 L117.5,305.5" id="Line" stroke="#979797" stroke-linecap="square"
+                  transform="translate(109.500000, 278.500000) scale(1, -1) translate(-109.500000, -278.500000) "></path>
+            <path id="Line-decoration-1"
+                  d="M117.5,305.5 L117.30824,294.292715 L111.555452,295.997245 L117.5,305.5 Z"
+                  stroke="#979797" stroke-linecap="square"></path>
+            <path d="M434.5,91.5 L408.5,153.5" id="Line-2" stroke="#979797"
+                  stroke-linecap="square"></path>
+            <path id="Line-2-decoration-1"
+                  d="M408.5,153.5 L415.443231,144.700481 L409.910065,142.380121 L408.5,153.5 Z"
+                  stroke="#979797" stroke-linecap="square"></path>
+            <text id="Remove" font-family="SFMono-Regular, SF Mono" font-size="48"
+                  font-weight="normal" fill="#000000">
+                <tspan x="29" y="369">Remove</tspan>
+            </text>
+            <text id="Add" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="408" y="79">Add</tspan>
+            </text>
+            <rect id="Rectangle-2-Copy" stroke="#979797" fill="#D8D8D8" x="118.5" y="154.5"
+                  width="57" height="96"></rect>
+            <rect id="Rectangle-2-Copy-2" stroke="#979797" fill="#D8D8D8" x="176.5" y="154.5"
+                  width="57" height="96"></rect>
+            <rect id="Rectangle-2-Copy-3" stroke="#979797" fill="#D8D8D8" x="234.5" y="154.5"
+                  width="57" height="96"></rect>
+            <rect id="Rectangle-2-Copy-4" stroke="#979797" fill="#D8D8D8" x="292.5" y="154.5"
+                  width="57" height="96"></rect>
+            <rect id="Rectangle-2-Copy-5" stroke="#979797" fill="#D8D8D8" x="350.5" y="154.5"
+                  width="57" height="96"></rect>
+            <text id="Q" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="133" y="222">Q</tspan>
+            </text>
+            <text id="U" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="191" y="222">U</tspan>
+            </text>
+            <text id="E" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="249" y="222">E</tspan>
+            </text>
+            <text id="U" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="307" y="222">U</tspan>
+            </text>
+            <text id="E" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="365" y="222">E</tspan>
+            </text>
+            <text font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
+                  fill="#000000">
+                <tspan x="0" y="46">FIFO</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
