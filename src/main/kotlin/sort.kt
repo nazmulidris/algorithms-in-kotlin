@@ -95,7 +95,18 @@ fun counting_sort(list: MutableList<Int>, stats: RuntimeStats) {
     }
 }
 
-/** O(n * log(n)) */
+/**
+ * O(n * log(n))
+ *
+ * If the data is mostly pre-sorted, then the runtime performance will be worse than
+ * expected, and will approach O(n^2). Ironically, the pre-sorted data takes longer
+ * to sort than the “random” data. The reason is because the pivot point will always
+ * be picked sub-optimally, with a “lopsided” partitioning of the data. When we pick
+ * this "lopsided" pivot, we are only reducing the problem size by one element.
+ * If the pivot were ideal, we would be reducing the problem size by half, since
+ * roughly half of the elements would be to the left of the pivot and the other
+ * half to the right.
+ */
 fun quick_sort(list: MutableList<Int>,
                startIndex: Int = 0,
                endIndex: Int = list.size - 1,
