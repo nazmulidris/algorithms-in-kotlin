@@ -6,104 +6,104 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="stacks_queues" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="LIFO" transform="translate(33.000000, 40.000000)">
-            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="33.5" y="151.5" width="289"
+        <g id="LIFO" transform="translate(34.000000, 12.000000)">
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="32.5" y="179.5" width="289"
                   height="96"></rect>
             <text id="Remove" font-family="SFMono-Regular, SF Mono" font-size="48"
                   font-weight="normal" fill="#000000">
-                <tspan x="323" y="366">Remove</tspan>
+                <tspan x="322" y="394">Remove</tspan>
             </text>
             <text id="Add" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
                   fill="#000000">
-                <tspan x="323" y="76">Add</tspan>
+                <tspan x="322" y="104">Add</tspan>
             </text>
-            <rect id="Rectangle-2-Copy" stroke="#979797" fill="#D8D8D8" x="33.5" y="151.5"
+            <rect id="Rectangle-2-Copy" stroke="#979797" fill="#D8D8D8" x="32.5" y="179.5"
                   width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-2" stroke="#979797" fill="#D8D8D8" x="91.5" y="151.5"
+            <rect id="Rectangle-2-Copy-2" stroke="#979797" fill="#D8D8D8" x="90.5" y="179.5"
                   width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-3" stroke="#979797" fill="#D8D8D8" x="149.5" y="151.5"
+            <rect id="Rectangle-2-Copy-3" stroke="#979797" fill="#D8D8D8" x="148.5" y="179.5"
                   width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-4" stroke="#979797" fill="#D8D8D8" x="207.5" y="151.5"
+            <rect id="Rectangle-2-Copy-4" stroke="#979797" fill="#D8D8D8" x="206.5" y="179.5"
                   width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-5" stroke="#979797" fill="#D8D8D8" x="265.5" y="151.5"
+            <rect id="Rectangle-2-Copy-5" stroke="#979797" fill="#D8D8D8" x="264.5" y="179.5"
                   width="57" height="96"></rect>
             <text id="S" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
                   fill="#000000">
-                <tspan x="48" y="219">S</tspan>
+                <tspan x="47" y="247">S</tspan>
             </text>
             <text id="T" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
                   fill="#000000">
-                <tspan x="106" y="219">T</tspan>
+                <tspan x="105" y="247">T</tspan>
             </text>
             <text id="A" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
                   fill="#000000">
-                <tspan x="164" y="219">A</tspan>
+                <tspan x="163" y="247">A</tspan>
             </text>
             <text id="C" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
                   fill="#000000">
-                <tspan x="222" y="219">C</tspan>
+                <tspan x="221" y="247">C</tspan>
             </text>
             <text id="K" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
                   fill="#000000">
-                <tspan x="280" y="219">K</tspan>
+                <tspan x="279" y="247">K</tspan>
             </text>
             <text font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
+                  fill="#4A90E2">
                 <tspan x="0" y="46">LIFO</tspan>
             </text>
-            <path d="M323.5,248.5 L350.5,319.5" id="Line-2" stroke="#979797"
+            <path d="M322.5,276.5 L349.5,347.5" id="Line-2" stroke="#979797"
                   stroke-linecap="square"></path>
-            <path d="M323.5,150.5 L360.5,90.5" id="Line-3" stroke="#979797"
+            <path d="M322.5,178.5 L359.5,118.5" id="Line-3" stroke="#979797"
                   stroke-linecap="square"></path>
         </g>
-        <g id="FIFO" transform="translate(737.000000, 37.000000)">
-            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="118.5" y="154.5" width="289"
+        <g id="FIFO" transform="translate(737.000000, 12.000000)">
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="118.5" y="179.5" width="289"
                   height="96"></rect>
             <text id="Remove" font-family="SFMono-Regular, SF Mono" font-size="48"
                   font-weight="normal" fill="#000000">
-                <tspan x="29" y="369">Remove</tspan>
+                <tspan x="337" y="392">Remove</tspan>
             </text>
             <text id="Add" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
                   fill="#000000">
-                <tspan x="408" y="79">Add</tspan>
+                <tspan x="0" y="128">Add</tspan>
             </text>
-            <rect id="Rectangle-2-Copy" stroke="#979797" fill="#D8D8D8" x="118.5" y="154.5"
+            <rect id="Rectangle-2-Copy" stroke="#979797" fill="#D8D8D8" x="118.5" y="179.5"
                   width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-2" stroke="#979797" fill="#D8D8D8" x="176.5" y="154.5"
+            <rect id="Rectangle-2-Copy-2" stroke="#979797" fill="#D8D8D8" x="176.5" y="179.5"
                   width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-3" stroke="#979797" fill="#D8D8D8" x="234.5" y="154.5"
+            <rect id="Rectangle-2-Copy-3" stroke="#979797" fill="#D8D8D8" x="234.5" y="179.5"
                   width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-4" stroke="#979797" fill="#D8D8D8" x="292.5" y="154.5"
+            <rect id="Rectangle-2-Copy-4" stroke="#979797" fill="#D8D8D8" x="292.5" y="179.5"
                   width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-5" stroke="#979797" fill="#D8D8D8" x="350.5" y="154.5"
+            <rect id="Rectangle-2-Copy-5" stroke="#979797" fill="#D8D8D8" x="350.5" y="179.5"
                   width="57" height="96"></rect>
             <text id="Q" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
                   fill="#000000">
-                <tspan x="133" y="222">Q</tspan>
+                <tspan x="133" y="247">Q</tspan>
             </text>
             <text id="U" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
                   fill="#000000">
-                <tspan x="191" y="222">U</tspan>
+                <tspan x="191" y="247">U</tspan>
             </text>
             <text id="E" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
                   fill="#000000">
-                <tspan x="249" y="222">E</tspan>
+                <tspan x="249" y="247">E</tspan>
             </text>
             <text id="U" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
                   fill="#000000">
-                <tspan x="307" y="222">U</tspan>
+                <tspan x="307" y="247">U</tspan>
             </text>
             <text id="E" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
                   fill="#000000">
-                <tspan x="365" y="222">E</tspan>
+                <tspan x="365" y="247">E</tspan>
             </text>
             <text font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
+                  fill="#4A90E2">
                 <tspan x="0" y="46">FIFO</tspan>
             </text>
-            <path d="M408.5,153.5 L437.5,90.5" id="Line" stroke="#979797"
+            <path d="M118.5,178.5 L76.5,141.5" id="Line" stroke="#979797"
                   stroke-linecap="square"></path>
-            <path d="M118.5,251.5 L85.5,318.5" id="Line-4" stroke="#979797"
+            <path d="M408.5,276.5 L443.5,339.5" id="Line-4" stroke="#979797"
                   stroke-linecap="square"></path>
         </g>
     </g>
