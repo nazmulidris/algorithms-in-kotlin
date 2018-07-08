@@ -123,6 +123,9 @@ fun quick_sort(list: MutableList<Int>,
  * This function takes last element as pivot, places the pivot element at its correct
  * (final) position in (fully) sorted list, and places all smaller (smaller than pivot)
  * to left of pivot and all greater elements to right of pivot.
+ *
+ * Ideally this pivot element would represent the median of the sublist. But in this
+ * implementation we are choosing the end of the sublist (the element at endIndex).
  */
 fun partition(list: MutableList<Int>,
               startIndex: Int = 0,
