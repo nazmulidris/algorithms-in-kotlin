@@ -157,6 +157,17 @@ fun <T> MutableList<T>.swap(idx1: Int, idx2: Int) {
  * - O(n) -> merging two pre-sorted lists quickly (the [merge] function).
  *
  * [Graphic depicting merge sort in action](http://bit.ly/2u1HuNp).
+ *
+ * We can also describe the steps of the algorithm a little differently:
+ *
+ * 1) Split the n elements of the list into n separate lists, each of size one.
+ * 2) Pair adjacent lists and merge them, resulting in about half as many lists
+ *    each about twice the size.
+ * 3) Repeat step 2 until you have one list of size n.
+ *
+ * After the last recursive calls, we are operating on arrays of size 1, which
+ * cannot be split any further and are trivially sorted themselves, thus giving
+ * us our base case.
  */
 fun merge_sort(list: MutableList<String>, stats: RuntimeStats): MutableList<String> {
     println("merge_sort(${list.toString().blue()})")
