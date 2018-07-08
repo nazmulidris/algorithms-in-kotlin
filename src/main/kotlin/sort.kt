@@ -98,6 +98,8 @@ fun counting_sort(list: MutableList<Int>, stats: RuntimeStats) {
 /**
  * O(n * log(n))
  *
+ * Quick sort on average runs 2-3 times faster than [merge_sort].
+ *
  * If the data is mostly pre-sorted, then the runtime performance will be worse than
  * expected, and will approach O(n^2). Ironically, the pre-sorted data takes longer
  * to sort than the “random” data. The reason is because the pivot point will always
@@ -187,6 +189,8 @@ fun <T> MutableList<T>.swap(idx1: Int, idx2: Int) {
  * After the last recursive calls, we are operating on arrays of size 1, which
  * cannot be split any further and are trivially sorted themselves, thus giving
  * us our base case.
+ *
+ * Please note that [quick_sort] on average runs 2-3 times faster merge sort.
  */
 fun merge_sort(list: MutableList<String>, stats: RuntimeStats): MutableList<String> {
     println("merge_sort(${list.toString().blue()})")
