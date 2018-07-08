@@ -166,6 +166,7 @@ fun merge_sort(list: MutableList<String>, stats: RuntimeStats): MutableList<Stri
     return merge(leftList, rightList, stats)
 }
 
+/** In this step, the actual sorting of 2 already sorted lists occurs. */
 fun merge(leftList: MutableList<String>,
           rightList: MutableList<String>,
           stats: RuntimeStats): MutableList<String> {
