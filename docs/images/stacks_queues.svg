@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1280px" height="543px" viewBox="0 0 1280 543" version="1.1"
+<svg width="1424px" height="543px" viewBox="0 0 1424 543" version="1.1"
      xmlns="http://www.w3.org/2000/svg">
     <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
     <title>stacks_queues</title>
@@ -63,7 +63,7 @@
                 <tspan x="0" y="46">LIFO (STACK)</tspan>
             </text>
         </g>
-        <g id="FIFO" transform="translate(672.000000, 12.000000)">
+        <g id="FIFO" transform="translate(791.000000, 12.000000)">
             <g id="Q" transform="translate(3.000000, 118.000000)">
                 <text id="Remove-(head)" font-family="SFMono-Regular, SF Mono" font-size="48"
                       font-weight="normal" fill="#000000">
@@ -121,7 +121,7 @@
                 <tspan x="0" y="46">FIFO (QUEUE)</tspan>
             </text>
         </g>
-        <path d="M638.5,162.5 L638.5,474.5" id="Line-5" stroke="#EDEDED" stroke-width="5"
+        <path d="M710.5,172.5 L710.5,484.5" id="Line-5" stroke="#EDEDED" stroke-width="5"
               stroke-linecap="square"></path>
     </g>
 </svg>
