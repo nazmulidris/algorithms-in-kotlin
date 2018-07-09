@@ -50,7 +50,7 @@ fun main(args: Array<String>) {
 }
 
 /**
- * RingBuffer uses a fixed length array to implement a queue, where:
+ * RingBuffer uses a fixed length array to implement a queue, where,
  * - [tail] Items are added to the tail
  * - [head] Items are removed from the head
  * - [capacity] Keeps track of how many items are currently in the queue
