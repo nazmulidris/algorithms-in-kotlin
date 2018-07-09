@@ -120,9 +120,12 @@ class RingBuffer<T>(val maxSize: Int = 10) {
     }
 
     override fun toString(): String = StringBuffer().apply {
-        append(toList().joinToString(", ",
-                                     "{",
-                                     "}").blue()).append(" [capacity = $capacity, H = $head, T = $tail]".yellow())
+        append(
+                toList()
+                        .joinToString(", ",
+                                      "{",
+                                      "}").blue())
+                .append(" [capacity = $capacity, H = $head, T = $tail]".yellow())
     }.toString()
 
     fun toList(): MutableList<T?> {
