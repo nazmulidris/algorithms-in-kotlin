@@ -11,11 +11,11 @@
                   height="96"></rect>
             <text id="Remove-(pop)" font-family="SFMono-Regular, SF Mono" font-size="48"
                   font-weight="normal" fill="#000000">
-                <tspan x="229" y="394">Remove (pop)</tspan>
+                <tspan x="189" y="394">Remove (pop)</tspan>
             </text>
             <text id="Add-(push)" font-family="SFMono-Regular, SF Mono" font-size="48"
                   font-weight="normal" fill="#000000">
-                <tspan x="282" y="104">Add (push)</tspan>
+                <tspan x="275" y="104">Add (push)</tspan>
             </text>
             <rect id="Rectangle-2-Copy" stroke="#979797" fill="#D8D8D8" x="32.5" y="179.5"
                   width="57" height="96"></rect>
