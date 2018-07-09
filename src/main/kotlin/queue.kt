@@ -47,7 +47,7 @@ fun main(args: Array<String>) {
     println("add 1, ${queue.enqueue("1")}")
     println("add 2, ${queue.enqueue("2")}")
     println("add 3, ${queue.enqueue("3")}")
-    println("contents = ${queue.toList()}")
+    println("contents = ${queue.contents()}")
 }
 
 /**
@@ -119,16 +119,12 @@ class RingBuffer<T>(val maxSize: Int = 10) {
         return tail < head
     }
 
-    override fun toString(): String = StringBuffer().apply {
-        append(
-                toList()
-                        .joinToString(", ",
-                                      "{",
-                                      "}").blue())
-                .append(" [capacity = $capacity, H = $head, T = $tail]".yellow())
+    override fun toString(): String = StringBuilder().apply {
+        this.append(contents().joinToString(", ", "{", "}").yellow())
+        this.append(" [capacity=$capacity, H=$head, T=$tail]".blue())
     }.toString()
 
-    fun toList(): MutableList<T?> {
+    fun contents(): MutableList<T?> {
         return mutableListOf<T?>().apply {
             var itemCount = capacity
             var readIndex = head
