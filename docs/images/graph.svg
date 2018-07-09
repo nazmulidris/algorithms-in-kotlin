@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1280px" height="454px" viewBox="0 0 1280 454" version="1.1"
+<svg width="712px" height="454px" viewBox="0 0 712 454" version="1.1"
      xmlns="http://www.w3.org/2000/svg">
     <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
     <title>graph</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="graph" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="node" transform="translate(67.000000, 29.000000)">
+        <g id="node" transform="translate(43.000000, 54.000000)">
             <circle id="Oval" stroke="#979797" stroke-width="12" fill="#B8E986" cx="55" cy="55"
                     r="55"></circle>
             <text id="0" font-family="SFMono-Regular, SF Mono" font-size="36" font-weight="normal"
@@ -14,7 +14,7 @@
                 <tspan x="44" y="65">0</tspan>
             </text>
         </g>
-        <g id="node" transform="translate(333.000000, 29.000000)">
+        <g id="node" transform="translate(309.000000, 54.000000)">
             <circle id="Oval" stroke="#979797" stroke-width="12" fill="#B8E986" cx="55" cy="55"
                     r="55"></circle>
             <text id="1" font-family="SFMono-Regular, SF Mono" font-size="36" font-weight="normal"
@@ -22,7 +22,7 @@
                 <tspan x="44" y="65">1</tspan>
             </text>
         </g>
-        <g id="node" transform="translate(333.000000, 272.000000)">
+        <g id="node" transform="translate(309.000000, 297.000000)">
             <circle id="Oval" stroke="#979797" stroke-width="12" fill="#B8E986" cx="55" cy="55"
                     r="55"></circle>
             <text id="3" font-family="SFMono-Regular, SF Mono" font-size="36" font-weight="normal"
@@ -30,7 +30,7 @@
                 <tspan x="44" y="65">3</tspan>
             </text>
         </g>
-        <g id="node" transform="translate(67.000000, 272.000000)">
+        <g id="node" transform="translate(43.000000, 297.000000)">
             <circle id="Oval" stroke="#979797" stroke-width="12" fill="#B8E986" cx="55" cy="55"
                     r="55"></circle>
             <text id="4" font-family="SFMono-Regular, SF Mono" font-size="36" font-weight="normal"
@@ -38,7 +38,7 @@
                 <tspan x="44" y="65">4</tspan>
             </text>
         </g>
-        <g id="node" transform="translate(585.000000, 139.000000)">
+        <g id="node" transform="translate(561.000000, 164.000000)">
             <circle id="Oval" stroke="#979797" stroke-width="12" fill="#B8E986" cx="55" cy="55"
                     r="55"></circle>
             <text id="2" font-family="SFMono-Regular, SF Mono" font-size="36" font-weight="normal"
@@ -46,19 +46,15 @@
                 <tspan x="44" y="65">2</tspan>
             </text>
         </g>
-        <path d="M123.5,141.5 L123.5,268.5" id="Line-5" stroke="#979797" stroke-width="6"
-              stroke-linecap="square"></path>
-        <path d="M179,83 L328,83" id="Line-5-Copy-3" stroke="#979797" stroke-width="6"
-              stroke-linecap="square"></path>
-        <path d="M179,328 L328,328" id="Line-5-Copy-4" stroke="#979797" stroke-width="6"
-              stroke-linecap="square"></path>
-        <path d="M386.5,139.5 L386.5,266.5" id="Line-5-Copy" stroke="#979797" stroke-width="6"
-              stroke-linecap="square"></path>
-        <path d="M335,115 L171,290" id="Line-5-Copy-2" stroke="#979797" stroke-width="6"
-              stroke-linecap="square"></path>
-        <path d="M602,244 L443,327" id="Line-5-Copy-5" stroke="#979797" stroke-width="6"
-              stroke-linecap="square"></path>
-        <path d="M602,145 L447,85" id="Line-5-Copy-6" stroke="#979797" stroke-width="6"
-              stroke-linecap="square"></path>
+        <g id="edges" transform="translate(98.000000, 107.000000)" stroke="#979797"
+           stroke-linecap="square" stroke-width="6">
+            <path d="M1.5,59.5 L1.5,186.5" id="Line-5"></path>
+            <path d="M57,1 L206,1" id="Line-5-Copy-3"></path>
+            <path d="M57,246 L206,246" id="Line-5-Copy-4"></path>
+            <path d="M264.5,57.5 L264.5,184.5" id="Line-5-Copy"></path>
+            <path d="M213,33 L49,208" id="Line-5-Copy-2"></path>
+            <path d="M480,162 L321,245" id="Line-5-Copy-5"></path>
+            <path d="M480,63 L325,3" id="Line-5-Copy-6"></path>
+        </g>
     </g>
 </svg>
