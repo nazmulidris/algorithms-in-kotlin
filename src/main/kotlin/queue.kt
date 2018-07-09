@@ -33,7 +33,7 @@ fun main(args: Array<String>) {
     try {
         println("add 7, ${queue.enqueue("7")}")
     } catch (e: Exception) {
-        println(e)
+        println(e.toString().red())
     }
     println("dequeue = ${queue.dequeue()}, $queue")
     println("dequeue = ${queue.dequeue()}, $queue")
@@ -42,7 +42,7 @@ fun main(args: Array<String>) {
     try {
         println("dequeue = ${queue.dequeue()}, $queue")
     } catch (e: Exception) {
-        println(e)
+        println(e.toString().red())
     }
     println("add 1, ${queue.enqueue("1")}")
     println("add 2, ${queue.enqueue("2")}")
