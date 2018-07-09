@@ -106,5 +106,7 @@
             <path d="M408.5,276.5 L443.5,339.5" id="Line-4" stroke="#979797"
                   stroke-linecap="square"></path>
         </g>
+        <path d="M637.5,65.5 L637.5,377.5" id="Line-5" stroke="#EDEDED" stroke-width="5"
+              stroke-linecap="square"></path>
     </g>
 </svg>
