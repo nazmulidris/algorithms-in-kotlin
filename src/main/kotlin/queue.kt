@@ -47,6 +47,7 @@ fun main(args: Array<String>) {
     println("add 1, ${queue.enqueue("1")}")
     println("add 2, ${queue.enqueue("2")}")
     println("add 3, ${queue.enqueue("3")}")
+    println("contents = ${queue.toList()}")
 }
 
 /**
@@ -119,19 +120,22 @@ class RingBuffer<T>(val maxSize: Int = 10) {
     }
 
     override fun toString(): String = StringBuffer().apply {
-        var itemCount = capacity
-        val items = mutableListOf<T?>()
-        var readIndex = head
-        while (itemCount > 0) {
-            items.add(array[readIndex])
-            readIndex = (readIndex + 1) % maxSize
-            itemCount--
-        }
-        append(items.joinToString(", ",
-                                  "{",
-                                  "}").blue()).append(" [capacity = $capacity, H = $head, T = $tail]".yellow())
+        append(toList().joinToString(", ",
+                                     "{",
+                                     "}").blue()).append(" [capacity = $capacity, H = $head, T = $tail]".yellow())
     }.toString()
 
+    fun toList(): MutableList<T?> {
+        return mutableListOf<T?>().apply {
+            var itemCount = capacity
+            var readIndex = head
+            while (itemCount > 0) {
+                add(array[readIndex])
+                readIndex = (readIndex + 1) % maxSize
+                itemCount--
+            }
+        }
+    }
 }
 
 class CircularQueueNaive<T>(val maxSize: Int = 10) {
