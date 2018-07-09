@@ -59,13 +59,13 @@
         <g id="FIFO" transform="translate(737.000000, 12.000000)">
             <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="118.5" y="179.5" width="289"
                   height="96"></rect>
-            <text id="Remove" font-family="SFMono-Regular, SF Mono" font-size="48"
+            <text id="Remove-(head)" font-family="SFMono-Regular, SF Mono" font-size="48"
                   font-weight="normal" fill="#000000">
-                <tspan x="337" y="392">Remove</tspan>
+                <tspan x="148" y="386">Remove (head)</tspan>
             </text>
-            <text id="Add" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
-                <tspan x="0" y="128">Add</tspan>
+            <text id="Add-(tail)" font-family="SFMono-Regular, SF Mono" font-size="48"
+                  font-weight="normal" fill="#000000">
+                <tspan x="0" y="128">Add (tail)</tspan>
             </text>
             <rect id="Rectangle-2-Copy" stroke="#979797" fill="#D8D8D8" x="118.5" y="179.5"
                   width="57" height="96"></rect>
