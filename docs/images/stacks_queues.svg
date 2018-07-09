@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1280px" height="454px" viewBox="0 0 1280 454" version="1.1"
+<svg width="1280px" height="543px" viewBox="0 0 1280 543" version="1.1"
      xmlns="http://www.w3.org/2000/svg">
     <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
     <title>stacks_queues</title>
@@ -7,121 +7,121 @@
     <defs></defs>
     <g id="stacks_queues" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="LIFO" transform="translate(34.000000, 12.000000)">
-            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="32.5" y="179.5" width="289"
-                  height="96"></rect>
-            <text id="Remove-(pop)" font-family="SFMono-Regular, SF Mono" font-size="48"
-                  font-weight="normal" fill="#000000">
-                <tspan x="189" y="394">Remove (pop)</tspan>
+            <g id="S" transform="translate(32.000000, 118.000000)">
+                <text id="Remove-(pop)" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="161" y="343">Remove (pop)</tspan>
+                </text>
+                <text id="Add-(push)" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="247" y="46">Add (push)</tspan>
+                </text>
+                <rect id="Rectangle-2-Copy" stroke="#979797" fill="#D8D8D8" x="0.5" y="125.5"
+                      width="57" height="96"></rect>
+                <rect id="Rectangle-2-Copy-2" stroke="#979797" fill="#D8D8D8" x="58.5" y="125.5"
+                      width="57" height="96"></rect>
+                <rect id="Rectangle-2-Copy-3" stroke="#979797" fill="#D8D8D8" x="116.5" y="125.5"
+                      width="57" height="96"></rect>
+                <rect id="Rectangle-2-Copy-4" stroke="#979797" fill="#D8D8D8" x="174.5" y="125.5"
+                      width="57" height="96"></rect>
+                <rect id="Rectangle-2-Copy-5" stroke="#979797" fill="#D8D8D8" x="232.5" y="125.5"
+                      width="57" height="96"></rect>
+                <text id="1" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="15" y="193">1</tspan>
+                </text>
+                <text id="2" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="73" y="193">2</tspan>
+                </text>
+                <text id="3" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="131" y="193">3</tspan>
+                </text>
+                <text id="4" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="189" y="193">4</tspan>
+                </text>
+                <text id="5" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="247" y="193">5</tspan>
+                </text>
+                <path d="M396.508878,67 L396.508878,128.5 C394.940879,137.390632 393.216364,143.334853 391.335332,146.332665 C389.454299,149.330476 385.411095,152.578298 379.20572,156.076132 L309,156.076132"
+                      id="Line-6" stroke="#979797" stroke-width="5" stroke-dasharray="5"></path>
+                <path d="M378.292505,185.216373 L378.292505,246.716373 C376.724507,255.607005 374.999991,261.551226 373.118959,264.549037 C371.237926,267.546849 367.194722,270.794671 360.989347,274.292505 L290.783627,274.292505"
+                      id="Line-6-Copy" stroke="#979797" stroke-width="5" stroke-dasharray="5"
+                      transform="translate(334.538066, 229.754439) rotate(-90.000000) translate(-334.538066, -229.754439) "></path>
+                <polygon id="Triangle" fill="#9B9B9B"
+                         transform="translate(302.000000, 155.500000) rotate(-90.000000) translate(-302.000000, -155.500000) "
+                         points="302 143.5 311.5 167.5 292.5 167.5"></polygon>
+                <polygon id="Triangle-Copy" fill="#9B9B9B"
+                         transform="translate(379.500000, 286.000000) rotate(180.000000) translate(-379.500000, -286.000000) "
+                         points="379.5 274 389 298 370 298"></polygon>
+            </g>
+            <text id="LIFO-(STACK)" font-family="SFMono-Regular, SF Mono" font-size="48"
+                  font-weight="normal" fill="#4A90E2">
+                <tspan x="0" y="46">LIFO (STACK)</tspan>
             </text>
-            <text id="Add-(push)" font-family="SFMono-Regular, SF Mono" font-size="48"
-                  font-weight="normal" fill="#000000">
-                <tspan x="275" y="104">Add (push)</tspan>
-            </text>
-            <rect id="Rectangle-2-Copy" stroke="#979797" fill="#D8D8D8" x="32.5" y="179.5"
-                  width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-2" stroke="#979797" fill="#D8D8D8" x="90.5" y="179.5"
-                  width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-3" stroke="#979797" fill="#D8D8D8" x="148.5" y="179.5"
-                  width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-4" stroke="#979797" fill="#D8D8D8" x="206.5" y="179.5"
-                  width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-5" stroke="#979797" fill="#D8D8D8" x="264.5" y="179.5"
-                  width="57" height="96"></rect>
-            <text id="S" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
-                <tspan x="47" y="247">S</tspan>
-            </text>
-            <text id="T" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
-                <tspan x="105" y="247">T</tspan>
-            </text>
-            <text id="A" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
-                <tspan x="163" y="247">A</tspan>
-            </text>
-            <text id="C" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
-                <tspan x="221" y="247">C</tspan>
-            </text>
-            <text id="K" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
-                <tspan x="279" y="247">K</tspan>
-            </text>
-            <text font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#4A90E2">
-                <tspan x="0" y="46">LIFO</tspan>
-            </text>
-            <path d="M428.508878,121 L428.508878,182.5 C426.940879,191.390632 425.216364,197.334853 423.335332,200.332665 C421.454299,203.330476 417.411095,206.578298 411.20572,210.076132 L341,210.076132"
-                  id="Line-6" stroke="#979797" stroke-width="5" stroke-dasharray="5"></path>
-            <path d="M410.292505,239.216373 L410.292505,300.716373 C408.724507,309.607005 406.999991,315.551226 405.118959,318.549037 C403.237926,321.546849 399.194722,324.794671 392.989347,328.292505 L322.783627,328.292505"
-                  id="Line-6-Copy" stroke="#979797" stroke-width="5" stroke-dasharray="5"
-                  transform="translate(366.538066, 283.754439) rotate(-90.000000) translate(-366.538066, -283.754439) "></path>
-            <polygon id="Triangle" fill="#9B9B9B"
-                     transform="translate(334.000000, 209.500000) rotate(-90.000000) translate(-334.000000, -209.500000) "
-                     points="334 197.5 343.5 221.5 324.5 221.5"></polygon>
-            <polygon id="Triangle-Copy" fill="#9B9B9B"
-                     transform="translate(411.500000, 340.000000) rotate(180.000000) translate(-411.500000, -340.000000) "
-                     points="411.5 328 421 352 402 352"></polygon>
         </g>
-        <g id="FIFO" transform="translate(675.000000, 12.000000)">
-            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="180.5" y="179.5" width="289"
-                  height="96"></rect>
-            <text id="Remove-(head)" font-family="SFMono-Regular, SF Mono" font-size="48"
-                  font-weight="normal" fill="#000000">
-                <tspan x="210" y="386">Remove (head)</tspan>
+        <g id="FIFO" transform="translate(672.000000, 12.000000)">
+            <g id="Q" transform="translate(3.000000, 118.000000)">
+                <text id="Remove-(head)" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="209" y="343">Remove (head)</tspan>
+                </text>
+                <text id="Add-(tail)" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="0" y="46">Add (tail)</tspan>
+                </text>
+                <rect id="Rectangle-2-Copy" stroke="#979797" fill="#D8D8D8" x="180.5" y="125.5"
+                      width="57" height="96"></rect>
+                <rect id="Rectangle-2-Copy-2" stroke="#979797" fill="#D8D8D8" x="238.5" y="125.5"
+                      width="57" height="96"></rect>
+                <rect id="Rectangle-2-Copy-3" stroke="#979797" fill="#D8D8D8" x="296.5" y="125.5"
+                      width="57" height="96"></rect>
+                <rect id="Rectangle-2-Copy-4" stroke="#979797" fill="#D8D8D8" x="354.5" y="125.5"
+                      width="57" height="96"></rect>
+                <rect id="Rectangle-2-Copy-5" stroke="#979797" fill="#D8D8D8" x="412.5" y="125.5"
+                      width="57" height="96"></rect>
+                <text id="5" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="195" y="193">5</tspan>
+                </text>
+                <text id="4" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="253" y="193">4</tspan>
+                </text>
+                <text id="3" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="311" y="193">3</tspan>
+                </text>
+                <text id="2" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="369" y="193">2</tspan>
+                </text>
+                <text id="1" font-family="SFMono-Regular, SF Mono" font-size="48"
+                      font-weight="normal" fill="#000000">
+                    <tspan x="427" y="193">1</tspan>
+                </text>
+                <path d="M161.508878,62 L161.508878,139.379675 C159.940879,150.565922 158.216364,158.044978 156.335332,161.816842 C154.454299,165.588706 150.411095,169.675136 144.20572,174.076132 L74,174.076132"
+                      id="Line-6-Copy-3" stroke="#979797" stroke-width="5" stroke-dasharray="5"
+                      transform="translate(117.754439, 118.038066) scale(-1, 1) translate(-117.754439, -118.038066) "></path>
+                <path d="M558.292505,175.216373 L558.292505,236.716373 C556.724507,245.607005 554.999991,251.551226 553.118959,254.549037 C551.237926,257.546849 547.194722,260.794671 540.989347,264.292505 L470.783627,264.292505"
+                      id="Line-6-Copy-2" stroke="#979797" stroke-width="5" stroke-dasharray="5"
+                      transform="translate(514.538066, 219.754439) rotate(-90.000000) translate(-514.538066, -219.754439) "></path>
+                <polygon id="Triangle-Copy-3" fill="#9B9B9B"
+                         transform="translate(166.000000, 173.500000) scale(-1, 1) rotate(-90.000000) translate(-166.000000, -173.500000) "
+                         points="166 161.5 175.5 185.5 156.5 185.5"></polygon>
+                <polygon id="Triangle-Copy-2" fill="#9B9B9B"
+                         transform="translate(559.500000, 277.000000) rotate(180.000000) translate(-559.500000, -277.000000) "
+                         points="559.5 265 569 289 550 289"></polygon>
+            </g>
+            <text id="FIFO-(QUEUE)" font-family="SFMono-Regular, SF Mono" font-size="48"
+                  font-weight="normal" fill="#4A90E2">
+                <tspan x="0" y="46">FIFO (QUEUE)</tspan>
             </text>
-            <text id="Add-(tail)" font-family="SFMono-Regular, SF Mono" font-size="48"
-                  font-weight="normal" fill="#000000">
-                <tspan x="0" y="128">Add (tail)</tspan>
-            </text>
-            <rect id="Rectangle-2-Copy" stroke="#979797" fill="#D8D8D8" x="180.5" y="179.5"
-                  width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-2" stroke="#979797" fill="#D8D8D8" x="238.5" y="179.5"
-                  width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-3" stroke="#979797" fill="#D8D8D8" x="296.5" y="179.5"
-                  width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-4" stroke="#979797" fill="#D8D8D8" x="354.5" y="179.5"
-                  width="57" height="96"></rect>
-            <rect id="Rectangle-2-Copy-5" stroke="#979797" fill="#D8D8D8" x="412.5" y="179.5"
-                  width="57" height="96"></rect>
-            <text id="Q" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
-                <tspan x="195" y="247">Q</tspan>
-            </text>
-            <text id="U" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
-                <tspan x="253" y="247">U</tspan>
-            </text>
-            <text id="E" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
-                <tspan x="311" y="247">E</tspan>
-            </text>
-            <text id="U" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
-                <tspan x="369" y="247">U</tspan>
-            </text>
-            <text id="E" font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#000000">
-                <tspan x="427" y="247">E</tspan>
-            </text>
-            <text font-family="SFMono-Regular, SF Mono" font-size="48" font-weight="normal"
-                  fill="#4A90E2">
-                <tspan x="62" y="46">FIFO</tspan>
-            </text>
-            <path d="M161.508878,135 L161.508878,196.5 C159.940879,205.390632 158.216364,211.334853 156.335332,214.332665 C154.454299,217.330476 150.411095,220.578298 144.20572,224.076132 L74,224.076132"
-                  id="Line-6-Copy-3" stroke="#979797" stroke-width="5" stroke-dasharray="5"
-                  transform="translate(117.754439, 179.538066) scale(-1, 1) translate(-117.754439, -179.538066) "></path>
-            <path d="M558.292505,219.216373 L558.292505,280.716373 C556.724507,289.607005 554.999991,295.551226 553.118959,298.549037 C551.237926,301.546849 547.194722,304.794671 540.989347,308.292505 L470.783627,308.292505"
-                  id="Line-6-Copy-2" stroke="#979797" stroke-width="5" stroke-dasharray="5"
-                  transform="translate(514.538066, 263.754439) rotate(-90.000000) translate(-514.538066, -263.754439) "></path>
-            <polygon id="Triangle-Copy-3" fill="#9B9B9B"
-                     transform="translate(166.000000, 223.500000) scale(-1, 1) rotate(-90.000000) translate(-166.000000, -223.500000) "
-                     points="166 211.5 175.5 235.5 156.5 235.5"></polygon>
-            <polygon id="Triangle-Copy-2" fill="#9B9B9B"
-                     transform="translate(559.500000, 321.000000) rotate(180.000000) translate(-559.500000, -321.000000) "
-                     points="559.5 309 569 333 550 333"></polygon>
         </g>
-        <path d="M637.5,65.5 L637.5,377.5" id="Line-5" stroke="#EDEDED" stroke-width="5"
+        <path d="M638.5,162.5 L638.5,474.5" id="Line-5" stroke="#EDEDED" stroke-width="5"
               stroke-linecap="square"></path>
     </g>
 </svg>
