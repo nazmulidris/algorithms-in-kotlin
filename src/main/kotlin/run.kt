@@ -21,5 +21,6 @@ fun main(args: Array<String>) {
         graphs.main(this)
         string.main(this)
         dynamic.main(this)
+        queue.main(this)
     }
 }
