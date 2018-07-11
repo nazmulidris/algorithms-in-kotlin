@@ -67,31 +67,31 @@ fun main(args: Array<String>) {
 }
 
 /** O(log n) */
-fun binarySearch(item: String, list: List<String>, stats: RuntimeStats): Boolean {
-    println("\tbinarySearch($item, $list)")
+fun binarySearch(item: String, sortedList: List<String>, stats: RuntimeStats): Boolean {
+    println("\tbinarySearch($item, $sortedList)")
     stats.operations++
     // exit conditions (base cases)
-    if (list.isEmpty()) {
+    if (sortedList.isEmpty()) {
         return false
     }
-    if (list.size == 1) {
+    if (sortedList.size == 1) {
         stats.comparisons++
-        return list[0] == item
+        return sortedList[0] == item
     }
 
     // setup probe
-    val size = list.size
+    val size = sortedList.size
     val probeIndex = size / 2
-    val probeItem = list[probeIndex]
+    val probeItem = sortedList[probeIndex]
 
     if (item == probeItem) return true
     // split and recurse
     if (item < probeItem) {
         stats.comparisons++
-        return binarySearch(item, list.subList(0, probeIndex), stats)
+        return binarySearch(item, sortedList.subList(0, probeIndex), stats)
     } else {
         stats.comparisons++
-        return binarySearch(item, list.subList(probeIndex, size), stats)
+        return binarySearch(item, sortedList.subList(probeIndex, size), stats)
     }
 }
 
