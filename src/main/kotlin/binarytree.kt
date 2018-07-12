@@ -18,25 +18,70 @@ package binarytree
 
 import com.importre.crayon.blue
 import com.importre.crayon.green
+import com.importre.crayon.magenta
 import com.importre.crayon.yellow
 import utils.heading
 
 fun main(args: Array<String>) {
     println("binary trees".heading())
+
     val rootNode: Node<Char> = buildTree()
     println(rootNode.toString())
+
+    with(mutableListOf<Char>()) {
+        traversalPreOrder(rootNode, this)
+        print("pre-order traversal  ➡ ".magenta())
+        println(this.joinToString(" 👉 ", "[", "]"))
+    }
+
+    with(mutableListOf<Char>()) {
+        traversalInOrder(rootNode, this)
+        print("in-order traversal   ➡ ".magenta())
+        println(this.joinToString(" 👉 ", "[", "]"))
+    }
+
+    with(mutableListOf<Char>()) {
+        traversalPostOrder(rootNode, this)
+        print("post-order traversal ➡ ".magenta())
+        println(this.joinToString(" 👉 ", "[", "]"))
+    }
+
 }
 
-fun <T> traversalInOrder(root: Node<T>?, path: StringBuffer) {
-
+/**
+ * A neat trick for pre-order traversals: starting from the root, go around the tree
+ * counterclockwise. Print each node when you pass its left side.
+ */
+fun <T> traversalPreOrder(node: Node<T>?, list: MutableList<T>) {
+    if (node != null) {
+        list.add(node.value)
+        traversalPreOrder(node.leftNode, list)
+        traversalPreOrder(node.rightNode, list)
+    }
 }
 
-fun <T> traversalPostOrder(root: Node<T>?, path: StringBuffer) {
-
+/**
+ * A neat trick for in-order traversals: starting from the root, go around the tree
+ * counterclockwise. Print each node when you pass its bottom side.
+ */
+fun <T> traversalInOrder(node: Node<T>?, list: MutableList<T>) {
+    if (node != null) {
+        traversalInOrder(node.leftNode, list)
+        list.add(node.value)
+        traversalInOrder(node.rightNode, list)
+    }
 }
 
-fun <T> traversalPreOrder(root: Node<T>?, path: StringBuffer) {
-
+/**
+ * A neat trick for post-order traversals: starting from the root, go around the tree
+ * counterclockwise. Print each node when you pass its right side.
+ */
+fun <T> traversalPostOrder(node: Node<T>?, list: MutableList<T>) {
+    if (node != null) {
+        traversalPostOrder(node.leftNode, list)
+        traversalPostOrder(node.rightNode, list)
+        list.add(node.value)
+    }
 }
 
 /**
