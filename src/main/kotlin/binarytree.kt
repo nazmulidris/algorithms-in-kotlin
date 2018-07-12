@@ -27,8 +27,20 @@ fun main(args: Array<String>) {
     println(rootNode.toString())
 }
 
+fun <T> traversalInOrder(root: Node<T>?, path: StringBuffer) {
+
+}
+
+fun <T> traversalPostOrder(root: Node<T>?, path: StringBuffer) {
+
+}
+
+fun <T> traversalPreOrder(root: Node<T>?, path: StringBuffer) {
+
+}
+
 /**
- * [Image of the generated tree](http://bit.ly/2ufLBWq)
+ * [Image of the generated tree](https://github.com/nazmulidris/algorithms-in-kotlin/blob/master/docs/images/binarytree.png)
  */
 fun buildTree(): Node<Char> {
     val a = Node('a', null, null)
