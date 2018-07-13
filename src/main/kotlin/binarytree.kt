@@ -21,6 +21,7 @@ import com.importre.crayon.green
 import com.importre.crayon.magenta
 import com.importre.crayon.yellow
 import utils.heading
+import java.util.*
 
 fun main(args: Array<String>) {
     println("binary trees".heading())
@@ -28,22 +29,31 @@ fun main(args: Array<String>) {
     val rootNode: Node<Char> = buildTree()
     println(rootNode.toString())
 
+    // Pre-order traversal (recursive)
     with(mutableListOf<Char>()) {
         traversalPreOrder(rootNode, this)
         print("pre-order traversal  ➡ ".magenta())
-        println(this.joinToString(" 👉 ", "[", "]"))
+        println(this.joinToString(" 👉 "))
     }
 
+    // In-order traversal (recursive)
     with(mutableListOf<Char>()) {
         traversalInOrder(rootNode, this)
         print("in-order traversal   ➡ ".magenta())
-        println(this.joinToString(" 👉 ", "[", "]"))
+        println(this.joinToString(" 👉 "))
     }
 
+    // Post-order traversal (recursive)
     with(mutableListOf<Char>()) {
         traversalPostOrder(rootNode, this)
         print("post-order traversal ➡ ".magenta())
-        println(this.joinToString(" 👉 ", "[", "]"))
+        println(this.joinToString(" 👉 "))
+    }
+
+    // DFS traversal (using stack)
+    with(depthFirstTraversal(rootNode)) {
+        print("DFS traversal ➡ ".magenta())
+        println(this.joinToString(" 👉 ") { "${it.value}, ${it.depth}" })
     }
 
 }
@@ -84,6 +94,40 @@ fun <T> traversalPostOrder(node: Node<T>?, list: MutableList<T>) {
     }
 }
 
+fun <T> depthFirstTraversal(root: Node<T>): MutableList<Node<T>> {
+    val visitedMap = mutableMapOf<Node<T>, Boolean>()
+    val stack = LinkedList<Node<T>>()
+    val traversalList = mutableListOf<Node<T>>()
+
+    // Add first node
+    stack.push(root)
+
+    // Use stack to create breadth first traversal
+    while (stack.isNotEmpty()) {
+        val currentNode = stack.pop()
+        val depth = currentNode.depth
+
+        // If the currentNode key can't be found in the map, then insert it
+        visitedMap[currentNode] = visitedMap[currentNode] ?: false
+
+        if (!visitedMap[currentNode]!!) {
+            // If has right child then push to stack FIRST (so this will be processed LAST)
+            if (currentNode.rightNode != null)
+                stack.push(currentNode.rightNode!!.depth(depth + 1))
+
+            // If has left child then push to stack LAST (so this will be processed FIRST)
+            if (currentNode.leftNode != null)
+                stack.push(currentNode.leftNode!!.depth(depth + 1))
+
+            // Mark the current node visited and add to traversal list
+            visitedMap[currentNode] = true
+            traversalList.add(currentNode)
+        }
+    }
+
+    return traversalList
+}
+
 /**
  * [Image of the generated tree](https://github.com/nazmulidris/algorithms-in-kotlin/blob/master/docs/images/binarytree.png)
  */
@@ -106,12 +150,17 @@ fun buildTree(): Node<Char> {
     return a
 }
 
-data class Node<T>(val value: T, var leftNode: Node<T>?, var rightNode: Node<T>?) {
+data class Node<T>(val value: T,
+                   var leftNode: Node<T>?,
+                   var rightNode: Node<T>?,
+                   var depth: Int = 0) {
     fun link(left: Node<T>?, right: Node<T>?) = this.apply { linkLeft(left).linkRight(right) }
 
     fun linkLeft(left: Node<T>?) = this.apply { leftNode = left }
 
     fun linkRight(right: Node<T>?) = this.apply { rightNode = right }
+
+    fun depth(value: Int) = this.apply { depth = value }
 
     /**
      * Nodes on the left are in yellow, and those on the right are blue.
