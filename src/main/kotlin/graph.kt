@@ -44,13 +44,13 @@ fun main(args: Array<String>) {
     println("breadth first search traversal".heading())
 
     print("bfs_traversal(graph, '0', 5) = ")
-    println(bfs_traversal(graph, "0", 5))
+    println(breadthFirstTraversal(graph, "0", 5))
 
     print("bfs_traversal(graph, '0', 1) = ")
-    println(bfs_traversal(graph, "0", 1))
+    println(breadthFirstTraversal(graph, "0", 1))
 
     println("depth first search traversal".heading())
-    println(dfs_traversal(graph, "0"))
+    println(depthFirstTraversal(graph, "0"))
 }
 
 /**
@@ -79,7 +79,7 @@ class Graph<T> {
 /**
  * Breadth first traversal leverages a [Queue] (FIFO).
  */
-fun <T> bfs_traversal(graph: Graph<T>, startNode: T, maxDepth: Int): String {
+fun <T> breadthFirstTraversal(graph: Graph<T>, startNode: T, maxDepth: Int): String {
     // Mark all the vertices / nodes as not visited
     val visitedMap = mutableMapOf<T, Boolean>().apply {
         graph.adjacencyList.keys.forEach { node -> put(node, false) }
@@ -142,7 +142,7 @@ fun <T> bfs_traversal(graph: Graph<T>, startNode: T, maxDepth: Int): String {
  *
  * [More info](https://stackoverflow.com/a/35031174/2085356).
  */
-fun <T> dfs_traversal(graph: Graph<T>, startNode: T): String {
+fun <T> depthFirstTraversal(graph: Graph<T>, startNode: T): String {
     // Mark all the vertices / nodes as not visited
     val visitedNodeMap = mutableMapOf<T, Boolean>().apply {
         graph.adjacencyList.keys.forEach { node -> put(node, false) }
