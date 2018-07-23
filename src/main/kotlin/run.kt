@@ -23,5 +23,6 @@ fun main(args: Array<String>) {
         dynamic.main(this)
         queue.main(this)
         binarytree.main(this)
+        cache.main(this)
     }
 }
