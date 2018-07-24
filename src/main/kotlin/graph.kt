@@ -103,7 +103,7 @@ fun <T> breadthFirstTraversal(graph: Graph<T>, startNode: T, maxDepth: Int): Str
     // Traverse the graph
     while (queue.isNotEmpty()) {
         // Peek and remove the item at the head of the queue
-        val currentNode = queue.poll()
+        val currentNode = queue.remove()
 
         // Check to make sure maxDepth is respected
         if (depthMap[currentNode]!! <= maxDepth) {
