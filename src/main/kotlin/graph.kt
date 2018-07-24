@@ -69,7 +69,7 @@ class Graph<T> {
     override fun toString(): String = StringBuffer().apply {
         for (key in adjacencyMap.keys) {
             append("$key -> ")
-            append(adjacencyMap[key]?.joinToString(prefix = "[", postfix = "]\n"))
+            append(adjacencyMap[key]?.joinToString(", ", "[", "]\n"))
         }
     }.toString()
 }
@@ -146,7 +146,7 @@ fun <T> depthFirstTraversal(graph: Graph<T>, startNode: T): String {
         graph.adjacencyMap.keys.forEach { node -> put(node, false) }
     }
 
-    // Create a queue for DFS
+    // Create a stack for DFS
     val stack: Deque<T> = LinkedList()
 
     // Initial step -> add the startNode to the stack
