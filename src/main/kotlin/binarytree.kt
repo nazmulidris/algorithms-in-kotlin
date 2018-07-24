@@ -50,15 +50,15 @@ fun main(args: Array<String>) {
         println(this.joinToString(" 👉 "))
     }
 
-    // DFS traversal (using stack)
-    with(depthFirstTraversal(rootNode)) {
-        print("DFS traversal ➡ ".magenta())
-        println(this.joinToString(" 👉 ") { "${it.value}, ${it.depth}" })
-    }
-
     // BFS traversal (using queue)
     with(breadthFirstTraversal(rootNode)) {
         print("BFS traversal ➡ ".magenta())
+        println(this.joinToString(" 👉 ") { "${it.value}, ${it.depth}" })
+    }
+
+    // DFS traversal (using stack)
+    with(depthFirstTraversal(rootNode)) {
+        print("DFS traversal ➡ ".magenta())
         println(this.joinToString(" 👉 ") { "${it.value}, ${it.depth}" })
     }
 
