@@ -109,8 +109,9 @@ class Cache<T>(val type: Type, val size: Int) {
     }
 
     override fun toString(): String = StringBuilder().apply {
-        val list = mutableListOf<String>()
-        for (entry in map) list.add("'${entry.key}'->rank=${entry.value}".yellow())
+        val list = mutableListOf<String>().apply {
+            for (entry in map) add("'${entry.key}'->rank=${entry.value}".yellow())
+        }
         append(list.joinToString(", ", "{", "}"))
     }.toString()
 }
