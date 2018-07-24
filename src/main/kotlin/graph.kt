@@ -92,8 +92,11 @@ fun <T> breadthFirstTraversal(graph: Graph<T>, startNode: T, maxDepth: Int): Str
 
     // Init step - mark the current node as visited and add it to the tail of the queue
     startNode.also { node ->
+        // Add to the tail of the queue
         queue.add(node)
+        // Mark it as visited
         visitedMap[node] = true
+        // Record the depth of this node
         depthMap[node] = 0
     }
 
@@ -113,12 +116,14 @@ fun <T> breadthFirstTraversal(graph: Graph<T>, startNode: T, maxDepth: Int): Str
             // - Add it to the back of the queue
             val adjacencyList = graph.adjacencyList[currentNode]
             adjacencyList?.forEach { adjacentNode ->
-                val currentNodeHasBeenVisited = visitedMap[adjacentNode]!!
-                if (!currentNodeHasBeenVisited) {
-                    visitedMap[adjacentNode] = true
-                    depthMap[adjacentNode] = depthMap[currentNode]!! + 1
-                    // Add item to the tail of the queue
+                val adjacentNodeHasBeenVisited = visitedMap[adjacentNode]!!
+                if (!adjacentNodeHasBeenVisited) {
+                    // Add adjacent node to the tail of the queue
                     queue.add(adjacentNode)
+                    // Mark adjacent node as visited
+                    visitedMap[adjacentNode] = true
+                    // Record the depth of this node
+                    depthMap[adjacentNode] = depthMap[currentNode]!! + 1
                 }
             }
 
