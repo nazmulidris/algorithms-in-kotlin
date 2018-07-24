@@ -57,13 +57,12 @@ fun main(args: Array<String>) {
  * [More info](https://www.geeksforgeeks.org/graph-and-its-representations/).
  */
 class Graph<T> {
-
-    val adjacencyList: MutableMap<T, LinkedList<T>> = mutableMapOf()
+    val adjacencyList: MutableMap<T, MutableSet<T>> = mutableMapOf()
 
     fun addEdge(src: T, dest: T) {
-        adjacencyList[src] = adjacencyList[src] ?: LinkedList()
+        adjacencyList[src] = adjacencyList[src] ?: mutableSetOf()
         adjacencyList[src]?.add(dest)
-        adjacencyList[dest] = adjacencyList[dest] ?: LinkedList()
+        adjacencyList[dest] = adjacencyList[dest] ?: mutableSetOf()
         adjacencyList[dest]?.add(src)
     }
 
@@ -73,7 +72,6 @@ class Graph<T> {
             append(adjacencyList[key]?.joinToString(prefix = "[", postfix = "]\n"))
         }
     }.toString()
-
 }
 
 /**
