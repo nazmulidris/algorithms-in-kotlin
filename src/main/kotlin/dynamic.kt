@@ -48,7 +48,8 @@ fun main(args: Array<String>) {
 
 /**
  * Use the process of induction to figure the min number of coins it takes to come up with the
- * given [total]. The coin denominations you can used are in [denominations].
+ * given [total]. The coin denominations you can used are in [denominations]; this list must
+ * be sorted already (in descending order), eg: [11, 7, 5, 1].
  */
 fun numCoins(total: Int,
              denominations: List<Int>,
