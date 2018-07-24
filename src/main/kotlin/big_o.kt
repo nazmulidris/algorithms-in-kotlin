@@ -16,6 +16,9 @@
 
 package big_o
 
+import com.importre.crayon.blue
+import com.importre.crayon.green
+import com.importre.crayon.red
 import utils.RuntimeStats
 import utils.heading
 
@@ -68,7 +71,7 @@ fun main(args: Array<String>) {
 
 /** O(log n) */
 fun binarySearch(item: String, sortedList: List<String>, stats: RuntimeStats): Boolean {
-    println("\tbinarySearch($item, $sortedList)")
+    println("\tbinarySearch(${item.toString().blue()}, ${sortedList.toString().green()}")
     stats.operations++
 
     // Exit conditions (base cases)
@@ -81,6 +84,8 @@ fun binarySearch(item: String, sortedList: List<String>, stats: RuntimeStats): B
     val probeIndex = size / 2
     val probeItem = sortedList[probeIndex]
     stats.comparisons++
+    print("\t\tprobe->")
+    println("[index=$probeIndex, $probeItem]".red())
 
     // Does the probe match? If not, split and recurse
     when {
