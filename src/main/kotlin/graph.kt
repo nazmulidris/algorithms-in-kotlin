@@ -173,8 +173,8 @@ fun <T> depthFirstTraversal(graph: Graph<T>, startNode: T): String {
         // - Add it to the top of the stack (push it to the top)
         val adjacencyList = graph.adjacencyList[currentNode]
         adjacencyList?.forEach { adjacentNode ->
-            val currentNodeHasBeenVisited = visitedNodeMap[adjacentNode]!!
-            if (!currentNodeHasBeenVisited) {
+            val adjacentNodeHasBeenVisited = visitedNodeMap[adjacentNode]!!
+            if (!adjacentNodeHasBeenVisited) {
                 visitedNodeMap[adjacentNode] = true
                 stack.push(adjacentNode)
             }
