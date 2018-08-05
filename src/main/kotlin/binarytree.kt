@@ -56,6 +56,12 @@ fun main(args: Array<String>) {
         println(this.joinToString(" 👉 ") { "${it.value}, ${it.depth}" })
     }
 
+    // BFS traversal (using queue) pretty print
+    with(printBFSTraversal(rootNode)) {
+        println("BFS traversal (pretty print) ➡ ".magenta())
+        print(this)
+    }
+
     // DFS traversal (using stack)
     with(depthFirstTraversal(rootNode)) {
         print("DFS traversal ➡ ".magenta())
@@ -157,7 +163,7 @@ fun <T> breadthFirstTraversal(root: Node<T>): MutableList<Node<T>> {
         if (currentNode.rightNode != null)
             queue.add(currentNode.rightNode!!.depth(depth + 1))
 
-        // Mark the current node visited and add to traversal list
+        // Add the node to the traversal list
         traversalList.add(currentNode)
     }
 
@@ -165,7 +171,53 @@ fun <T> breadthFirstTraversal(root: Node<T>): MutableList<Node<T>> {
 }
 
 /**
+ * Traverses the binary tree nodes in a sorted order.
+ */
+fun <T> printBFSTraversal(root: Node<T>): String {
+
+    val queue = LinkedList<Node<T>>()
+    // Add first node
+    queue.add(root)
+
+    val mapVisitedDepth = mutableMapOf<Int, MutableList<T>>()
+    // Use stack to create breadth first traversal
+    while (queue.isNotEmpty()) {
+        val currentNode = queue.poll()
+        val depth = currentNode.depth
+
+        // Add left node first
+        if (currentNode.leftNode != null)
+            queue.add(currentNode.leftNode!!.depth(depth + 1))
+
+        // Add right node next
+        if (currentNode.rightNode != null)
+            queue.add(currentNode.rightNode!!.depth(depth + 1))
+
+        // Decide whether to print crlf or not
+        if (!mapVisitedDepth.containsKey(depth)) {
+            mapVisitedDepth[depth] = mutableListOf()
+        }
+        mapVisitedDepth[depth]!!.add(currentNode.value)
+    }
+
+    val outputString = StringBuilder()
+
+    for (entry in mapVisitedDepth) {
+        outputString.append(entry.value.joinToString(", ", postfix = "\n"))
+    }
+
+    return outputString.toString()
+}
+
+/**
  * [Image of the generated tree](https://github.com/nazmulidris/algorithms-in-kotlin/blob/master/docs/images/binarytree.png)
+ *        [A]
+ *       /   \
+ *     [B]    [C]
+ *     / \    /  \
+ *  [D]  [E] [F] [G]
+ *               / \
+ *             [H] [I]
  */
 fun buildTree(): Node<Char> {
     val a = Node('a', null, null)
