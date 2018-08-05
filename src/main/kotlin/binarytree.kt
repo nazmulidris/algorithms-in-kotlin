@@ -138,7 +138,6 @@ fun <T> depthFirstTraversal(root: Node<T>): MutableList<Node<T>> {
  * Traverses the binary tree nodes in a sorted order.
  */
 fun <T> breadthFirstTraversal(root: Node<T>): MutableList<Node<T>> {
-    val visitedMap = mutableMapOf<Node<T>, Boolean>()
     val queue = LinkedList<Node<T>>()
     val traversalList = mutableListOf<Node<T>>()
 
@@ -150,22 +149,16 @@ fun <T> breadthFirstTraversal(root: Node<T>): MutableList<Node<T>> {
         val currentNode = queue.poll()
         val depth = currentNode.depth
 
-        // If the currentNode key can't be found in the map, then insert it
-        visitedMap[currentNode] = visitedMap[currentNode] ?: false
+        // Add left node first
+        if (currentNode.leftNode != null)
+            queue.add(currentNode.leftNode!!.depth(depth + 1))
 
-        if (!visitedMap[currentNode]!!) {
-            // Add left node first
-            if (currentNode.leftNode != null)
-                queue.add(currentNode.leftNode!!.depth(depth + 1))
+        // Add right node next
+        if (currentNode.rightNode != null)
+            queue.add(currentNode.rightNode!!.depth(depth + 1))
 
-            // Add right node next
-            if (currentNode.rightNode != null)
-                queue.add(currentNode.rightNode!!.depth(depth + 1))
-
-            // Mark the current node visited and add to traversal list
-            visitedMap[currentNode] = true
-            traversalList.add(currentNode)
-        }
+        // Mark the current node visited and add to traversal list
+        traversalList.add(currentNode)
     }
 
     return traversalList
