@@ -114,7 +114,7 @@ fun quick_sort(list: MutableList<Int>,
                endIndex: Int = list.size - 1,
                stats: RuntimeStats) {
     if (startIndex < endIndex) {
-        println("quick_sort(${list.sublist(startIndex, endIndex).toString().blue()})")
+        println("quick_sort(${list.sub_list(startIndex, endIndex).toString().blue()})")
         val pivotIndex = partition(list, startIndex, endIndex, stats)
         quick_sort(list, startIndex, pivotIndex - 1, stats) // Before pivot index
         quick_sort(list, pivotIndex + 1, endIndex, stats) // After pivot index
@@ -133,7 +133,7 @@ fun partition(list: MutableList<Int>,
               startIndex: Int = 0,
               endIndex: Int = list.size - 1,
               stats: RuntimeStats): Int {
-    print("\tpartition(${list.sublist(startIndex, endIndex).toString().yellow()})")
+    print("\tpartition(${list.sub_list(startIndex, endIndex).toString().yellow()})")
     // Element to be placed at the correct position in the list
     val pivotValue = list[endIndex]
 
@@ -158,14 +158,14 @@ fun partition(list: MutableList<Int>,
     stats.swaps++
 
     print(" [pivot=$pivotValue]->".red())
-    println(" ${list.subList(startIndex, endIndex + 1).toString().blue()}")
+    println(" ${list.sub_list(startIndex, endIndex).toString().blue()}")
 
     // Return the index just after where the pivot value ended up
     return smallerElementIndex
 }
 
 /** Split the given list starting at [start] and ending at (and inclusive of) [end] index. */
-fun <T> MutableList<T>.sublist(start: Int, end: Int): MutableList<T> {
+fun <T> MutableList<T>.sub_list(start: Int, end: Int): MutableList<T> {
     return subList(start, end + 1)
 }
 
