@@ -164,7 +164,7 @@ fun partition(list: MutableList<Int>,
     return smallerElementIndex
 }
 
-/** Split the given list starting at [start] and ending at (including) [end] index. */
+/** Split the given list starting at [start] and ending at (and inclusive of) [end] index. */
 fun <T> MutableList<T>.sublist(start: Int, end: Int): MutableList<T> {
     return subList(start, end + 1)
 }
