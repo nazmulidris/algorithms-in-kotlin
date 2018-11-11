@@ -176,28 +176,25 @@ fun <T> breadthFirstTraversal(root: Node<T>): MutableList<Node<T>> {
 fun <T> printBFSTraversal(root: Node<T>): String {
 
     val queue = LinkedList<Node<T>>()
-    // Add first node
+    // Add first node.
     queue.add(root)
 
     val mapVisitedDepth = mutableMapOf<Int, MutableList<T>>()
-    // Use stack to create breadth first traversal
+    // Use stack to create breadth first traversal.
     while (queue.isNotEmpty()) {
         val currentNode = queue.poll()
         val depth = currentNode.depth
 
-        // Add left node first
+        // Add left node first.
         if (currentNode.leftNode != null)
             queue.add(currentNode.leftNode!!.depth(depth + 1))
 
-        // Add right node next
+        // Add right node next.
         if (currentNode.rightNode != null)
             queue.add(currentNode.rightNode!!.depth(depth + 1))
 
-        // Decide whether to print crlf or not
-        if (!mapVisitedDepth.containsKey(depth)) {
-            mapVisitedDepth[depth] = mutableListOf()
-        }
-        mapVisitedDepth[depth]!!.add(currentNode.value)
+        // Decide whether to print crlf or not.
+        mapVisitedDepth.computeIfAbsent(depth){ mutableListOf()}.add(currentNode.value)
     }
 
     val outputString = StringBuilder()
