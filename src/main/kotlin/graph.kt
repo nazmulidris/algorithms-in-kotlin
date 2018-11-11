@@ -82,6 +82,7 @@ fun <T> breadthFirstTraversal(graph: Graph<T>, startNode: T, maxDepth: Int): Str
     val visitedMap = mutableMapOf<T, Boolean>().apply {
         graph.adjacencyMap.keys.forEach { node -> put(node, false) }
     }
+
     // Keep track of the depth of each node, so that more than maxDepth nodes aren't visited.
     val depthMap = mutableMapOf<T, Int>().apply {
         graph.adjacencyMap.keys.forEach { node -> put(node, Int.MAX_VALUE) }
@@ -89,6 +90,7 @@ fun <T> breadthFirstTraversal(graph: Graph<T>, startNode: T, maxDepth: Int): Str
 
     // Create a queue for BFS.
     val queue: Deque<T> = LinkedList()
+
     fun T.addToQueue(depth: Int) {
         // Add to the tail of the queue.
         queue.add(this)
@@ -96,30 +98,33 @@ fun <T> breadthFirstTraversal(graph: Graph<T>, startNode: T, maxDepth: Int): Str
         depthMap[this] = depth
     }
 
-    // Initial step -> add the startNode to the queue.
-    startNode.addToQueue(0)
+    fun MutableSet<T>.addToQueue(depth: Int) {
+        this.forEach { it.addToQueue(depth) }
+    }
 
     // Store the sequence in which nodes are visited, for return value.
     val traversalList = mutableListOf<T>()
+    fun markVisited(node: T) {
+        visitedMap[node] = true
+        traversalList.add(node)
+    }
+
+    // Initial step -> add the startNode to the queue.
+    startNode.addToQueue(0)
 
     // Traverse the graph
     while (queue.isNotEmpty()) {
-        // Peek and remove the item at the head of the queue.
+        // Remove the item at the head of the queue.
         val currentNode = queue.remove()
-        val depth = depthMap[currentNode]!!
+        val currentDepth = depthMap[currentNode]!!
 
-        if (depth <= maxDepth) {
-
+        if (currentDepth <= maxDepth) {
             if (!visitedMap[currentNode]!!) {
-
                 // Mark the current node visited and add to traversal list.
-                visitedMap[currentNode] = true
-                traversalList.add(currentNode)
-
-                // Add nodes in the adjacency map
-                graph.adjacencyMap[currentNode]?.forEach { it.addToQueue(depth + 1) }
+                markVisited(currentNode)
+                // Add nodes in the adjacency map.
+                graph.adjacencyMap[currentNode]!!.addToQueue(currentDepth + 1)
             }
-
         }
 
     }
