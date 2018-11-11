@@ -61,12 +61,9 @@ class Graph<T> {
 
     fun addEdge(sourceVertex: T, destinationVertex: T) {
         // Add edge to source vertex.
-        if (!adjacencyMap.containsKey(sourceVertex)) adjacencyMap[sourceVertex] = mutableSetOf()
-        adjacencyMap[sourceVertex]?.add(destinationVertex)
+        adjacencyMap.computeIfAbsent(sourceVertex) { mutableSetOf() }.add(destinationVertex)
         // Add edge to destination vertex.
-        if (!adjacencyMap.contains(destinationVertex)) adjacencyMap[destinationVertex] =
-                mutableSetOf()
-        adjacencyMap[destinationVertex]?.add(sourceVertex)
+        adjacencyMap.computeIfAbsent(destinationVertex) { mutableSetOf() }.add(sourceVertex)
     }
 
     override fun toString(): String = StringBuffer().apply {
