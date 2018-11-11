@@ -59,11 +59,14 @@ fun main(args: Array<String>) {
 class Graph<T> {
     val adjacencyMap: MutableMap<T, MutableSet<T>> = mutableMapOf()
 
-    fun addEdge(src: T, dest: T) {
-        adjacencyMap[src] = adjacencyMap[src] ?: mutableSetOf()
-        adjacencyMap[src]?.add(dest)
-        adjacencyMap[dest] = adjacencyMap[dest] ?: mutableSetOf()
-        adjacencyMap[dest]?.add(src)
+    fun addEdge(sourceVertex: T, destinationVertex: T) {
+        // Add edge to source vertex.
+        if (!adjacencyMap.containsKey(sourceVertex)) adjacencyMap[sourceVertex] = mutableSetOf()
+        adjacencyMap[sourceVertex]?.add(destinationVertex)
+        // Add edge to destination vertex.
+        if (!adjacencyMap.contains(destinationVertex)) adjacencyMap[destinationVertex] =
+                mutableSetOf()
+        adjacencyMap[destinationVertex]?.add(sourceVertex)
     }
 
     override fun toString(): String = StringBuffer().apply {
