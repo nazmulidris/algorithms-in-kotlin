@@ -44,7 +44,7 @@ fun main(args: Array<String>) {
     println("breadth first search traversal".heading())
 
     print("bfs_traversal(graph, '0', 5) = ")
-    println(breadthFirstTraversal(graph, "0", 5))
+    println(breadthFirstTraversal(graph, "0"))
 
     print("bfs_traversal(graph, '0', 1) = ")
     println(breadthFirstTraversal(graph, "0", 1))
@@ -77,7 +77,9 @@ class Graph<T> {
 /**
  * Breadth first traversal leverages a [Queue] (FIFO).
  */
-fun <T> breadthFirstTraversal(graph: Graph<T>, startNode: T, maxDepth: Int): String {
+fun <T> breadthFirstTraversal(graph: Graph<T>,
+                              startNode: T,
+                              maxDepth: Int = Int.MAX_VALUE): String {
     //
     // Setup.
     //
