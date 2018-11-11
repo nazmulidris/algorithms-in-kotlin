@@ -84,8 +84,8 @@ fun <T> breadthFirstTraversal(graph: Graph<T>,
     // Setup.
     //
 
-    // Mark all the vertices / nodes as not visited. And keep track of sequence  in which nodes are
-    // visited, for return value.
+    // Mark all the vertices / nodes as not visited. And keep track of sequence
+    // in which nodes are visited, for return value.
     class VisitedMap {
         val traversalList = mutableListOf<T>()
 
@@ -103,7 +103,8 @@ fun <T> breadthFirstTraversal(graph: Graph<T>,
 
     val visitedMap = VisitedMap()
 
-    // Keep track of the depth of each node, so that more than maxDepth nodes aren't visited.
+    // Keep track of the depth of each node, so that more than maxDepth nodes
+    // aren't visited.
     val depthMap = mutableMapOf<T, Int>().apply {
         for (node in graph.adjacencyMap.keys) this[node] = Int.MAX_VALUE
     }
