@@ -78,37 +78,64 @@ class Graph<T> {
  * Breadth first traversal leverages a [Queue] (FIFO).
  */
 fun <T> breadthFirstTraversal(graph: Graph<T>, startNode: T, maxDepth: Int): String {
-    // Mark all the vertices / nodes as not visited.
-    val visitedMap = mutableMapOf<T, Boolean>().apply {
-        graph.adjacencyMap.keys.forEach { node -> put(node, false) }
+    //
+    // Setup.
+    //
+
+    // Mark all the vertices / nodes as not visited. And keep track of sequence  in which nodes are
+    // visited, for return value.
+    class VisitedMap {
+        val traversalList = mutableListOf<T>()
+
+        val visitedMap = mutableMapOf<T, Boolean>().apply {
+            for (node in graph.adjacencyMap.keys) this[node] = false
+        }
+
+        fun isNotVisited(node: T): Boolean = !visitedMap[node]!!
+
+        fun markVisitedAndAddToTraversalList(node: T) {
+            visitedMap[node] = true
+            traversalList.add(node)
+        }
     }
+
+    val visitedMap = VisitedMap()
 
     // Keep track of the depth of each node, so that more than maxDepth nodes aren't visited.
     val depthMap = mutableMapOf<T, Int>().apply {
-        graph.adjacencyMap.keys.forEach { node -> put(node, Int.MAX_VALUE) }
+        for (node in graph.adjacencyMap.keys) this[node] = Int.MAX_VALUE
     }
 
     // Create a queue for BFS.
-    val queue: Deque<T> = LinkedList()
-    fun T.addToQueue(depth: Int) {
-        // Add to the tail of the queue.
-        queue.add(this)
-        // Record the depth of this node.
-        depthMap[this] = depth
-    }
-    fun MutableSet<T>.addToQueue(depth: Int) {
-        this.forEach { it.addToQueue(depth) }
+    class Queue {
+        val deck: Deque<T> = ArrayDeque<T>()
+        fun add(node: T, depth: Int) {
+            // Add to the tail of the queue.
+            deck.add(node)
+            // Record the depth of this node.
+            depthMap[node] = depth
+        }
+
+        fun add(set: Set<T>?, depth: Int) {
+            if (set != null) {
+                for (node in set) {
+                    add(node, depth)
+                }
+            }
+        }
+
+        fun isNotEmpty() = deck.isNotEmpty()
+        fun remove() = deck.remove()
     }
 
-    // Store the sequence in which nodes are visited, for return value.
-    val traversalList = mutableListOf<T>()
-    fun markVisited(node: T) {
-        visitedMap[node] = true
-        traversalList.add(node)
-    }
+    val queue = Queue()
+
+    //
+    // Algorithm implementation.
+    //
 
     // Initial step -> add the startNode to the queue.
-    startNode.addToQueue(0)
+    queue.add(startNode, /* depth= */0)
 
     // Traverse the graph
     while (queue.isNotEmpty()) {
@@ -117,17 +144,17 @@ fun <T> breadthFirstTraversal(graph: Graph<T>, startNode: T, maxDepth: Int): Str
         val currentDepth = depthMap[currentNode]!!
 
         if (currentDepth <= maxDepth) {
-            if (!visitedMap[currentNode]!!) {
+            if (visitedMap.isNotVisited(currentNode)) {
                 // Mark the current node visited and add to traversal list.
-                markVisited(currentNode)
+                visitedMap.markVisitedAndAddToTraversalList(currentNode)
                 // Add nodes in the adjacency map.
-                graph.adjacencyMap[currentNode]!!.addToQueue(currentDepth + 1)
+                queue.add(graph.adjacencyMap[currentNode], /* depth= */currentDepth + 1)
             }
         }
 
     }
 
-    return traversalList.joinToString()
+    return visitedMap.traversalList.toString()
 }
 
 /**
