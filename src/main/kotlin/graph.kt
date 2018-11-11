@@ -90,14 +90,12 @@ fun <T> breadthFirstTraversal(graph: Graph<T>, startNode: T, maxDepth: Int): Str
 
     // Create a queue for BFS.
     val queue: Deque<T> = LinkedList()
-
     fun T.addToQueue(depth: Int) {
         // Add to the tail of the queue.
         queue.add(this)
         // Record the depth of this node.
         depthMap[this] = depth
     }
-
     fun MutableSet<T>.addToQueue(depth: Int) {
         this.forEach { it.addToQueue(depth) }
     }
