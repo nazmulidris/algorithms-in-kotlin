@@ -167,36 +167,34 @@ fun <T> breadthFirstTraversal(graph: Graph<T>,
  * [More info](https://stackoverflow.com/a/35031174/2085356).
  */
 fun <T> depthFirstTraversal(graph: Graph<T>, startNode: T): String {
-    // Mark all the vertices / nodes as not visited
+    // Mark all the vertices / nodes as not visited.
     val visitedMap = mutableMapOf<T, Boolean>().apply {
         graph.adjacencyMap.keys.forEach { node -> put(node, false) }
     }
 
-    // Create a stack for DFS
-    val stack: Deque<T> = LinkedList()
+    // Create a stack for DFS.
+    val stack: Deque<T> = ArrayDeque()
 
-    // Initial step -> add the startNode to the stack
-    startNode.also { node ->
-        stack.push(node)
-    }
+    // Initial step -> add the startNode to the stack.
+    stack.push(startNode)
 
-    // Store the sequence in which nodes are visited, for return value
+    // Store the sequence in which nodes are visited, for return value.
     val traversalList = mutableListOf<T>()
 
     // Traverse the graph
     while (stack.isNotEmpty()) {
-        // Pop the node off the top of the stack
+        // Pop the node off the top of the stack.
         val currentNode = stack.pop()
 
         if (!visitedMap[currentNode]!!) {
 
-            // Store this for the result
+            // Store this for the result.
             traversalList.add(currentNode)
 
-            // Mark the current node visited and add to the traversal list
+            // Mark the current node visited and add to the traversal list.
             visitedMap[currentNode] = true
 
-            // Add nodes in the adjacency map
+            // Add nodes in the adjacency map.
             graph.adjacencyMap[currentNode]?.forEach { node ->
                 stack.push(node)
             }
