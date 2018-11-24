@@ -92,9 +92,7 @@ fun substring_optimized(str: CharArray, substr: CharArray, stats: RuntimeStats):
         }
 
         fun isMatch() = cursor == pattern.size
-        fun reset() {
-            cursor = 0
-        }
+        fun reset() { cursor = 0 }
     }
 
     val stateMachine = StateMachine(substr)
