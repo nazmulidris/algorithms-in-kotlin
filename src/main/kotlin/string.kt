@@ -49,7 +49,7 @@ fun main(args: Array<String>) {
  */
 fun substring(str: CharArray, substr: CharArray, stats: RuntimeStats): Any {
     // substr can't be longer than str
-    if (substr.size > str.size) return false
+    if (substr.size > str.size) return "not found"
 
     // Iterate str using cursor1 and for each index look ahead to see if matches exist for substr.
     var occurrences = 0
@@ -58,11 +58,8 @@ fun substring(str: CharArray, substr: CharArray, stats: RuntimeStats): Any {
         var matchCount = 0
         for (cursor2 in 0 until substr.size) {
             stats.operations++
-            val index = cursor1 + cursor2
-            // If index exceeds the size of str that means substr wasn't found.
-            if (index > str.size - 1) break
             // If there's a match at index between the str and substr then remember it.
-            if (str[index] == substr[cursor2]) matchCount++
+            if (str[cursor1 + cursor2] == substr[cursor2]) matchCount++
             stats.comparisons++
         }
         // Found a match.
