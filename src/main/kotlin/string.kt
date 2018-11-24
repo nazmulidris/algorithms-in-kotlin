@@ -43,16 +43,15 @@ fun main(args: Array<String>) {
 }
 
 /**
- * O(m * n), where m = str.size, and n = substr.size
+ * O(m * n), where m = str.size, and n = substr.size.
  *
- * This is an inefficient brute force algorithm which has quadratic complexity.
+ * This is an inefficient brute force algorithm which has quadratic complexity O(n^2).
  */
 fun substring(str: CharArray, substr: CharArray, stats: RuntimeStats): Any {
     // substr can't be longer than str
     if (substr.size > str.size) return false
 
-    // Iterate str using cursor1 and for each index look ahead
-    // to see if matches exist for substr
+    // Iterate str using cursor1 and for each index look ahead to see if matches exist for substr.
     var occurrences = 0
     for (cursor1 in 0 until str.size) {
         stats.operations++
@@ -60,13 +59,13 @@ fun substring(str: CharArray, substr: CharArray, stats: RuntimeStats): Any {
         for (cursor2 in 0 until substr.size) {
             stats.operations++
             val index = cursor1 + cursor2
-            // If index exceeds the size of str that means substr wasn't found
+            // If index exceeds the size of str that means substr wasn't found.
             if (index > str.size - 1) break
-            // If there's a match at index between the str and substr then remember it
+            // If there's a match at index between the str and substr then remember it.
             if (str[index] == substr[cursor2]) matchCount++
             stats.comparisons++
         }
-        // Found a match
+        // Found a match.
         if (matchCount == substr.size) occurrences++
     }
 
@@ -81,7 +80,7 @@ fun substring(str: CharArray, substr: CharArray, stats: RuntimeStats): Any {
 }
 
 /**
- * O(m + n), where m = str.size, and n = substr.size
+ * O(m + n), where m = str.size, and n = substr.size.
  *
  * This function uses a deterministic finite automation (DFA) method which entails the use of a
  * state machine to keep track of progress in a game.
