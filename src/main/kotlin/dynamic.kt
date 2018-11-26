@@ -68,9 +68,7 @@ fun numCoins(total: Int,
     var coinsUsed = total / coinDenomination
 
     // Remember how many coins of which denomination are used.
-    if (coinsUsed > 0) {
-        coinsUsedMap.computeIfAbsent(coinDenomination) { coinsUsed }
-    }
+    if (coinsUsed > 0) coinsUsedMap.computeIfAbsent(coinDenomination) { coinsUsed }
 
     // Breakdown the problem into smaller chunk using recursion.
     return coinsUsed + numCoins(total = total - coinsUsed * coinDenomination,
