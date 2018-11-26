@@ -65,7 +65,7 @@ fun numCoins(total: Int,
 
     // Breakdown the problem further.
     val coinDenomination = denominations[0]
-    var coinsUsed = total / coinDenomination
+    val coinsUsed = total / coinDenomination
 
     // Remember how many coins of which denomination are used.
     if (coinsUsed > 0) coinsUsedMap.computeIfAbsent(coinDenomination) { coinsUsed }
