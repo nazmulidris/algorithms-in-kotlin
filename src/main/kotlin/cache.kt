@@ -58,17 +58,17 @@ class Cache<T>(val type: Type, val size: Int) {
 
         when {
             map.containsKey(value) -> {
-                // Increase rank of existing value
+                // Increase rank of existing value.
                 map[value] = rank++
             }
             map.size == size -> {
-                // Remove the lowest rank item in the map
+                // Remove the highest or lowest rank item in the map.
                 evictedKey = findKeyToEvict()
                 map.remove(evictedKey)
                 map.put(value, rank++)
             }
             else -> {
-                // Add the new item
+                // Add the new item.
                 map.put(value, rank++)
             }
         }
@@ -86,7 +86,7 @@ class Cache<T>(val type: Type, val size: Int) {
 
         when (type) {
             Type.MRU -> {
-                // Find the highest rank item
+                // Find the highest rank item.
                 for (entry in map) {
                     if (entry.value > rankToEvict) {
                         rankToEvict = entry.value
@@ -95,7 +95,7 @@ class Cache<T>(val type: Type, val size: Int) {
                 }
             }
             Type.LRU -> {
-                // Find the lowest rank item
+                // Find the lowest rank item.
                 for (entry in map) {
                     if (entry.value < rankToEvict) {
                         rankToEvict = entry.value
