@@ -69,7 +69,7 @@ fun numCoins(total: Int,
 
     // Remember how many coins of which denomination are used.
     if (coinsUsed > 0) {
-        coinsUsedMap.computeIfAbsent(coinDenomination) { coinsUsed }.inc()
+        coinsUsedMap.computeIfAbsent(coinDenomination) { coinsUsed }
     }
 
     // Breakdown the problem into smaller chunk using recursion.
