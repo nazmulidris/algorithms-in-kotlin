@@ -35,7 +35,7 @@ fun main(args: Array<String>) {
         val coins = mutableMapOf<Int, Int>()
         val totalNumberOfCoins = numCoins(49, listOf(5, 1, 7, 11).sortedDescending(), coins)
         print("total # coins = $totalNumberOfCoins")
-        println(", denomination breakdown = ${coins.toString().brightBlue()}")
+        println(", breakdown (key:denomination = val:amount) = ${coins.toString().brightBlue()}")
     }
 
     run {
@@ -50,12 +50,14 @@ fun main(args: Array<String>) {
  * Use the process of induction to figure the min number of coins it takes to come up with the
  * given [total]. The coin denominations you can used are in [denominations]; this list must
  * be sorted already (in descending order), eg: [11, 7, 5, 1].
+ * [coinsUsedMap] has keys that represent the denomination, and value that represent the number of
+ * coins used of that denomination.
  */
 fun numCoins(total: Int,
              denominations: List<Int>,
              coinsUsedMap: MutableMap<Int, Int>): Int {
     // Show the function call stack
-    println("\tnumCoins($total, $denominations)".brightYellow())
+    println("\tnumCoins(total=$total, denominations=$denominations)".brightYellow())
 
     // Stop recursing when these simple exit conditions are met
     if (total == 0) return 0
@@ -67,8 +69,7 @@ fun numCoins(total: Int,
 
     // Remember how many coins of which denomination are used
     if (coinsUsed > 0) {
-        coinsUsedMap[coinsUsed] = coinsUsedMap[coinsUsed] ?: 0
-        coinsUsedMap[coinsUsed] = coinsUsedMap[coinsUsed]!! + 1
+        coinsUsedMap.computeIfAbsent(coinDenomination) { coinsUsed }.inc()
     }
 
     // Breakdown the problem into smaller chunk using recursion
