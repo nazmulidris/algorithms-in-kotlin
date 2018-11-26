@@ -56,23 +56,23 @@ fun main(args: Array<String>) {
 fun numCoins(total: Int,
              denominations: List<Int>,
              coinsUsedMap: MutableMap<Int, Int>): Int {
-    // Show the function call stack
+    // Show the function call stack.
     println("\tnumCoins(total=$total, denominations=$denominations)".brightYellow())
 
-    // Stop recursing when these simple exit conditions are met
+    // Stop recursing when these simple exit conditions are met.
     if (total == 0) return 0
     if (denominations.isEmpty()) return 0
 
-    // Breakdown the problem further
+    // Breakdown the problem further.
     val coinDenomination = denominations[0]
     var coinsUsed = total / coinDenomination
 
-    // Remember how many coins of which denomination are used
+    // Remember how many coins of which denomination are used.
     if (coinsUsed > 0) {
         coinsUsedMap.computeIfAbsent(coinDenomination) { coinsUsed }.inc()
     }
 
-    // Breakdown the problem into smaller chunk using recursion
+    // Breakdown the problem into smaller chunk using recursion.
     return coinsUsed + numCoins(total = total - coinsUsed * coinDenomination,
                                 denominations = denominations.subList(1, denominations.size),
                                 coinsUsedMap = coinsUsedMap)
@@ -91,28 +91,28 @@ fun numCoins_nonrecursive(total: Int, coins: Coins) {
 
     var currencyRemoved = 0
 
-    // Remove all the 11 coins
+    // Remove all the 11 coins.
     val numberOf11s = (total / 11)
     if (numberOf11s > 0) {
         coins.numberOf11s += numberOf11s
         currencyRemoved += numberOf11s * 11
     }
 
-    // Remove all the 7 coins
+    // Remove all the 7 coins.
     val numberOf7s = (total - currencyRemoved) / 7
     if (numberOf7s > 0) {
         coins.numberOf7s += numberOf7s
         currencyRemoved += numberOf7s * 7
     }
 
-    // Remove all the 5 coins
+    // Remove all the 5 coins.
     val numberOf5s = (total - currencyRemoved) / 5
     if (numberOf5s > 0) {
         coins.numberOf5s += numberOf5s
         currencyRemoved += numberOf5s * 5
     }
 
-    // Remove all the 1 coins
+    // Remove all the 1 coins.
     val numberOf1s = (total - currencyRemoved) / 1
     if (numberOf1s > 0) {
         coins.numberOf1s += numberOf1s
