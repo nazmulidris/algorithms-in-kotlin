@@ -57,7 +57,7 @@ fun numCoins(total: Int,
              denominations: List<Int>,
              coinsUsedMap: MutableMap<Int, Int>): Int {
     // Show the function call stack.
-    println("\tnumCoins(total=$total, denominations=$denominations)".brightYellow())
+    println("\tnumCoins(total=$total, denominations=$denominations) ⇢ $coinsUsedMap".brightYellow())
 
     // Stop recursion when these simple exit conditions are met.
     if (total == 0) return 0
