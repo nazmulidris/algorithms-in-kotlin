@@ -59,7 +59,7 @@ fun numCoins(total: Int,
     // Show the function call stack.
     println("\tnumCoins(total=$total, denominations=$denominations)".brightYellow())
 
-    // Stop recursing when these simple exit conditions are met.
+    // Stop recursion when these simple exit conditions are met.
     if (total == 0) return 0
     if (denominations.isEmpty()) return 0
 
