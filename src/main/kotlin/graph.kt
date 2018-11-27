@@ -177,7 +177,7 @@ fun <T> depthFirstTraversal(graph: Graph<T>, startNode: T): String {
         graph.adjacencyMap.keys.forEach { node -> put(node, false) }
     }
 
-    // Create a stack for DFS.
+    // Create a stack for DFS. Both ArrayDeque and LinkedList implement Deque.
     val stack: Deque<T> = ArrayDeque()
 
     // Initial step -> add the startNode to the stack.
