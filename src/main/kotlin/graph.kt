@@ -18,6 +18,7 @@ package graphs
 
 import utils.heading
 import java.util.*
+import kotlin.collections.HashMap
 
 /**
  * [Image of the graph](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/undirectedgraph.png).
@@ -57,13 +58,15 @@ fun main(args: Array<String>) {
  * [More info](https://www.geeksforgeeks.org/graph-and-its-representations/).
  */
 class Graph<T> {
-    val adjacencyMap: MutableMap<T, MutableSet<T>> = mutableMapOf()
+    val adjacencyMap: HashMap<T, HashSet<T>> = HashMap()
 
     fun addEdge(sourceVertex: T, destinationVertex: T) {
         // Add edge to source vertex.
-        adjacencyMap.computeIfAbsent(sourceVertex) { mutableSetOf() }.add(destinationVertex)
+        adjacencyMap.computeIfAbsent(sourceVertex) { HashSet() }
+                .add(destinationVertex)
         // Add edge to destination vertex.
-        adjacencyMap.computeIfAbsent(destinationVertex) { mutableSetOf() }.add(sourceVertex)
+        adjacencyMap.computeIfAbsent(destinationVertex) { HashSet() }
+                .add(sourceVertex)
     }
 
     override fun toString(): String = StringBuffer().apply {
