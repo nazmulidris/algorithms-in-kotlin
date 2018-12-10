@@ -107,34 +107,27 @@ fun <T> traversalPostOrder(node: Node<T>?, list: MutableList<T>) {
 }
 
 fun <T> depthFirstTraversal(root: Node<T>): MutableList<Node<T>> {
-    val visitedMap = mutableMapOf<Node<T>, Boolean>()
     val stack = LinkedList<Node<T>>()
     val traversalList = mutableListOf<Node<T>>()
 
-    // Add first node
+    // Add first node.
     stack.push(root)
 
-    // Use stack to create breadth first traversal
+    // Use stack to create breadth first traversal.
     while (stack.isNotEmpty()) {
         val currentNode = stack.pop()
         val depth = currentNode.depth
 
-        // If the currentNode key can't be found in the map, then insert it
-        visitedMap[currentNode] = visitedMap[currentNode] ?: false
+        // Push right child to stack FIRST (so this will be processed LAST).
+        if (currentNode.rightNode != null)
+            stack.push(currentNode.rightNode!!.depth(depth + 1))
 
-        if (!visitedMap[currentNode]!!) {
-            // Push right child to stack FIRST (so this will be processed LAST)
-            if (currentNode.rightNode != null)
-                stack.push(currentNode.rightNode!!.depth(depth + 1))
+        // Push left child to stack LAST (so this will be processed FIRST).
+        if (currentNode.leftNode != null)
+            stack.push(currentNode.leftNode!!.depth(depth + 1))
 
-            // Push left child to stack LAST (so this will be processed FIRST)
-            if (currentNode.leftNode != null)
-                stack.push(currentNode.leftNode!!.depth(depth + 1))
-
-            // Mark the current node visited and add to traversal list
-            visitedMap[currentNode] = true
-            traversalList.add(currentNode)
-        }
+        // Add to traversal list.
+        traversalList.add(currentNode)
     }
 
     return traversalList
