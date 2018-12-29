@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package queue
+package ringbuffer
 
 import com.importre.crayon.*
 import utils.heading
