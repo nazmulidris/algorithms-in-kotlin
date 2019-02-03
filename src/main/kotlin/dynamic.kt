@@ -33,7 +33,10 @@ fun main(args: Array<String>) {
     run {
         println("numCoins (recursive)".heading())
         val coins = mutableMapOf<Int, Int>()
-        val totalNumberOfCoins = numCoins(49, listOf(5, 1, 7, 11).sortedDescending(), coins)
+        val totalNumberOfCoins =
+                numCoins(49,
+                         listOf(5, 1, 7, 11).sortedDescending(),
+                         coins)
         print("total # coins = $totalNumberOfCoins")
         println(", breakdown (key:denomination = val:amount) = ${coins.toString().brightBlue()}")
     }
@@ -72,9 +75,10 @@ fun numCoins(total: Int,
     if (coinsUsed > 0) coinsUsedMap.computeIfAbsent(coinDenomination) { coinsUsed }
 
     // Breakdown the problem into smaller chunk using recursion.
-    return coinsUsed + numCoins(total = total - coinsUsed * coinDenomination,
-                                denominations = denominations.subList(1, denominations.size),
-                                coinsUsedMap = coinsUsedMap)
+    return coinsUsed +
+            numCoins(total = total - coinsUsed * coinDenomination,
+                     denominations = with(denominations) { subList(1, size) },
+                     coinsUsedMap = coinsUsedMap)
 }
 
 /**
@@ -126,7 +130,10 @@ data class Coins(var numberOf1s: Int = 0,
                  var numberOf11s: Int = 0) {
     override fun toString() = StringBuilder().apply {
         val result = mutableListOf<String>()
-        arrayOf(::numberOf1s, ::numberOf5s, ::numberOf7s, ::numberOf11s).forEach {
+        arrayOf(::numberOf1s,
+                ::numberOf5s,
+                ::numberOf7s,
+                ::numberOf11s).forEach {
             if (it.get() > 0)
                 result.add("#${it.name} coins = ${it.get()}")
         }

@@ -81,7 +81,9 @@ fun substring(str: CharArray, substr: CharArray, stats: RuntimeStats): Any {
  * This function uses a deterministic finite automation (DFA) method which entails the use of a
  * state machine to keep track of progress in a game.
  */
-fun substring_optimized(str: CharArray, substr: CharArray, stats: RuntimeStats): Any {
+fun substring_optimized(str: CharArray,
+                        substr: CharArray,
+                        stats: RuntimeStats): Any {
 
     class StateMachine(val pattern: CharArray) {
         var cursor = 0
@@ -92,7 +94,9 @@ fun substring_optimized(str: CharArray, substr: CharArray, stats: RuntimeStats):
         }
 
         fun isMatch() = cursor == pattern.size
-        fun reset() { cursor = 0 }
+        fun reset() {
+            cursor = 0
+        }
     }
 
     val stateMachine = StateMachine(substr)

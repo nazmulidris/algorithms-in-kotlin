@@ -35,7 +35,9 @@ fun main(args: Array<String>) {
         val value = "efg"
         val list = listOf("abc", "def", "123", "xyz")
         with(RuntimeStats()) {
-            print("is '$value` in list $list = ${containsValue(list, value, this)}")
+            print("is '$value` in list $list = ${containsValue(list,
+                                                               value,
+                                                               this)}")
             println(", $this")
         }
     }
@@ -60,7 +62,15 @@ fun main(args: Array<String>) {
         println("binarySearch()")
         val item = "zany"
         val list = listOf(
-                "nazmul", "idris", "maret", "john", "harry", "tom", "tony", "pepper", "andrew")
+                "nazmul",
+                "idris",
+                "maret",
+                "john",
+                "harry",
+                "tom",
+                "tony",
+                "pepper",
+                "andrew")
                 .sorted()
         with(RuntimeStats()) {
             print("found: ${binarySearch(item, list, this)}")
@@ -70,7 +80,9 @@ fun main(args: Array<String>) {
 }
 
 /** O(log n) */
-fun binarySearch(item: String, sortedList: List<String>, stats: RuntimeStats): Boolean {
+fun binarySearch(item: String,
+                 sortedList: List<String>,
+                 stats: RuntimeStats): Boolean {
     println("\tbinarySearch(${item.toString().blue()}, ${sortedList.toString().green()}")
     stats.operations++
 
@@ -90,8 +102,13 @@ fun binarySearch(item: String, sortedList: List<String>, stats: RuntimeStats): B
     // Does the probe match? If not, split and recurse
     when {
         item == probeItem -> return true
-        item < probeItem -> return binarySearch(item, sortedList.subList(0, probeIndex), stats)
-        else -> return binarySearch(item, sortedList.subList(probeIndex + 1, size), stats)
+        item < probeItem -> return binarySearch(
+                item,
+                sortedList.subList(0, probeIndex),
+                stats)
+        else -> return binarySearch(item,
+                                    sortedList.subList(probeIndex + 1, size),
+                                    stats)
     }
 }
 
@@ -124,7 +141,9 @@ fun containsDupes(list: List<String>) = RuntimeStats().apply {
 fun isFirstElementNull(list: List<String?>) = list[0] == null
 
 /** O(n) */
-fun containsValue(list: List<String>, value: String, stats: RuntimeStats): Boolean {
+fun containsValue(list: List<String>,
+                  value: String,
+                  stats: RuntimeStats): Boolean {
     list.forEach { it ->
         stats.comparisons++
         if (it == value) {

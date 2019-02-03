@@ -187,7 +187,9 @@ fun <T> printBFSTraversal(root: Node<T>): String {
             queue.add(currentNode.rightNode!!.depth(depth + 1))
 
         // Decide whether to print crlf or not.
-        mapVisitedDepth.computeIfAbsent(depth){ mutableListOf()}.add(currentNode.value)
+        mapVisitedDepth
+                .computeIfAbsent(depth) { mutableListOf() }
+                .add(currentNode.value)
     }
 
     val outputString = StringBuilder()
@@ -232,7 +234,8 @@ data class Node<T>(val value: T,
                    var leftNode: Node<T>?,
                    var rightNode: Node<T>?,
                    var depth: Int = 0) {
-    fun link(left: Node<T>?, right: Node<T>?) = this.apply { linkLeft(left).linkRight(right) }
+    fun link(left: Node<T>?, right: Node<T>?) =
+            this.apply { linkLeft(left).linkRight(right) }
 
     fun linkLeft(left: Node<T>?) = this.apply { leftNode = left }
 

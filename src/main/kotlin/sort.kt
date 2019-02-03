@@ -45,7 +45,14 @@ fun main(args: Array<String>) {
     // merge sort
     with(RuntimeStats()) {
         println("merge_sort O(n * log(n))".heading())
-        val unsortedList = mutableListOf("123", "989", "000", "981", "778", "996", "993", "781")
+        val unsortedList = mutableListOf("123",
+                                         "989",
+                                         "000",
+                                         "981",
+                                         "778",
+                                         "996",
+                                         "993",
+                                         "781")
         val sortedList = merge_sort(unsortedList, this)
         print("sorted list=$sortedList")
         println(", $this")
@@ -114,10 +121,13 @@ fun quick_sort(list: MutableList<Int>,
                endIndex: Int = list.size - 1,
                stats: RuntimeStats) {
     if (startIndex < endIndex) {
-        println("quick_sort(${list.sub_list(startIndex, endIndex).toString().blue()})")
+        println("quick_sort(${list.sub_list(startIndex,
+                                            endIndex).toString().blue()})")
         val pivotIndex = partition(list, startIndex, endIndex, stats)
-        quick_sort(list, startIndex, pivotIndex - 1, stats) // Before pivot index
-        quick_sort(list, pivotIndex + 1, endIndex, stats) // After pivot index
+        // Before pivot index
+        quick_sort(list, startIndex, pivotIndex - 1, stats)
+        // After pivot index
+        quick_sort(list, pivotIndex + 1, endIndex, stats)
     }
 }
 
@@ -133,7 +143,8 @@ fun partition(list: MutableList<Int>,
               startIndex: Int = 0,
               endIndex: Int = list.size - 1,
               stats: RuntimeStats): Int {
-    print("\tpartition(${list.sub_list(startIndex, endIndex).toString().yellow()})")
+    print("\tpartition(${list.sub_list(startIndex,
+                                       endIndex).toString().yellow()})")
     // Element to be placed at the correct position in the list
     val pivotValue = list[endIndex]
 
@@ -197,7 +208,8 @@ fun <T> MutableList<T>.swap(idx1: Int, idx2: Int) {
  *
  * Please note that [quick_sort] on average runs 2-3 times faster merge sort.
  */
-fun merge_sort(list: MutableList<String>, stats: RuntimeStats): MutableList<String> {
+fun merge_sort(list: MutableList<String>,
+               stats: RuntimeStats): MutableList<String> {
     println("merge_sort(${list.toString().blue()})")
     stats.operations++
     // Can't split lists anymore, so stop recursion

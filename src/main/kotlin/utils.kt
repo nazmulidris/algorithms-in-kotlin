@@ -28,7 +28,11 @@ data class RuntimeStats(var comparisons: Int = 0,
     override fun toString(): String = StringBuffer().also {
         it.append("RuntimeStats(".brightCyan())
 
-        val fields = listOf(::comparisons, ::operations, ::swaps, ::insertions, ::dupes)
+        val fields = listOf(::comparisons,
+                            ::operations,
+                            ::swaps,
+                            ::insertions,
+                            ::dupes)
 
         val stringList = mutableListOf<String>()
 
@@ -42,10 +46,14 @@ data class RuntimeStats(var comparisons: Int = 0,
         if (dupeMap.isNotEmpty())
             stringList.add("${::dupeMap.name}=$dupeMap".brightGreen())
 
-        it.append(stringList.joinToString(separator = ", ", postfix = " }", prefix = "{ "))
+        it.append(stringList.joinToString(separator = ", ",
+                                          postfix = " }",
+                                          prefix = "{ "))
 
         it.append(")".brightCyan())
     }.toString()
 }
 
 fun String.heading() = this.brightBlue().bgBrightBlack()
+
+fun String.log() = System.out.println(this)

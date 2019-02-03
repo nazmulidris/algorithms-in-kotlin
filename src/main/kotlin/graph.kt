@@ -154,7 +154,8 @@ fun <T> breadthFirstTraversal(graph: Graph<T>,
                 // Mark the current node visited and add to traversal list.
                 visitedMap.markVisitedAndAddToTraversalList(currentNode)
                 // Add nodes in the adjacency map.
-                queue.addAdjacentNodes(currentNode, /* depth= */currentDepth + 1)
+                queue.addAdjacentNodes(currentNode, /* depth= */
+                                       currentDepth + 1)
             }
         }
 
