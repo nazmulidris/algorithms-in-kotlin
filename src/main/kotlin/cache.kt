@@ -18,7 +18,9 @@ package cache
 
 import com.importre.crayon.yellow
 import utils.heading
+import utils.log
 import java.util.*
+import kotlin.collections.HashMap
 
 enum class Type { LRU, MRU }
 
@@ -48,6 +50,61 @@ fun main(args: Array<String>) {
         println("cacheMRU.put(B), evicted=${cacheMRU.put("B")}, $cacheMRU")
     }
 
+    run {
+        println("low cost insertion cache".heading())
+        val cacheLRU = LowCostLRUCache<String, String>(3)
+        cacheLRU.put("A", "A")
+                .also { "cacheLRU.put(A, A), evicted: $it, $cacheLRU".log() }
+        cacheLRU.put("B", "B")
+                .also { "cacheLRU.put(B, B), evicted: $it, $cacheLRU".log() }
+        cacheLRU.put("C", "C")
+                .also { "cacheLRU.put(C, C), evicted: $it, $cacheLRU".log() }
+        cacheLRU.put("D", "D")
+                .also { "cacheLRU.put(D, D), evicted: $it, $cacheLRU".log() }
+        cacheLRU.put("E", "E")
+                .also { "cacheLRU.put(E, E), evicted: $it, $cacheLRU".log() }
+    }
+
+}
+
+/**
+ * This is a LRU cache that has no performance impact for cache insertions
+ * once the capacity of the cache has been reached. For cache hit,
+ * performance is O(1) and for cache eviction, it is O(1).
+ */
+class LowCostLRUCache<K, V>(private val capacity: Int = 5) {
+    private val cache = HashMap<K, V>()
+    private val insertionOrder = LinkedList<K>()
+
+    /**
+     * [HashMap] put and remove is O(1).
+     * More info: https://stackoverflow.com/a/4578039/2085356
+     */
+    fun put(key: K, value: V): K? {
+        var evictedKey: K? = null
+        if (cache.size >= capacity) {
+            evictedKey = getKeyToEvict()
+            cache.remove(evictedKey)
+        }
+        cache[key] = value
+        insertionOrder.addLast(key)
+        return evictedKey
+    }
+
+    /**
+     * [HashMap] get is O(1).
+     * More info: https://stackoverflow.com/a/4578039/2085356
+     */
+    fun get(key: K): V? = cache[key]
+
+    /**
+     * The head of the [insertionOrder] is removed, which is O(1), since this
+     * is a linked list, and it's inexpensive to remove an item from head.
+     * More info: https://stackoverflow.com/a/42849573/2085356
+     */
+    private fun getKeyToEvict(): K? = insertionOrder.removeFirst()
+
+    override fun toString() = cache.toString()
 }
 
 class Cache<T>(val type: Type, val size: Int) {
