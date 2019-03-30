@@ -25,5 +25,6 @@ fun main(args: Array<String>) {
         binarytree.main(this)
         cache.main(this)
         stacksqueues.main(this)
+        orderenforcer.main(this)
     }
 }
