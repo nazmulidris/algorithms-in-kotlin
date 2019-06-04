@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Nazmul Idris All rights reserved.
+ * Copyright 2019 Nazmul Idris. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,16 @@
  */
 
 fun main(args: Array<String>) {
-    with(listOf("").toTypedArray()) {
-        sort.main(this)
-        big_o.main(this)
-        graphs.main(this)
-        string.main(this)
-        dynamic.main(this)
-        ringbuffer.main(this)
-        binarytree.main(this)
-        cache.main(this)
-        stacksqueues.main(this)
-        orderenforcer.main(this)
-    }
+  with(listOf("").toTypedArray()) {
+    sort.main(this)
+    big_o.main(this)
+    graphs.main(this)
+    string.main(this)
+    dynamic.main(this)
+    ringbuffer.main(this)
+    binarytree.main(this)
+    cache.main(this)
+    stacksqueues.main(this)
+    orderenforcer.main(this)
+  }
 }

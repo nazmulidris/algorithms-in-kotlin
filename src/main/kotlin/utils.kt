@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Nazmul Idris All rights reserved.
+ * Copyright 2019 Nazmul Idris. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,34 +24,35 @@ data class RuntimeStats(var comparisons: Int = 0,
                         var swaps: Int = 0,
                         var insertions: Int = 0,
                         var dupes: Int = 0,
-                        val dupeMap: MutableMap<String, Int> = mutableMapOf()) {
-    override fun toString(): String = StringBuffer().also {
-        it.append("RuntimeStats(".brightCyan())
+                        val dupeMap: MutableMap<String, Int> = mutableMapOf()
+) {
+  override fun toString(): String = StringBuffer().also {
+    it.append("RuntimeStats(".brightCyan())
 
-        val fields = listOf(::comparisons,
-                            ::operations,
-                            ::swaps,
-                            ::insertions,
-                            ::dupes)
+    val fields = listOf(::comparisons,
+                        ::operations,
+                        ::swaps,
+                        ::insertions,
+                        ::dupes)
 
-        val stringList = mutableListOf<String>()
+    val stringList = mutableListOf<String>()
 
-        for (field in fields) {
-            with(field) {
-                if (this.get() > 0)
-                    stringList.add("#${this.name}=${this.get()}".brightYellow())
-            }
-        }
+    for (field in fields) {
+      with(field) {
+        if (this.get() > 0)
+          stringList.add("#${this.name}=${this.get()}".brightYellow())
+      }
+    }
 
-        if (dupeMap.isNotEmpty())
-            stringList.add("${::dupeMap.name}=$dupeMap".brightGreen())
+    if (dupeMap.isNotEmpty())
+      stringList.add("${::dupeMap.name}=$dupeMap".brightGreen())
 
-        it.append(stringList.joinToString(separator = ", ",
-                                          postfix = " }",
-                                          prefix = "{ "))
+    it.append(stringList.joinToString(separator = ", ",
+                                      postfix = " }",
+                                      prefix = "{ "))
 
-        it.append(")".brightCyan())
-    }.toString()
+    it.append(")".brightCyan())
+  }.toString()
 }
 
 fun String.heading() = this.brightBlue().bgBrightBlack()

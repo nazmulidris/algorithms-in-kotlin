@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Nazmul Idris All rights reserved.
+ * Copyright 2019 Nazmul Idris. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,45 +25,45 @@ import kotlin.collections.HashMap
 enum class Type { LRU, MRU }
 
 fun main(args: Array<String>) {
-    run {
-        println("cache LRU".heading())
-        val cacheLRU = Cache<String>(Type.LRU, 4)
-        println("cacheLRU.put(A), evicted=${cacheLRU.put("A")}, $cacheLRU")
-        println("cacheLRU.put(B), evicted=${cacheLRU.put("B")}, $cacheLRU")
-        println("cacheLRU.put(C), evicted=${cacheLRU.put("C")}, $cacheLRU")
-        println("cacheLRU.put(D), evicted=${cacheLRU.put("D")}, $cacheLRU")
-        println("cacheLRU.put(E), evicted=${cacheLRU.put("E")}, $cacheLRU")
-        println("cacheLRU.put(D), evicted=${cacheLRU.put("D")}, $cacheLRU")
-        println("cacheLRU.put(F), evicted=${cacheLRU.put("F")}, $cacheLRU")
-    }
+  run {
+    println("cache LRU".heading())
+    val cacheLRU = Cache<String>(Type.LRU, 4)
+    println("cacheLRU.put(A), evicted=${cacheLRU.put("A")}, $cacheLRU")
+    println("cacheLRU.put(B), evicted=${cacheLRU.put("B")}, $cacheLRU")
+    println("cacheLRU.put(C), evicted=${cacheLRU.put("C")}, $cacheLRU")
+    println("cacheLRU.put(D), evicted=${cacheLRU.put("D")}, $cacheLRU")
+    println("cacheLRU.put(E), evicted=${cacheLRU.put("E")}, $cacheLRU")
+    println("cacheLRU.put(D), evicted=${cacheLRU.put("D")}, $cacheLRU")
+    println("cacheLRU.put(F), evicted=${cacheLRU.put("F")}, $cacheLRU")
+  }
 
-    run {
-        println("cache MRU".heading())
-        val cacheMRU = Cache<String>(Type.MRU, 4)
-        println("cacheMRU.put(A), evicted=${cacheMRU.put("A")}, $cacheMRU")
-        println("cacheMRU.put(B), evicted=${cacheMRU.put("B")}, $cacheMRU")
-        println("cacheMRU.put(C), evicted=${cacheMRU.put("C")}, $cacheMRU")
-        println("cacheMRU.put(D), evicted=${cacheMRU.put("D")}, $cacheMRU")
-        println("cacheMRU.put(E), evicted=${cacheMRU.put("E")}, $cacheMRU")
-        println("cacheMRU.put(C), evicted=${cacheMRU.put("C")}, $cacheMRU")
-        println("cacheMRU.put(D), evicted=${cacheMRU.put("D")}, $cacheMRU")
-        println("cacheMRU.put(B), evicted=${cacheMRU.put("B")}, $cacheMRU")
-    }
+  run {
+    println("cache MRU".heading())
+    val cacheMRU = Cache<String>(Type.MRU, 4)
+    println("cacheMRU.put(A), evicted=${cacheMRU.put("A")}, $cacheMRU")
+    println("cacheMRU.put(B), evicted=${cacheMRU.put("B")}, $cacheMRU")
+    println("cacheMRU.put(C), evicted=${cacheMRU.put("C")}, $cacheMRU")
+    println("cacheMRU.put(D), evicted=${cacheMRU.put("D")}, $cacheMRU")
+    println("cacheMRU.put(E), evicted=${cacheMRU.put("E")}, $cacheMRU")
+    println("cacheMRU.put(C), evicted=${cacheMRU.put("C")}, $cacheMRU")
+    println("cacheMRU.put(D), evicted=${cacheMRU.put("D")}, $cacheMRU")
+    println("cacheMRU.put(B), evicted=${cacheMRU.put("B")}, $cacheMRU")
+  }
 
-    run {
-        println("low cost insertion cache".heading())
-        val cacheLRU = LowCostLRUCache<String, String>(3)
-        cacheLRU.put("A", "A")
-                .also { "cacheLRU.put(A, A), evicted: $it, $cacheLRU".log() }
-        cacheLRU.put("B", "B")
-                .also { "cacheLRU.put(B, B), evicted: $it, $cacheLRU".log() }
-        cacheLRU.put("C", "C")
-                .also { "cacheLRU.put(C, C), evicted: $it, $cacheLRU".log() }
-        cacheLRU.put("D", "D")
-                .also { "cacheLRU.put(D, D), evicted: $it, $cacheLRU".log() }
-        cacheLRU.put("E", "E")
-                .also { "cacheLRU.put(E, E), evicted: $it, $cacheLRU".log() }
-    }
+  run {
+    println("low cost insertion cache".heading())
+    val cacheLRU = LowCostLRUCache<String, String>(3)
+    cacheLRU.put("A", "A")
+        .also { "cacheLRU.put(A, A), evicted: $it, $cacheLRU".log() }
+    cacheLRU.put("B", "B")
+        .also { "cacheLRU.put(B, B), evicted: $it, $cacheLRU".log() }
+    cacheLRU.put("C", "C")
+        .also { "cacheLRU.put(C, C), evicted: $it, $cacheLRU".log() }
+    cacheLRU.put("D", "D")
+        .also { "cacheLRU.put(D, D), evicted: $it, $cacheLRU".log() }
+    cacheLRU.put("E", "E")
+        .also { "cacheLRU.put(E, E), evicted: $it, $cacheLRU".log() }
+  }
 
 }
 
@@ -73,84 +73,84 @@ fun main(args: Array<String>) {
  * performance is O(1) and for cache eviction, it is O(1).
  */
 class LowCostLRUCache<K, V>(private val capacity: Int = 5) {
-    private val cache = HashMap<K, V>()
-    private val insertionOrder = LinkedList<K>()
+  private val cache = HashMap<K, V>()
+  private val insertionOrder = LinkedList<K>()
 
-    /**
-     * [HashMap] put and remove is O(1).
-     * More info: https://stackoverflow.com/a/4578039/2085356
-     */
-    fun put(key: K, value: V): K? {
-        var evictedKey: K? = null
-        if (cache.size >= capacity) {
-            evictedKey = getKeyToEvict()
-            cache.remove(evictedKey)
-        }
-        cache[key] = value
-        insertionOrder.addLast(key)
-        return evictedKey
+  /**
+   * [HashMap] put and remove is O(1).
+   * More info: https://stackoverflow.com/a/4578039/2085356
+   */
+  fun put(key: K, value: V): K? {
+    var evictedKey: K? = null
+    if (cache.size >= capacity) {
+      evictedKey = getKeyToEvict()
+      cache.remove(evictedKey)
     }
+    cache[key] = value
+    insertionOrder.addLast(key)
+    return evictedKey
+  }
 
-    /**
-     * [HashMap] get is O(1).
-     * More info: https://stackoverflow.com/a/4578039/2085356
-     */
-    fun get(key: K): V? = cache[key]
+  /**
+   * [HashMap] get is O(1).
+   * More info: https://stackoverflow.com/a/4578039/2085356
+   */
+  fun get(key: K): V? = cache[key]
 
-    /**
-     * The head of the [insertionOrder] is removed, which is O(1), since this
-     * is a linked list, and it's inexpensive to remove an item from head.
-     * More info: https://stackoverflow.com/a/42849573/2085356
-     */
-    private fun getKeyToEvict(): K? = insertionOrder.removeFirst()
+  /**
+   * The head of the [insertionOrder] is removed, which is O(1), since this
+   * is a linked list, and it's inexpensive to remove an item from head.
+   * More info: https://stackoverflow.com/a/42849573/2085356
+   */
+  private fun getKeyToEvict(): K? = insertionOrder.removeFirst()
 
-    override fun toString() = cache.toString()
+  override fun toString() = cache.toString()
 }
 
 class Cache<T>(val type: Type, val size: Int) {
-    val map = mutableMapOf<T, Int>()
-    var rank = 0
+  val map = mutableMapOf<T, Int>()
+  var rank = 0
 
-    fun put(value: T): T? {
-        var evictedKey: T? = null
+  fun put(value: T): T? {
+    var evictedKey: T? = null
 
-        when {
-            map.containsKey(value) -> {
-                // Increase rank of existing value.
-                map[value] = rank++
-            }
-            map.size == size -> {
-                // Remove the highest or lowest rank item in the map (depending on Type).
-                evictedKey = findKeyToEvict()
-                map.remove(evictedKey)
-                map.put(value, rank++)
-            }
-            else -> {
-                // Add the new item.
-                map.put(value, rank++)
-            }
-        }
-
-        return evictedKey
+    when {
+      map.containsKey(value) -> {
+        // Increase rank of existing value.
+        map[value] = rank++
+      }
+      map.size == size       -> {
+        // Remove the highest or lowest rank item in the map (depending on Type).
+        evictedKey = findKeyToEvict()
+        map.remove(evictedKey)
+        map.put(value, rank++)
+      }
+      else                   -> {
+        // Add the new item.
+        map.put(value, rank++)
+      }
     }
 
-    /**
-     * LRU means evict the item in the map w/ the lowest rank.
-     * MRU means evict the item in the map w/ the highest rank.
-     */
-    fun findKeyToEvict(): T? {
-        val rankToEvict = when (type) {
-            Type.MRU -> Collections.max(map.values)
-            Type.LRU -> Collections.min(map.values)
-        }
-        val keyToEvict = map.entries.find { it.value == rankToEvict }?.key
-        return keyToEvict
-    }
+    return evictedKey
+  }
 
-    override fun toString(): String = StringBuilder().apply {
-        val list = mutableListOf<String>().apply {
-            for (entry in map) add("'${entry.key}'->rank=${entry.value}".yellow())
-        }
-        append(list.joinToString(", ", "{", "}"))
-    }.toString()
+  /**
+   * LRU means evict the item in the map w/ the lowest rank.
+   * MRU means evict the item in the map w/ the highest rank.
+   */
+  fun findKeyToEvict(): T? {
+    val rankToEvict = when (type) {
+      Type.MRU -> Collections.max(map.values)
+      Type.LRU -> Collections.min(map.values)
+    }
+    val keyToEvict = map.entries.find { it.value == rankToEvict }?.key
+    return keyToEvict
+  }
+
+  override fun toString(): String = StringBuilder().apply {
+    val list = mutableListOf<String>().apply {
+      for (entry in map) add("'${entry.key}'->rank=${entry.value}".yellow())
+    }
+    append(list.joinToString(", ", "{", "}"))
+  }.toString()
 }
