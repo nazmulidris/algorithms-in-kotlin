@@ -6,7 +6,7 @@ more fluency in Kotlin or need a refresher to do interview prep for software eng
 roles.
 
 ## Screen capture of project in action
-<img src="https://raw.githubusercontent.com/nazmulidris/algorithms-in-kotlin/master/docs/images/algo.gif"></img>
+<img src="https://github.com/nazmulidris/algorithms-in-kotlin/blob/main/docs/images/algo.gif?raw=true"></img>
 
 ## Tutorials related to the code in this project
 [developerlife.com](https://developerlife.com/category/CS/) has a set of tutorials that
