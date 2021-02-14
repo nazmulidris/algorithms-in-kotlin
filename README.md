@@ -5,6 +5,8 @@ algorithms that are created using Kotlin. This project is useful if you are tryi
 more fluency in Kotlin or need a refresher to do interview prep for software engineering
 roles.
 
+Once you’ve cloned the repo, type `./gradlew run` in order to build and run this project from the command line.
+
 ## Screen capture of project in action
 <img src="https://github.com/nazmulidris/algorithms-in-kotlin/blob/main/docs/images/algo.gif?raw=true"></img>
 
