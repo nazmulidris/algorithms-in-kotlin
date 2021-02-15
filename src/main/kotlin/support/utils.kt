@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Nazmul Idris. All rights reserved.
+ * Copyright 2021 Nazmul Idris. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,11 +12,14 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
 
-package utils
+package support
 
 import com.importre.crayon.*
+import kotlin.jvm.internal.Reflection
+import kotlin.reflect.full.declaredMemberFunctions
 
 /** Contains run time stats for measuring algorithm performance and holding return values */
 data class RuntimeStats(var comparisons: Int = 0,
@@ -58,3 +61,20 @@ data class RuntimeStats(var comparisons: Int = 0,
 fun String.heading() = this.brightBlue().bgBrightBlack()
 
 fun String.log() = System.out.println(this)
+
+/**
+ * References:
+ * - [Tutorial 1](https://www.programmersought.com/article/5544327798/)
+ * - [Tutorial 2](https://chercher.tech/kotlin/reflection-kotlin#companion-objects)
+ * - [kotlin in Action book](https://livebook.manning.com/book/kotlin-in-action/chapter-10/126)
+ */
+object KotlinReflectHelper {
+  fun invokeMethodForObjectBy(className: String, methodName: String, argv: Array<*>): Any? {
+    val myClass = Class.forName(className)
+    val myKotlinClass = Reflection.createKotlinClass(myClass)
+    myKotlinClass.declaredMemberFunctions.forEach {
+      if (it.name == methodName) return it.call(myKotlinClass.objectInstance, argv)
+    }
+    throw Exception("No method named : $methodName found for the $className object")
+  }
+}

@@ -1,19 +1,21 @@
 # Algorithms and Data Structures in Kotlin
 
-This project is a collection of code samples and wiki articles on basic data structures and
-algorithms that are created using Kotlin. This project is useful if you are trying to get
-more fluency in Kotlin or need a refresher to do interview prep for software engineering
-roles.
+This project is a collection of code samples and wiki articles on basic data structures and algorithms that are created
+using Kotlin. This project is useful if you are trying to get more fluency in Kotlin or need a refresher to do interview
+prep for software engineering roles.
 
-Once you’ve cloned the repo, type `./gradlew run` in order to build and run this project from the command line.
+1. Once you’ve cloned the repo, type `./gradlew run` in order to build and run this project from the command line.
+2. To learn more about the `classgraph` API, here are the [official docs](https://github.com/classgraph/classgraph/wiki).
 
 ## Screen capture of project in action
+
 <img src="https://github.com/nazmulidris/algorithms-in-kotlin/blob/main/docs/images/algo.gif?raw=true"></img>
 
 ## Tutorials related to the code in this project
-[developerlife.com](https://developerlife.com/category/CS/) has a set of tutorials that
-are based on the code that's provided in this repo. I would recommend you check these
-tutorials out as a way to get a handle on what the code in this repo does.
+
+[developerlife.com](https://developerlife.com/category/CS/) has a set of tutorials that are based on the code that's
+provided in this repo. I would recommend you check these tutorials out as a way to get a handle on what the code in this
+repo does.
 
 ## Change master to main (2020-06-27)
 

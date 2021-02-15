@@ -1,32 +1,5 @@
-plugins {
-    id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.3.61'
-}
-
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-    jcenter()
-}
-
-dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:1.3.61"
-    compile 'com.importre:crayon:0.1.0'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
-
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
 /*
- * Copyright 2019 Nazmul Idris. All rights reserved.
+ * Copyright 2021 Nazmul Idris. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,11 +12,44 @@ compileTestKotlin {
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
+
+plugins {
+  id 'java'
+  id 'org.jetbrains.kotlin.jvm' version '1.4.30'
+}
+
+version '1.0-SNAPSHOT'
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.30"
+  implementation "org.jetbrains.kotlin:kotlin-reflect:1.4.30"
+
+  implementation 'com.importre:crayon:0.1.0'
+
+  // https://mvnrepository.com/artifact/io.github.classgraph/classgraph
+  implementation group: 'io.github.classgraph', name: 'classgraph', version: '4.8.102'
+
+  testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+compileKotlin {
+  kotlinOptions.jvmTarget = "11"
+}
+
+compileTestKotlin {
+  kotlinOptions.jvmTarget = "11"
+}
 
 // This is a gradle task that runs the run.kt main function
 // Note - run.kt is turned into RunKt by the Kotlin compiler
 task run(type: JavaExec) {
-    main ='RunKt'
-    classpath = sourceSets.main.runtimeClasspath
+  main = 'RunKt'
+  classpath = sourceSets.main.runtimeClasspath
 }
