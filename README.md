@@ -4,18 +4,16 @@ This project is a collection of code samples and wiki articles on basic data str
 using Kotlin. This project is useful if you are trying to get more fluency in Kotlin or need a refresher to do interview
 prep for software engineering roles.
 
-1. Once you’ve cloned the repo, type `./gradlew run` in order to build and run this project from the command line.
-2. To learn more about the `classgraph` API, here are the [official docs](https://github.com/classgraph/classgraph/wiki).
+1. I strongly recommend reading my tutorials on [developerlife.com](https://developerlife.com/category/CS/) that are
+   based on the code that's provided in this repo. These tutorials are a great companion to the source code in this repo
+   and will help you understand the code and the algorithms.
+2. Once you’ve cloned the repo, type `./gradlew run` in order to build and run this project from the command line.
+3. This project uses the`classgraph` API to load all the classes in the `algorithms` package. You can read more about it
+   [here](https://github.com/classgraph/classgraph/wiki).
 
 ## Screen capture of project in action
 
 <img src="https://github.com/nazmulidris/algorithms-in-kotlin/blob/main/docs/images/algo.gif?raw=true"></img>
-
-## Tutorials related to the code in this project
-
-[developerlife.com](https://developerlife.com/category/CS/) has a set of tutorials that are based on the code that's
-provided in this repo. I would recommend you check these tutorials out as a way to get a handle on what the code in this
-repo does.
 
 ## Change master to main (2020-06-27)
 
