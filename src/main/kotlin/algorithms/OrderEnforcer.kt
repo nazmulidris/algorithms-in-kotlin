@@ -18,13 +18,13 @@
 package algorithms
 
 import support.Main
-import support.heading
+import support.printHeading
 import java.util.concurrent.Executors
 
 object OrderEnforcer : Main {
 
   override fun main(args: Array<String>) {
-    println("Order enforcer to schedule ordered tasks".heading())
+    "Order enforcer to schedule ordered tasks".printHeading()
     val enforcer = StateMachine<Stage>(Stage.A, Stage.B, Stage.C)
 
     enforcer.runWhen(Stage.A, Runnable { println("A1") })
@@ -48,10 +48,10 @@ object OrderEnforcer : Main {
     private val runnableMap = HashMap<State, ArrayList<Runnable>>()
     private val executorService = Executors.newSingleThreadExecutor()
     fun runWhen(state: State, runnable: Runnable) =
-        runnableMap.computeIfAbsent(state) { ArrayList() }.add(runnable)
+      runnableMap.computeIfAbsent(state) { ArrayList() }.add(runnable)
 
     private fun runAllFor(state: State) =
-        runnableMap[state]?.forEach { executorService.submit(it) }
+      runnableMap[state]?.forEach { executorService.submit(it) }
 
     fun shutdown() = executorService.shutdown()
 
@@ -66,8 +66,7 @@ object OrderEnforcer : Main {
         // See if sequential states exist in overflowTransitions,
         // and if so run tasks UNTIL that state.
         checkOverflow()
-      }
-      else {
+      } else {
         // Skip a state (non sequential).
         overflowTransitions.add(newState)
       }

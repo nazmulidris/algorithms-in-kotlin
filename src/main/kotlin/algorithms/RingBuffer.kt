@@ -17,14 +17,14 @@
 
 package algorithms
 
-import com.importre.crayon.*
+import support.*
 import support.Main
-import support.heading
+import support.printHeading
 
 object RingBuffer : Main {
 
   override fun main(args: Array<String>) {
-    println("circular queue".heading())
+    "circular queue".printHeading()
     val queue = RingBuffer<String>(4)
     println("add 1, ${queue.enqueue("1")}")
     println("add 2, ${queue.enqueue("2")}")
@@ -36,8 +36,7 @@ object RingBuffer : Main {
     println("add 6, ${queue.enqueue("6")}")
     try {
       println("add 7, ${queue.enqueue("7")}")
-    }
-    catch (e: Exception) {
+    } catch (e: Exception) {
       println(e.toString().red())
     }
     println("dequeue = ${queue.dequeue()}, $queue")
@@ -46,8 +45,7 @@ object RingBuffer : Main {
     println("dequeue = ${queue.dequeue()}, $queue")
     try {
       println("dequeue = ${queue.dequeue()}, $queue")
-    }
-    catch (e: Exception) {
+    } catch (e: Exception) {
       println(e.toString().red())
     }
     println("add 1, ${queue.enqueue("1")}")

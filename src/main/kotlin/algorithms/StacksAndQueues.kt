@@ -17,21 +17,23 @@
 
 package algorithms
 
-import com.importre.crayon.brightCyan
-import com.importre.crayon.brightWhite
-import com.importre.crayon.green
-import com.importre.crayon.red
+import color_console_log.ColorConsoleContext.Companion.colorConsole
+import color_console_log.Colors
 import support.Main
-import support.heading
+import support.printHeading
 import java.util.*
 
 object StacksAndQueues : Main {
 
   override fun main(args: Array<String>) {
-    println("Stacks & Queues".heading())
+    "Stacks & Queues".printHeading()
     val root = makeSampleFolders()
     val found = dfs("jdk11", root)
-    println("\njdk11 found: $found")
+    colorConsole {
+      printLine(spanSeparator = "", prefixWithTimestamp = false) {
+        span(Colors.Green, "\njdk11 found: $found")
+      }
+    }
   }
 
   /*
@@ -55,14 +57,15 @@ object StacksAndQueues : Main {
     val apps = Folder("apps", root)
     val dev = Folder("dev", root)
 
-    val apps_idea = Folder("idea", apps)
-    val apps_as = Folder("androidstudio", apps)
+    Folder("idea", apps)
+    Folder("androidstudio", apps)
 
-    val opt_chrome = Folder("chrome", opt)
+    Folder("chrome", opt)
 
-    val dev_java = Folder("java", dev)
-    val dev_java_jdk8 = Folder("jdk8", dev_java)
-    val dev_java_jdk11 = Folder("jdk11", dev_java)
+    Folder("java", dev).apply {
+      Folder("jdk8", this)
+      Folder("jdk11", this)
+    }
 
     return root
   }
@@ -72,17 +75,23 @@ object StacksAndQueues : Main {
     val stack = ArrayDeque<Folder>()
     stack.push(root)
     var found = false
+    var count = 0
     while (stack.isNotEmpty()) {
-      println("\n...while loop start... ".brightWhite() + "stack=$stack".brightCyan())
-      val currentFolder = stack.pop()
-      println("👆️️popped: " + currentFolder.toDetailedString().red())
-      if (currentFolder.isNamed(name)) {
-        found = true
-        println("\tfound a matching folder")
-      }
-      for (f in currentFolder.subFolders) {
-        stack.push(f)
-        println("👇️push: " + f.toDetailedString().green())
+      colorConsole {
+        printLine(spanSeparator = "", prefixWithTimestamp = false) {
+          span(Colors.Cyan, "...while loop iteration #${++count} ➡ ")
+          span(Colors.Yellow, "stack=$stack\n")
+          val currentFolder = stack.pop()
+          span(Colors.Red, "\n👆️️ popped: " + currentFolder.toDetailedString() + "\n")
+          if (currentFolder.isNamed(name)) {
+            found = true
+            span(Colors.Green, "\tfound a matching folder\n")
+          }
+          for (f in currentFolder.subFolders) {
+            stack.push(f)
+            span(Colors.Green, "👇 ️push: " + f.toDetailedString() + "\n")
+          }
+        }
       }
     }
     return found

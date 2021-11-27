@@ -17,61 +17,84 @@
 
 package algorithms
 
-import com.importre.crayon.blue
-import com.importre.crayon.green
-import com.importre.crayon.magenta
-import com.importre.crayon.yellow
-import support.Main
-import support.heading
+import color_console_log.ColorConsoleContext.Companion.colorConsole
+import color_console_log.Colors
+import support.*
 import java.util.*
+
 
 object BinaryTree : Main {
 
+  private const val padLength = 25
+
   override fun main(args: Array<String>) {
-    println("binary trees".heading())
+    "binary trees".printHeading()
 
-    val rootNode: Node<Char> = buildTree()
-    println(rootNode.toString())
+    colorConsole {
+      val rootNode: Node<Char> = buildTree()
+      printLine(prefixWithTimestamp = false, spanSeparator = "") {
+        span(Colors.White, "$rootNode")
+      }
 
-    // Pre-order traversal (recursive)
-    with(mutableListOf<Char>()) {
-      traversalPreOrder(rootNode, this)
-      print("pre-order traversal  ➡ ".magenta())
-      println(this.joinToString(" 👉 "))
+      // Pre-order traversal (recursive)
+      with(mutableListOf<Char>()) {
+        traversalPreOrder(rootNode, this)
+        printLine(prefixWithTimestamp = false, spanSeparator = "") {
+          span(Colors.Purple, "\npre-order traversal".padEnd(padLength))
+          span(Colors.Yellow, " ➡ ")
+          span(Colors.Green, this@with.joinToString(" 👉 "))
+        }
+      }
+
+      // In-order traversal (recursive)
+      with(mutableListOf<Char>()) {
+        traversalInOrder(rootNode, this)
+        printLine(prefixWithTimestamp = false, spanSeparator = "") {
+          span(Colors.Purple, "\nin-order traversal".padEnd(padLength))
+          span(Colors.Yellow, " ➡ ")
+          span(Colors.Green, this@with.joinToString(" 👉 "))
+        }
+      }
+
+      // Post-order traversal (recursive)
+      with(mutableListOf<Char>()) {
+        traversalPostOrder(rootNode, this)
+        printLine(prefixWithTimestamp = false, spanSeparator = "") {
+          span(Colors.Purple, "\npost-order traversal".padEnd(padLength))
+          span(Colors.Yellow, " ➡ ")
+          span(Colors.Green, this@with.joinToString(" 👉 "))
+        }
+      }
+
+      // BFS traversal (using queue)
+      with(breadthFirstTraversal(rootNode)) {
+        val text = this@with.joinToString(" 👉 ") { "${it.value}, ${it.depth}" }
+        printLine(prefixWithTimestamp = false, spanSeparator = "") {
+          span(Colors.Purple, "\nBFS traversal".padEnd(padLength))
+          span(Colors.Yellow, " ➡ ")
+          span(Colors.Green, text)
+        }
+      }
+
+      // BFS traversal (using queue) pretty print
+      with(printBFSTraversal(rootNode)) {
+        printLine(prefixWithTimestamp = false, spanSeparator = "") {
+          span(Colors.Purple, "\nBFS traversal (pretty)".padEnd(padLength))
+          span(Colors.Yellow, " ➡ \n")
+          span(Colors.Green, this@with)
+        }
+      }
+
+      // DFS traversal (using stack)
+      with(depthFirstTraversal(rootNode)) {
+        val text = this.joinToString(" 👉 ") { "${it.value}, ${it.depth}" }
+        printLine(prefixWithTimestamp = false, spanSeparator = "") {
+          span(Colors.Purple, "DFS traversal".padEnd(padLength))
+          span(Colors.Yellow, " ➡ ")
+          span(Colors.Green, text)
+        }
+      }
     }
-
-    // In-order traversal (recursive)
-    with(mutableListOf<Char>()) {
-      traversalInOrder(rootNode, this)
-      print("in-order traversal   ➡ ".magenta())
-      println(this.joinToString(" 👉 "))
-    }
-
-    // Post-order traversal (recursive)
-    with(mutableListOf<Char>()) {
-      traversalPostOrder(rootNode, this)
-      print("post-order traversal ➡ ".magenta())
-      println(this.joinToString(" 👉 "))
-    }
-
-    // BFS traversal (using queue)
-    with(breadthFirstTraversal(rootNode)) {
-      print("BFS traversal ➡ ".magenta())
-      println(this.joinToString(" 👉 ") { "${it.value}, ${it.depth}" })
-    }
-
-    // BFS traversal (using queue) pretty print
-    with(printBFSTraversal(rootNode)) {
-      println("BFS traversal (pretty print) ➡ ".magenta())
-      print(this)
-    }
-
-    // DFS traversal (using stack)
-    with(depthFirstTraversal(rootNode)) {
-      print("DFS traversal ➡ ".magenta())
-      println(this.joinToString(" 👉 ") { "${it.value}, ${it.depth}" })
-    }
-
   }
 
   /**
@@ -192,8 +215,8 @@ object BinaryTree : Main {
 
       // Decide whether to print crlf or not.
       mapVisitedDepth
-          .computeIfAbsent(depth) { mutableListOf() }
-          .add(currentNode.value)
+        .computeIfAbsent(depth) { mutableListOf() }
+        .add(currentNode.value)
     }
 
     val outputString = StringBuilder()
@@ -234,13 +257,14 @@ object BinaryTree : Main {
     return a
   }
 
-  data class Node<T>(val value: T,
-                     var leftNode: Node<T>?,
-                     var rightNode: Node<T>?,
-                     var depth: Int = 0
+  data class Node<T>(
+    val value: T,
+    var leftNode: Node<T>?,
+    var rightNode: Node<T>?,
+    var depth: Int = 0
   ) {
     fun link(left: Node<T>?, right: Node<T>?) =
-        this.apply { linkLeft(left).linkRight(right) }
+      this.apply { linkLeft(left).linkRight(right) }
 
     fun linkLeft(left: Node<T>?) = this.apply { leftNode = left }
 

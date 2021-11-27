@@ -19,14 +19,14 @@ import io.github.classgraph.ClassGraph
 import support.KotlinReflectHelper
 
 fun main(args: Array<String>) = ClassGraph()
-    .enableAllInfo() // Scan classes, methods, fields, annotations.
-    .acceptPackages("algorithms")
-    .scan()
-    .use { scanResult -> // Start the scan.
-      val widgetClasses = scanResult.getClassesImplementing("support.Main")
-      val widgetClassNames: List<String> = widgetClasses.names
-      widgetClassNames.forEach { widgetClassName ->
-        val argv = listOf("").toTypedArray()
-        KotlinReflectHelper.invokeMethodForObjectBy(widgetClassName, "main", argv)
-      }
+  .enableAllInfo() // Scan classes, methods, fields, annotations.
+  .acceptPackages("algorithms")
+  .scan()
+  .use { scanResult -> // Start the scan.
+    val widgetClasses = scanResult.getClassesImplementing("support.Main")
+    val widgetClassNames: List<String> = widgetClasses.names
+    widgetClassNames.forEach { widgetClassName ->
+      val argv = listOf("").toTypedArray()
+      KotlinReflectHelper.invokeMethodForObjectBy(widgetClassName, "main", argv)
     }
+  }

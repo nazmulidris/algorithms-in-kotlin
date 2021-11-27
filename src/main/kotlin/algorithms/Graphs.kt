@@ -18,16 +18,15 @@
 package algorithms
 
 import support.Main
-import support.heading
+import support.printHeading
 import java.util.*
-import kotlin.collections.HashMap
 
 object Graphs : Main {
   /**
    * [Image of the graph](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/undirectedgraph.png).
    */
   override fun main(args: Array<String>) {
-    println("graphs".heading())
+    "graphs".printHeading()
 
     val graph = Graph<String>()
     graph.apply {
@@ -45,7 +44,7 @@ object Graphs : Main {
     }
     print(graph.toString())
 
-    println("breadth first search traversal".heading())
+    "breadth first search traversal".printHeading()
 
     print("bfs_traversal(graph, '0', 5) = ")
     println(breadthFirstTraversal(graph, "0"))
@@ -53,7 +52,7 @@ object Graphs : Main {
     print("bfs_traversal(graph, '0', 1) = ")
     println(breadthFirstTraversal(graph, "0", 1))
 
-    println("depth first search traversal".heading())
+    "depth first search traversal".printHeading()
     println(depthFirstTraversal(graph, "0"))
   }
 
@@ -66,12 +65,12 @@ object Graphs : Main {
     fun addEdge(sourceVertex: T, destinationVertex: T) {
       // Add edge to source vertex / node.
       adjacencyMap
-          .computeIfAbsent(sourceVertex) { HashSet() }
-          .add(destinationVertex)
+        .computeIfAbsent(sourceVertex) { HashSet() }
+        .add(destinationVertex)
       // Add edge to destination vertex / node.
       adjacencyMap
-          .computeIfAbsent(destinationVertex) { HashSet() }
-          .add(sourceVertex)
+        .computeIfAbsent(destinationVertex) { HashSet() }
+        .add(sourceVertex)
     }
 
     override fun toString(): String = StringBuffer().apply {
@@ -85,9 +84,10 @@ object Graphs : Main {
   /**
    * Breadth first traversal leverages a [Queue] (FIFO).
    */
-  fun <T> breadthFirstTraversal(graph: Graph<T>,
-                                startNode: T,
-                                maxDepth: Int = Int.MAX_VALUE
+  fun <T> breadthFirstTraversal(
+    graph: Graph<T>,
+    startNode: T,
+    maxDepth: Int = Int.MAX_VALUE
   ): String {
     //
     // Setup.
@@ -158,8 +158,10 @@ object Graphs : Main {
           // Mark the current node visited and add to traversal list.
           visitedMap.markVisitedAndAddToTraversalList(currentNode)
           // Add nodes in the adjacency map.
-          queue.addAdjacentNodes(currentNode, /* depth= */
-                                 currentDepth + 1)
+          queue.addAdjacentNodes(
+            currentNode, /* depth= */
+            currentDepth + 1
+          )
         }
       }
 

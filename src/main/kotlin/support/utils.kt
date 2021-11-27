@@ -17,26 +17,33 @@
 
 package support
 
-import com.importre.crayon.*
+import color_console_log.ColorConsoleContext.Companion.colorConsole
+import color_console_log.Colors
+import support.brightCyan
+import support.brightGreen
+import support.brightYellow
 import kotlin.jvm.internal.Reflection
 import kotlin.reflect.full.declaredMemberFunctions
 
 /** Contains run time stats for measuring algorithm performance and holding return values */
-data class RuntimeStats(var comparisons: Int = 0,
-                        var operations: Int = 0,
-                        var swaps: Int = 0,
-                        var insertions: Int = 0,
-                        var dupes: Int = 0,
-                        val dupeMap: MutableMap<String, Int> = mutableMapOf()
+data class RuntimeStats(
+  var comparisons: Int = 0,
+  var operations: Int = 0,
+  var swaps: Int = 0,
+  var insertions: Int = 0,
+  var dupes: Int = 0,
+  val dupeMap: MutableMap<String, Int> = mutableMapOf()
 ) {
   override fun toString(): String = StringBuffer().also {
     it.append("RuntimeStats(".brightCyan())
 
-    val fields = listOf(::comparisons,
-                        ::operations,
-                        ::swaps,
-                        ::insertions,
-                        ::dupes)
+    val fields = listOf(
+      ::comparisons,
+      ::operations,
+      ::swaps,
+      ::insertions,
+      ::dupes
+    )
 
     val stringList = mutableListOf<String>()
 
@@ -50,15 +57,25 @@ data class RuntimeStats(var comparisons: Int = 0,
     if (dupeMap.isNotEmpty())
       stringList.add("${::dupeMap.name}=$dupeMap".brightGreen())
 
-    it.append(stringList.joinToString(separator = ", ",
-                                      postfix = " }",
-                                      prefix = "{ "))
+    it.append(
+      stringList.joinToString(
+        separator = ", ",
+        postfix = " }",
+        prefix = "{ "
+      )
+    )
 
     it.append(")".brightCyan())
   }.toString()
 }
 
-fun String.heading() = this.brightBlue().bgBrightBlack()
+fun String.printHeading() = colorConsole {
+  printLine(spanSeparator = "", prefixWithTimestamp = false) {
+    span(Colors.Green, "\n-------------[")
+    span(Colors.Blue, this@printHeading.uppercase())
+    span(Colors.Green, " 💬]-------------\n")
+  }
+}
 
 fun String.log() = System.out.println(this)
 

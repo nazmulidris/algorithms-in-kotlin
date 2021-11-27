@@ -17,12 +17,11 @@
 
 package algorithms
 
-import com.importre.crayon.yellow
 import support.Main
-import support.heading
 import support.log
+import support.printHeading
+import support.yellow
 import java.util.*
-import kotlin.collections.HashMap
 
 object Cache : Main {
 
@@ -30,7 +29,7 @@ object Cache : Main {
 
   override fun main(args: Array<String>) {
     run {
-      println("cache LRU".heading())
+      "cache LRU".printHeading()
       val cacheLRU = Cache<String>(Type.LRU, 4)
       println("cacheLRU.put(A), evicted=${cacheLRU.put("A")}, $cacheLRU")
       println("cacheLRU.put(B), evicted=${cacheLRU.put("B")}, $cacheLRU")
@@ -42,7 +41,7 @@ object Cache : Main {
     }
 
     run {
-      println("cache MRU".heading())
+      "cache MRU".printHeading()
       val cacheMRU = Cache<String>(Type.MRU, 4)
       println("cacheMRU.put(A), evicted=${cacheMRU.put("A")}, $cacheMRU")
       println("cacheMRU.put(B), evicted=${cacheMRU.put("B")}, $cacheMRU")
@@ -55,18 +54,18 @@ object Cache : Main {
     }
 
     run {
-      println("low cost insertion cache".heading())
+      "low cost insertion cache".printHeading()
       val cacheLRU = LowCostLRUCache<String, String>(3)
       cacheLRU.put("A", "A")
-          .also { "cacheLRU.put(A, A), evicted: $it, $cacheLRU".log() }
+        .also { "cacheLRU.put(A, A), evicted: $it, $cacheLRU".log() }
       cacheLRU.put("B", "B")
-          .also { "cacheLRU.put(B, B), evicted: $it, $cacheLRU".log() }
+        .also { "cacheLRU.put(B, B), evicted: $it, $cacheLRU".log() }
       cacheLRU.put("C", "C")
-          .also { "cacheLRU.put(C, C), evicted: $it, $cacheLRU".log() }
+        .also { "cacheLRU.put(C, C), evicted: $it, $cacheLRU".log() }
       cacheLRU.put("D", "D")
-          .also { "cacheLRU.put(D, D), evicted: $it, $cacheLRU".log() }
+        .also { "cacheLRU.put(D, D), evicted: $it, $cacheLRU".log() }
       cacheLRU.put("E", "E")
-          .also { "cacheLRU.put(E, E), evicted: $it, $cacheLRU".log() }
+        .also { "cacheLRU.put(E, E), evicted: $it, $cacheLRU".log() }
     }
 
   }
@@ -123,13 +122,13 @@ object Cache : Main {
           // Increase rank of existing value.
           map[value] = rank++
         }
-        map.size == size       -> {
+        map.size == size -> {
           // Remove the highest or lowest rank item in the map (depending on Type).
           evictedKey = findKeyToEvict()
           map.remove(evictedKey)
           map.put(value, rank++)
         }
-        else                   -> {
+        else -> {
           // Add the new item.
           map.put(value, rank++)
         }

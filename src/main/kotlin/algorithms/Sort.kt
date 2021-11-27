@@ -17,12 +17,12 @@
 
 package algorithms
 
-import com.importre.crayon.blue
-import com.importre.crayon.red
-import com.importre.crayon.yellow
+import support.blue
+import support.red
+import support.yellow
 import support.Main
 import support.RuntimeStats
-import support.heading
+import support.printHeading
 
 object Sort : Main {
 
@@ -30,7 +30,7 @@ object Sort : Main {
 
     // bubble sort
     with(RuntimeStats()) {
-      println("bubble_sort O(n^2)".heading())
+      "bubble_sort O(n^2)".printHeading()
       val unsortedList = mutableListOf("x", "d", "c", "b", "a")
       bubble_sort(unsortedList, this)
       print("sorted list=$unsortedList")
@@ -39,7 +39,7 @@ object Sort : Main {
 
     // insertion sort
     with(RuntimeStats()) {
-      println("insertion_sort O(n^2)".heading())
+      "insertion_sort O(n^2)".printHeading()
       val unsortedList = mutableListOf("x", "d", "c", "b", "a")
       insertion_sort(unsortedList, this)
       print("sorted list=$unsortedList")
@@ -48,15 +48,17 @@ object Sort : Main {
 
     // merge sort
     with(RuntimeStats()) {
-      println("merge_sort O(n * log(n))".heading())
-      val unsortedList = mutableListOf("123",
-                                       "989",
-                                       "000",
-                                       "981",
-                                       "778",
-                                       "996",
-                                       "993",
-                                       "781")
+      "merge_sort O(n * log(n))".printHeading()
+      val unsortedList = mutableListOf(
+        "123",
+        "989",
+        "000",
+        "981",
+        "778",
+        "996",
+        "993",
+        "781"
+      )
       val sortedList = merge_sort(unsortedList, this)
       print("sorted list=$sortedList")
       println(", $this")
@@ -64,7 +66,7 @@ object Sort : Main {
 
     // quick sort
     with(RuntimeStats()) {
-      println("quick_sort O(n * log(n))".heading())
+      "quick_sort O(n * log(n))".printHeading()
       val list = mutableListOf(100, 200, 300, 20, 30, 10, 50)
       quick_sort(list = list, stats = this)
       print("sorted list=$list")
@@ -73,7 +75,7 @@ object Sort : Main {
 
     // counting sort
     with(RuntimeStats()) {
-      println("counting_sort O(n)".heading())
+      "counting_sort O(n)".printHeading()
       val list = mutableListOf(100, 200, 15, 30, 10, 50)
       counting_sort(list, this)
       print("sorted list=$list")
@@ -120,16 +122,21 @@ object Sort : Main {
    * roughly half of the elements would be to the left of the pivot and the other
    * half to the right.
    */
-  fun quick_sort(list: MutableList<Int>,
-                 startIndex: Int = 0,
-                 endIndex: Int = list.size - 1,
-                 stats: RuntimeStats
+  fun quick_sort(
+    list: MutableList<Int>,
+    startIndex: Int = 0,
+    endIndex: Int = list.size - 1,
+    stats: RuntimeStats
   ) {
     if (startIndex < endIndex) {
-      println("quick_sort(${
-        list.sub_list(startIndex,
-                      endIndex).toString().blue()
-      })")
+      println(
+        "quick_sort(${
+          list.sub_list(
+            startIndex,
+            endIndex
+          ).toString().blue()
+        })"
+      )
       val pivotIndex = partition(list, startIndex, endIndex, stats)
       // Before pivot index
       quick_sort(list, startIndex, pivotIndex - 1, stats)
@@ -146,15 +153,20 @@ object Sort : Main {
    * Ideally this pivot element would represent the median of the sublist. But in this
    * implementation we are choosing the end of the sublist (the element at endIndex).
    */
-  fun partition(list: MutableList<Int>,
-                startIndex: Int = 0,
-                endIndex: Int = list.size - 1,
-                stats: RuntimeStats
+  fun partition(
+    list: MutableList<Int>,
+    startIndex: Int = 0,
+    endIndex: Int = list.size - 1,
+    stats: RuntimeStats
   ): Int {
-    print("\tpartition(${
-      list.sub_list(startIndex,
-                    endIndex).toString().yellow()
-    })")
+    print(
+      "\tpartition(${
+        list.sub_list(
+          startIndex,
+          endIndex
+        ).toString().yellow()
+      })"
+    )
     // Element to be placed at the correct position in the list
     val pivotValue = list[endIndex]
 
@@ -218,8 +230,9 @@ object Sort : Main {
    *
    * Please note that [quick_sort] on average runs 2-3 times faster merge sort.
    */
-  fun merge_sort(list: MutableList<String>,
-                 stats: RuntimeStats
+  fun merge_sort(
+    list: MutableList<String>,
+    stats: RuntimeStats
   ): MutableList<String> {
     println("merge_sort(${list.toString().blue()})")
     stats.operations++
@@ -242,9 +255,10 @@ object Sort : Main {
    * The merge sort algorithm takes advantage of the fact that two sorted lists can be merged into
    * one sorted list very quickly.
    */
-  fun merge(leftList: MutableList<String>,
-            rightList: MutableList<String>,
-            stats: RuntimeStats
+  fun merge(
+    leftList: MutableList<String>,
+    rightList: MutableList<String>,
+    stats: RuntimeStats
   ): MutableList<String> {
     print("\tmerge(${leftList.toString().yellow()}, ${rightList.toString().blue()})")
     val result = mutableListOf<String>()
@@ -259,8 +273,7 @@ object Sort : Main {
         stats.insertions++
         result.add(lhs)
         leftIndex++
-      }
-      else {
+      } else {
         stats.insertions++
         result.add(rhs)
         rightIndex++

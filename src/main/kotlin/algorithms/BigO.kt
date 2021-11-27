@@ -17,80 +17,113 @@
 
 package algorithms
 
-import com.importre.crayon.blue
-import com.importre.crayon.green
-import com.importre.crayon.red
+import color_console_log.ColorConsoleContext.Companion.colorConsole
+import color_console_log.Colors
 import support.Main
 import support.RuntimeStats
-import support.heading
+import support.printHeading
 
 object BigO : Main {
 
   override fun main(args: Array<String>) {
 
     run {
-      println("o(1)".heading())
+      "o(1)".printHeading()
       val list = listOf(null, "abc", "def")
-      println("is first elem of list $list null? = ${isFirstElementNull(list)}")
+      colorConsole {
+        val text1 = "is first elem of list $list null? = "
+        val text2 = "${isFirstElementNull(list)}"
+        printLine(spanSeparator = "", prefixWithTimestamp = false) {
+          span(Colors.Purple, text1)
+          span(Colors.Purple, text2)
+        }
+      }
     }
 
     run {
-      println("o(n)".heading())
+      "o(n)".printHeading()
       val value = "efg"
       val list = listOf("abc", "def", "123", "xyz")
       with(RuntimeStats()) {
-        print("is '$value` in list $list = ${
-          containsValue(list,
-                        value,
-                        this)
-        }")
-        println(", $this")
+        colorConsole {
+          val text1 = "is '$value` in list $list = ${containsValue(list, value, this@with)}"
+          val text2 = this@with.toString()
+          printLine(spanSeparator = "", prefixWithTimestamp = false) {
+            span(Colors.Purple, text1)
+            span(Colors.Yellow, " ➡ ")
+            span(Colors.Purple, text2)
+          }
+        }
       }
     }
 
     run {
-      println("o(n^2)".heading())
+      "o(n^2)".printHeading()
       val list = listOf("abc", "def", "123", "abc", "123", "567")
-      println("list $list contains dupes = ${containsDupes(list)}")
+      colorConsole {
+        val text1 = "list $list contains dupes"
+        val text2 = "${containsDupes(list)}"
+        printLine(spanSeparator = "", prefixWithTimestamp = false) {
+          span(Colors.Purple, text1)
+          span(Colors.Yellow, " ➡ ")
+          span(Colors.White, text2)
+        }
+      }
     }
 
     run {
-      println("o(2^n)".heading())
+      "o(2^n)".printHeading()
       val value = 20
       with(RuntimeStats()) {
-        print("fibonacci($value) = ${fibonacci(value, this)}")
-        println(", $this")
+        colorConsole {
+          printLine(spanSeparator = "", prefixWithTimestamp = false) {
+            val text1 = "fibonacci($value) = ${fibonacci(value, this@with)}"
+            val text2 = this@with.toString()
+            span(Colors.Purple, text1)
+            span(Colors.Yellow, " ➡ ")
+            span(Colors.White, text2)
+          }
+        }
       }
     }
 
     run {
-      println("o(log n)".heading())
-      println("binarySearch()")
+      "o(log n)".printHeading()
+      colorConsole {
+        printLine(spanSeparator = "", prefixWithTimestamp = false) {
+          span(Colors.Purple, "binarySearch()")
+        }
+      }
       val item = "zany"
       val list = listOf(
-          "nazmul",
-          "idris",
-          "maret",
-          "john",
-          "harry",
-          "tom",
-          "tony",
-          "pepper",
-          "andrew")
-          .sorted()
+        "nazmul", "idris", "maret", "john", "harry", "tom", "tony", "pepper", "andrew"
+      ).sorted()
       with(RuntimeStats()) {
-        print("found: ${binarySearch(item, list, this)}")
-        println(", $this")
+        colorConsole {
+          val result = binarySearch(item, list, this@with)
+          printLine(spanSeparator = "", prefixWithTimestamp = false) {
+            span(Colors.Purple, "found:")
+            span(Colors.Yellow, " ➡ ")
+            span(Colors.Green, "$result")
+          }
+        }
       }
     }
   }
 
   /** O(log n) */
-  fun binarySearch(item: String,
-                   sortedList: List<String>,
-                   stats: RuntimeStats
+  fun binarySearch(
+    item: String,
+    sortedList: List<String>,
+    stats: RuntimeStats
   ): Boolean {
-    println("\tbinarySearch(${item.toString().blue()}, ${sortedList.toString().green()}")
+    colorConsole {
+      printLine(spanSeparator = "", prefixWithTimestamp = false) {
+        span(Colors.Blue, "\nbinarySearch($item)")
+        span(Colors.Yellow, " ➡ ")
+        span(Colors.Green, "$sortedList")
+      }
+    }
     stats.operations++
 
     // Exit conditions (base cases)
@@ -103,20 +136,30 @@ object BigO : Main {
     val probeIndex = size / 2
     val probeItem = sortedList[probeIndex]
     stats.comparisons++
-    print("\t\tprobe->")
-    println("[index=$probeIndex, $probeItem]".red())
+    colorConsole {
+      printLine(spanSeparator = "", prefixWithTimestamp = false) {
+        span(Colors.Blue, "✨ probe")
+        span(Colors.Yellow, " ➡ ")
+        span(Colors.Green, "[index=$probeIndex, $probeItem]")
+      }
+    }
 
     // Does the probe match? If not, split and recurse
     when {
       item == probeItem -> return true
-      item < probeItem  -> return binarySearch(
-          item,
-          sortedList.subList(0, probeIndex),
-          stats)
-      else              -> return binarySearch(item,
-                                               sortedList.subList(probeIndex + 1,
-                                                                  size),
-                                               stats)
+      item < probeItem -> return binarySearch(
+        item,
+        sortedList.subList(0, probeIndex),
+        stats
+      )
+      else -> return binarySearch(
+        item,
+        sortedList.subList(
+          probeIndex + 1,
+          size
+        ),
+        stats
+      )
     }
   }
 
@@ -149,9 +192,10 @@ object BigO : Main {
   fun isFirstElementNull(list: List<String?>) = list[0] == null
 
   /** O(n) */
-  fun containsValue(list: List<String>,
-                    value: String,
-                    stats: RuntimeStats
+  fun containsValue(
+    list: List<String>,
+    value: String,
+    stats: RuntimeStats
   ): Boolean {
     list.forEach { it ->
       stats.comparisons++

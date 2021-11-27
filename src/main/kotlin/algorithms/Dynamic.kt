@@ -17,15 +17,15 @@
 
 package algorithms
 
-import com.importre.crayon.brightBlue
-import com.importre.crayon.brightYellow
+import support.brightBlue
+import support.brightYellow
 import support.Main
-import support.heading
+import support.printHeading
 
 object Dynamic : Main {
 
   override fun main(args: Array<String>) {
-    println("dynamic programming".heading())
+    "dynamic programming".printHeading()
 
     run {
       val coins = Coins()
@@ -35,18 +35,20 @@ object Dynamic : Main {
     }
 
     run {
-      println("numCoins (recursive)".heading())
+      "numCoins (recursive)".printHeading()
       val coins = mutableMapOf<Int, Int>()
       val totalNumberOfCoins =
-          numCoins(49,
-                   listOf(5, 1, 7, 11).sortedDescending(),
-                   coins)
+        numCoins(
+          49,
+          listOf(5, 1, 7, 11).sortedDescending(),
+          coins
+        )
       print("total # coins = $totalNumberOfCoins")
       println(", breakdown (key:denomination = val:amount) = ${coins.toString().brightBlue()}")
     }
 
     run {
-      println("calculate factorial w/ recursion".heading())
+      "calculate factorial w/ recursion".printHeading()
       val arg = 5
       println("${::fact.name}($arg)=${fact(arg)}")
     }
@@ -60,13 +62,16 @@ object Dynamic : Main {
    * [coinsUsedMap] has keys that represent the denomination, and value that represent the number of
    * coins used of that denomination.
    */
-  fun numCoins(total: Int,
-               denominations: List<Int>,
-               coinsUsedMap: MutableMap<Int, Int>
+  fun numCoins(
+    total: Int,
+    denominations: List<Int>,
+    coinsUsedMap: MutableMap<Int, Int>
   ): Int {
     // Show the function call stack.
-    println("\tnumCoins(total=$total, denominations=$denominations) ⇢ $coinsUsedMap"
-                .brightYellow())
+    println(
+      "\tnumCoins(total=$total, denominations=$denominations) ⇢ $coinsUsedMap"
+        .brightYellow()
+    )
 
     // Stop recursion when these simple exit conditions are met.
     if (total == 0) return 0
@@ -81,9 +86,11 @@ object Dynamic : Main {
 
     // Breakdown the problem into smaller chunk using recursion.
     return coinsUsed +
-           numCoins(total = total - coinsUsed * coinDenomination,
-                    denominations = with(denominations) { subList(1, size) },
-                    coinsUsedMap = coinsUsedMap)
+      numCoins(
+        total = total - coinsUsed * coinDenomination,
+        denominations = with(denominations) { subList(1, size) },
+        coinsUsedMap = coinsUsedMap
+      )
   }
 
   /**
@@ -129,17 +136,20 @@ object Dynamic : Main {
 
   }
 
-  data class Coins(var numberOf1s: Int = 0,
-                   var numberOf5s: Int = 0,
-                   var numberOf7s: Int = 0,
-                   var numberOf11s: Int = 0
+  data class Coins(
+    var numberOf1s: Int = 0,
+    var numberOf5s: Int = 0,
+    var numberOf7s: Int = 0,
+    var numberOf11s: Int = 0
   ) {
     override fun toString() = StringBuilder().apply {
       val result = mutableListOf<String>()
-      arrayOf(::numberOf1s,
-              ::numberOf5s,
-              ::numberOf7s,
-              ::numberOf11s).forEach {
+      arrayOf(
+        ::numberOf1s,
+        ::numberOf5s,
+        ::numberOf7s,
+        ::numberOf11s
+      ).forEach {
         if (it.get() > 0)
           result.add("#${it.name} coins = ${it.get()}")
       }

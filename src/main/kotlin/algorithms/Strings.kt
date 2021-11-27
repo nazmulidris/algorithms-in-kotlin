@@ -17,30 +17,34 @@
 
 package algorithms
 
-import com.importre.crayon.brightBlue
+import support.brightBlue
 import support.Main
 import support.RuntimeStats
-import support.heading
+import support.printHeading
 
 object Strings : Main {
 
   override fun main(args: Array<String>) {
-    println("substring".heading())
+    println("substring".printHeading())
 
     val arg1 = "Hello world".toCharArray()
     val arg2 = "o".toCharArray()
 
     with(RuntimeStats()) {
-      print("substring(\n\t${arg1.joinToString("・")}, " +
-            "\n\t${arg2.joinToString("・")}" +
-            "\n) = ${substring(arg1, arg2, this)}")
+      print(
+        "substring(\n\t${arg1.joinToString("・")}, " +
+          "\n\t${arg2.joinToString("・")}" +
+          "\n) = ${substring(arg1, arg2, this)}"
+      )
       println(", $this")
     }
 
     with(RuntimeStats()) {
-      print("substring_optimized(\n\t${arg1.joinToString("・")}, " +
-            "\n\t${arg2.joinToString("・")}" +
-            "\n) = ${substring_optimized(arg1, arg2, this)}")
+      print(
+        "substring_optimized(\n\t${arg1.joinToString("・")}, " +
+          "\n\t${arg2.joinToString("・")}" +
+          "\n) = ${substring_optimized(arg1, arg2, this)}"
+      )
       println(", $this")
     }
 
@@ -85,9 +89,10 @@ object Strings : Main {
    * This function uses a deterministic finite automation (DFA) method which entails the use of a
    * state machine to keep track of progress in a game.
    */
-  fun substring_optimized(str: CharArray,
-                          substr: CharArray,
-                          stats: RuntimeStats
+  fun substring_optimized(
+    str: CharArray,
+    substr: CharArray,
+    stats: RuntimeStats
   ): Any {
 
     class StateMachine(val pattern: CharArray) {
