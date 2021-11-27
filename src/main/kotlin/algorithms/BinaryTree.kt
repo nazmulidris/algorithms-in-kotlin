@@ -19,9 +19,16 @@ package algorithms
 
 import color_console_log.ColorConsoleContext.Companion.colorConsole
 import color_console_log.Colors
+import color_console_log.blue
+import color_console_log.green
+import color_console_log.yellow
 import support.*
 import java.util.*
 
+/** Makes it easy to run just this file. */
+fun main() {
+  BinaryTree.main(args = emptyArray())
+}
 
 object BinaryTree : Main {
 

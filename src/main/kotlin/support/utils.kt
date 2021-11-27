@@ -19,9 +19,9 @@ package support
 
 import color_console_log.ColorConsoleContext.Companion.colorConsole
 import color_console_log.Colors
-import support.brightCyan
-import support.brightGreen
-import support.brightYellow
+import color_console_log.brightCyan
+import color_console_log.brightGreen
+import color_console_log.brightYellow
 import kotlin.jvm.internal.Reflection
 import kotlin.reflect.full.declaredMemberFunctions
 
@@ -70,10 +70,11 @@ data class RuntimeStats(
 }
 
 fun String.printHeading() = colorConsole {
+  val headingCharRepeat = 3
   printLine(spanSeparator = "", prefixWithTimestamp = false) {
-    span(Colors.Green, "\n-------------[")
+    span(Colors.Green, "\n" + "➡".repeat(headingCharRepeat) + "[")
     span(Colors.Blue, this@printHeading.uppercase())
-    span(Colors.Green, " 💬]-------------\n")
+    span(Colors.Green, " 💬]" + "⬅".repeat(headingCharRepeat) + "\n")
   }
 }
 

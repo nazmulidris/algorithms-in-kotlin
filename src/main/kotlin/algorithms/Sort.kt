@@ -17,37 +17,42 @@
 
 package algorithms
 
-import support.blue
-import support.red
-import support.yellow
+import color_console_log.blue
+import color_console_log.red
+import color_console_log.yellow
 import support.Main
 import support.RuntimeStats
 import support.printHeading
+
+/** Makes it easy to run just this file. */
+fun main() {
+  Sort.main(args = emptyArray())
+}
 
 object Sort : Main {
 
   override fun main(args: Array<String>) {
 
     // bubble sort
-    with(RuntimeStats()) {
+    RuntimeStats().also { stats ->
       "bubble_sort O(n^2)".printHeading()
       val unsortedList = mutableListOf("x", "d", "c", "b", "a")
-      bubble_sort(unsortedList, this)
+      bubble_sort(unsortedList, stats)
       print("sorted list=$unsortedList")
-      println(", $this")
+      println(", $stats")
     }
 
     // insertion sort
-    with(RuntimeStats()) {
+    RuntimeStats().also { stats ->
       "insertion_sort O(n^2)".printHeading()
       val unsortedList = mutableListOf("x", "d", "c", "b", "a")
-      insertion_sort(unsortedList, this)
+      insertion_sort(unsortedList, stats)
       print("sorted list=$unsortedList")
-      println(", $this")
+      println(", $stats")
     }
 
     // merge sort
-    with(RuntimeStats()) {
+    RuntimeStats().also { stats ->
       "merge_sort O(n * log(n))".printHeading()
       val unsortedList = mutableListOf(
         "123",
@@ -59,27 +64,27 @@ object Sort : Main {
         "993",
         "781"
       )
-      val sortedList = merge_sort(unsortedList, this)
+      val sortedList = merge_sort(unsortedList, stats)
       print("sorted list=$sortedList")
-      println(", $this")
+      println(", $stats")
     }
 
     // quick sort
-    with(RuntimeStats()) {
+    RuntimeStats().also { stats ->
       "quick_sort O(n * log(n))".printHeading()
       val list = mutableListOf(100, 200, 300, 20, 30, 10, 50)
-      quick_sort(list = list, stats = this)
+      quick_sort(list = list, stats = stats)
       print("sorted list=$list")
-      println(", $this")
+      println(", $stats")
     }
 
     // counting sort
-    with(RuntimeStats()) {
+    RuntimeStats().also { stats ->
       "counting_sort O(n)".printHeading()
       val list = mutableListOf(100, 200, 15, 30, 10, 50)
-      counting_sort(list, this)
+      counting_sort(list, stats)
       print("sorted list=$list")
-      println(", $this")
+      println(", $stats")
     }
 
   }

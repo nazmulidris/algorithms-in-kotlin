@@ -31,7 +31,7 @@ version '1.0-SNAPSHOT'
 
 repositories {
   mavenCentral()
-  repositories {maven { url 'https://jitpack.io' }}
+  maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -42,7 +42,7 @@ dependencies {
   implementation group: 'io.github.classgraph', name: 'classgraph', version: '4.8.132'
 
   // https://developerlife.com/2021/02/06/publish-kotlin-library-as-gradle-dep/
-  dependencies { implementation 'com.github.nazmulidris:color-console:1.0.0' }
+  dependencies { implementation 'com.github.nazmulidris:color-console:1.0.1' }
 
   testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 }

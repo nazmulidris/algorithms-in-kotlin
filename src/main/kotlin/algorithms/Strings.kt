@@ -17,37 +17,55 @@
 
 package algorithms
 
-import support.brightBlue
+import color_console_log.*
+import color_console_log.ColorConsoleContext.Companion.colorConsole
 import support.Main
 import support.RuntimeStats
 import support.printHeading
 
+/** Makes it easy to run just this file. */
+fun main() {
+  Strings.main(args = emptyArray())
+}
+
 object Strings : Main {
 
   override fun main(args: Array<String>) {
-    println("substring".printHeading())
+    "substring".printHeading()
 
     val arg1 = "Hello world".toCharArray()
     val arg2 = "o".toCharArray()
 
-    with(RuntimeStats()) {
-      print(
-        "substring(\n\t${arg1.joinToString("・")}, " +
-          "\n\t${arg2.joinToString("・")}" +
-          "\n) = ${substring(arg1, arg2, this)}"
-      )
-      println(", $this")
-    }
+    val textArg1 = arg1.joinToString("・")
+    val textArg2 = arg2.joinToString("・")
 
-    with(RuntimeStats()) {
-      print(
-        "substring_optimized(\n\t${arg1.joinToString("・")}, " +
-          "\n\t${arg2.joinToString("・")}" +
-          "\n) = ${substring_optimized(arg1, arg2, this)}"
-      )
-      println(", $this")
-    }
+    colorConsole {
+      RuntimeStats().also { stats ->
+        val substringResult = substring(arg1, arg2, stats)
+        prettyPrint(textArg1, textArg2, substringResult, stats)
+      }
 
+      RuntimeStats().also { stats ->
+        val substringOptimizedResult = substring_optimized(arg1, arg2, stats)
+        prettyPrint(textArg1, textArg2, substringOptimizedResult, stats)
+      }
+    }
+  }
+
+  private fun ColorConsoleContext.prettyPrint(
+    textArg1: String,
+    textArg2: String,
+    result: Any,
+    stats: RuntimeStats
+  ) {
+    printLine(spanSeparator = "", prefixWithTimestamp = false) {
+      span(Colors.Purple, "substring(\n\t$textArg1, ")
+      span(Colors.Cyan, "\n\t$textArg2".bold())
+      span(Colors.Purple, "\n) = $result")
+    }
+    printLine(spanSeparator = "", prefixWithTimestamp = false) {
+      span(Colors.ANSI_RESET, "$stats\n")
+    }
   }
 
   /**
@@ -79,7 +97,7 @@ object Strings : Main {
       override fun toString(): String = StringBuilder().apply {
         append("{match found = $matchFound")
         append(", # matches = $numberOfMatches}")
-      }.toString().brightBlue()
+      }.toString().blue()
     }
   }
 

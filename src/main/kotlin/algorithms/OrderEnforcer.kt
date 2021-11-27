@@ -21,6 +21,11 @@ import support.Main
 import support.printHeading
 import java.util.concurrent.Executors
 
+/** Makes it easy to run just this file. */
+fun main() {
+  OrderEnforcer.main(args = emptyArray())
+}
+
 object OrderEnforcer : Main {
 
   override fun main(args: Array<String>) {

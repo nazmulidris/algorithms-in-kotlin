@@ -19,7 +19,6 @@ package algorithms
 
 import color_console_log.ColorConsoleContext.Companion.colorConsole
 import color_console_log.Colors
-import color_console_log.brightMagenta
 import support.Main
 import support.RuntimeStats
 import support.printHeading
@@ -37,28 +36,30 @@ object BigO : Main {
       "o(1)".printHeading()
       colorConsole {
         val list = listOf(null, "abc", "def")
-        val isFirstElementNull = isFirstElementNull(list)
+        val text1 = "is first elem of list $list null? = "
+        val text2 = "${isFirstElementNull(list)}"
 
         printLine(spanSeparator = "", prefixWithTimestamp = false) {
-          span(Colors.Purple, "is first elem of list $list null?")
+          span(Colors.Purple, text1)
           span(Colors.Yellow, " ➡ ")
-          span(Colors.Blue, "$isFirstElementNull")
+          span(Colors.Blue, text2)
         }
       }
     }
 
     run {
       "o(n)".printHeading()
-      RuntimeStats().also { stats ->
+      RuntimeStats().also { rs ->
         colorConsole {
           val value = "efg"
           val list = listOf("abc", "def", "123", "xyz")
-          val containsValueResult = containsValue(list, value, stats)
+          val text1 = "is '$value` in list $list = ${containsValue(list, value, rs)}"
+          val text2 = "$rs"
 
           printLine(spanSeparator = "", prefixWithTimestamp = false) {
-            span(Colors.Purple, "is '$value` in list $list = $containsValueResult")
+            span(Colors.Purple, text1)
             span(Colors.Yellow, " ➡ ")
-            span(Colors.Blue, "$stats")
+            span(Colors.Blue, text2)
           }
         }
       }
@@ -66,34 +67,32 @@ object BigO : Main {
 
     run {
       "o(n^2)".printHeading()
-      RuntimeStats().also { stats ->
-        colorConsole {
-          val list = listOf("abc", "def", "123", "abc", "123", "567")
-          checkListForDupes(list, stats)
+      colorConsole {
+        val list = listOf("abc", "def", "123", "abc", "123", "567")
+        val stats = containsDupes(list)
+        val text1 =
+          "list $list" + if (stats.dupes > 0) "contains dupes" else "does not contain dupes"
+        val text2 = "$stats"
 
-          printLine(spanSeparator = "", prefixWithTimestamp = false) {
-            span(
-              Colors.Purple,
-              "list $list " + if (stats.dupes > 0) "contains dupes" else "doesn't contain dupes"
-            )
-            span(Colors.Yellow, " ➡ ")
-            span(Colors.White, "$stats")
-          }
+        printLine(spanSeparator = "", prefixWithTimestamp = false) {
+          span(Colors.Purple, text1)
+          span(Colors.Yellow, " ➡ ")
+          span(Colors.White, text2)
         }
       }
     }
 
     run {
       "o(2^n)".printHeading()
-      RuntimeStats().also { stats ->
+      val value = 20
+      with(RuntimeStats()) {
         colorConsole {
-          val value = 20
-          val fibonacciResult = fibonacci(value, stats)
-
           printLine(spanSeparator = "", prefixWithTimestamp = false) {
-            span(Colors.Purple, "fibonacci($value) = $fibonacciResult")
+            val text1 = "fibonacci($value) = ${fibonacci(value, this@with)}"
+            val text2 = this@with.toString()
+            span(Colors.Purple, text1)
             span(Colors.Yellow, " ➡ ")
-            span(Colors.White, "$stats")
+            span(Colors.White, text2)
           }
         }
       }
@@ -101,18 +100,22 @@ object BigO : Main {
 
     run {
       "o(log n)".printHeading()
-      RuntimeStats().also { stats ->
+      colorConsole {
+        printLine(spanSeparator = "", prefixWithTimestamp = false) {
+          span(Colors.Purple, "binarySearch()")
+        }
+      }
+      val item = "zany"
+      val list = listOf(
+        "nazmul", "idris", "maret", "john", "harry", "tom", "tony", "pepper", "andrew"
+      ).sorted()
+      with(RuntimeStats()) {
         colorConsole {
-          val item = "zany"
-          val list = listOf(
-            "nazmul", "idris", "maret", "john", "harry", "tom", "tony", "pepper", "andrew"
-          ).sorted()
-          val binarySearchResult = binarySearch(item, list, stats)
-
+          val result = binarySearch(item, list, this@with)
           printLine(spanSeparator = "", prefixWithTimestamp = false) {
-            span(Colors.ANSI_RESET, "search result:".brightMagenta())
+            span(Colors.Purple, "found:")
             span(Colors.Yellow, " ➡ ")
-            span(Colors.Green, "$binarySearchResult")
+            span(Colors.Green, "$result")
           }
         }
       }
@@ -127,7 +130,7 @@ object BigO : Main {
   ): Boolean {
     colorConsole {
       printLine(spanSeparator = "", prefixWithTimestamp = false) {
-        span(Colors.Purple, "binarySearch($item)")
+        span(Colors.Blue, "\nbinarySearch($item)")
         span(Colors.Yellow, " ➡ ")
         span(Colors.Green, "$sortedList")
       }
@@ -178,25 +181,22 @@ object BigO : Main {
    * size of the input list.
    * [More info in wiki](https://github.com/nazmulidris/algorithms-in-kotlin/wiki/Big-O-Notation).
    */
-  fun checkListForDupes(list: List<String>, stats: RuntimeStats): Unit {
-    stats.apply {
-      with(list) {
-        for (cursor1 in 0 until size) {
-          for (cursor2 in 0 until size) {
-            comparisons++
-            if (cursor1 != cursor2) {
-              if (get(cursor1) == get(cursor2)) {
-                dupes++
-                get(cursor1).let {
-                  dupeMap[it] = dupeMap[it] ?: 0 + 1
-                }
+  fun containsDupes(list: List<String>) = RuntimeStats().apply {
+    with(list) {
+      for (cursor1 in 0 until size) {
+        for (cursor2 in 0 until size) {
+          comparisons++
+          if (cursor1 != cursor2) {
+            if (get(cursor1) == get(cursor2)) {
+              dupes++
+              get(cursor1).let {
+                dupeMap[it] = dupeMap[it] ?: 0 + 1
               }
             }
           }
         }
       }
     }
-
   }
 
   /** O(1) */

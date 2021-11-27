@@ -21,6 +21,11 @@ import support.Main
 import support.printHeading
 import java.util.*
 
+/** Makes it easy to run just this file. */
+fun main() {
+  Graphs.main(args = emptyArray())
+}
+
 object Graphs : Main {
   /**
    * [Image of the graph](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/undirectedgraph.png).

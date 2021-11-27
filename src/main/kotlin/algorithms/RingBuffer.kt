@@ -17,9 +17,14 @@
 
 package algorithms
 
-import support.*
+import color_console_log.*
 import support.Main
 import support.printHeading
+
+/** Makes it easy to run just this file. */
+fun main() {
+  RingBuffer.main(args = emptyArray())
+}
 
 object RingBuffer : Main {
 

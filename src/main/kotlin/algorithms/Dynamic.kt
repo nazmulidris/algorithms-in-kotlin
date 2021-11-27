@@ -17,10 +17,15 @@
 
 package algorithms
 
-import support.brightBlue
-import support.brightYellow
+import color_console_log.*
+import color_console_log.ColorConsoleContext.Companion.colorConsole
 import support.Main
 import support.printHeading
+
+/** Makes it easy to run just this file. */
+fun main() {
+  Dynamic.main(args = emptyArray())
+}
 
 object Dynamic : Main {
 
@@ -31,7 +36,13 @@ object Dynamic : Main {
       val coins = Coins()
       val total = 49
       numCoins_nonrecursive(total, coins)
-      println("numCoins_nonrecursive($total) = $coins")
+      colorConsole {
+        printLine(prefixWithTimestamp = false, spanSeparator = "") {
+          span(Colors.Purple, "numCoins_nonrecursive($total)")
+          span(Colors.Yellow, " ➡ ")
+          span(Colors.Blue, "$coins")
+        }
+      }
     }
 
     run {
@@ -43,14 +54,15 @@ object Dynamic : Main {
           listOf(5, 1, 7, 11).sortedDescending(),
           coins
         )
-      print("total # coins = $totalNumberOfCoins")
-      println(", breakdown (key:denomination = val:amount) = ${coins.toString().brightBlue()}")
+      println("\ntotal # coins = $totalNumberOfCoins")
+      println("{key:denomination = val:amount)}".white())
+      println(coins.toString().cyan().bold())
     }
 
     run {
       "calculate factorial w/ recursion".printHeading()
       val arg = 5
-      println("${::fact.name}($arg)=${fact(arg)}")
+      println("${::fact.name}($arg)".magenta() + " = ".yellow() + "${fact(arg)}".cyan())
     }
 
   }
@@ -69,8 +81,8 @@ object Dynamic : Main {
   ): Int {
     // Show the function call stack.
     println(
-      "\tnumCoins(total=$total, denominations=$denominations) ⇢ $coinsUsedMap"
-        .brightYellow()
+      "🪙 numCoins(total=$total, denominations=$denominations) ⇢ ".magenta()
+        + " $coinsUsedMap ".bgBrightCyan().black().bold()
     )
 
     // Stop recursion when these simple exit conditions are met.
@@ -151,9 +163,11 @@ object Dynamic : Main {
         ::numberOf11s
       ).forEach {
         if (it.get() > 0)
-          result.add("#${it.name} coins = ${it.get()}")
+          result += it.name.blue() +
+            " x ".yellow() +
+            " ${it.get()} ".bgBrightYellow().black()
       }
-      append(result.joinToString(", ", "{", "}").brightBlue())
+      append(result.joinToString(", ", "{", "}"))
     }.toString()
   }
 

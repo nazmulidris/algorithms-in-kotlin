@@ -17,11 +17,16 @@
 
 package algorithms
 
+import color_console_log.yellow
 import support.Main
 import support.log
 import support.printHeading
-import support.yellow
 import java.util.*
+
+/** Makes it easy to run just this file. */
+fun main() {
+  Cache.main(args = emptyArray())
+}
 
 object Cache : Main {
 

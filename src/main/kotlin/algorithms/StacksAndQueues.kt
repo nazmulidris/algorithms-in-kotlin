@@ -23,6 +23,11 @@ import support.Main
 import support.printHeading
 import java.util.*
 
+/** Makes it easy to run just this file. */
+fun main() {
+  StacksAndQueues.main(args = emptyArray())
+}
+
 object StacksAndQueues : Main {
 
   override fun main(args: Array<String>) {
