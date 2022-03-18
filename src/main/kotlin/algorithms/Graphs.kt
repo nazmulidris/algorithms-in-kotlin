@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Nazmul Idris. All rights reserved.
+ * Copyright 2022 Nazmul Idris. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
 
 package algorithms
 
+import java.util.*
 import support.Main
 import support.printHeading
-import java.util.*
 
 /** Makes it easy to run just this file. */
 fun main() {
@@ -61,38 +61,33 @@ object Graphs : Main {
     println(depthFirstTraversal(graph, "0"))
   }
 
-  /**
-   * [More info](https://www.geeksforgeeks.org/graph-and-its-representations/).
-   */
+  /** [More info](https://www.geeksforgeeks.org/graph-and-its-representations/). */
   class Graph<T> {
     val adjacencyMap: HashMap<T, HashSet<T>> = HashMap()
 
     fun addEdge(sourceVertex: T, destinationVertex: T) {
       // Add edge to source vertex / node.
-      adjacencyMap
-        .computeIfAbsent(sourceVertex) { HashSet() }
-        .add(destinationVertex)
+      adjacencyMap.computeIfAbsent(sourceVertex) { HashSet() }.add(destinationVertex)
       // Add edge to destination vertex / node.
-      adjacencyMap
-        .computeIfAbsent(destinationVertex) { HashSet() }
-        .add(sourceVertex)
+      adjacencyMap.computeIfAbsent(destinationVertex) { HashSet() }.add(sourceVertex)
     }
 
-    override fun toString(): String = StringBuffer().apply {
-      for (key in adjacencyMap.keys) {
-        append("$key -> ")
-        append(adjacencyMap[key]?.joinToString(", ", "[", "]\n"))
-      }
-    }.toString()
+    override fun toString(): String =
+        StringBuffer()
+            .apply {
+              for (key in adjacencyMap.keys) {
+                append("$key -> ")
+                append(adjacencyMap[key]?.joinToString(", ", "[", "]\n"))
+              }
+            }
+            .toString()
   }
 
-  /**
-   * Breadth first traversal leverages a [Queue] (FIFO).
-   */
+  /** Breadth first traversal leverages a [Queue] (FIFO). */
   fun <T> breadthFirstTraversal(
-    graph: Graph<T>,
-    startNode: T,
-    maxDepth: Int = Int.MAX_VALUE
+      graph: Graph<T>,
+      startNode: T,
+      maxDepth: Int = Int.MAX_VALUE
   ): String {
     //
     // Setup.
@@ -100,28 +95,27 @@ object Graphs : Main {
 
     // Mark all the vertices / nodes as not visited. And keep track of sequence
     // in which nodes are visited, for return value.
-    class VisitedMap {
+    class Visited {
       val traversalList = mutableListOf<T>()
 
-      val visitedMap = mutableMapOf<T, Boolean>().apply {
-        for (node in graph.adjacencyMap.keys) this[node] = false
-      }
+      val visitedSet = mutableSetOf<T>()
 
-      fun isNotVisited(node: T): Boolean = !visitedMap[node]!!
+      fun isNotVisited(node: T): Boolean = !visitedSet.contains(node)
 
       fun markVisitedAndAddToTraversalList(node: T) {
-        visitedMap[node] = true
+        visitedSet.add(node)
         traversalList.add(node)
       }
     }
 
-    val visitedMap = VisitedMap()
+    val visited = Visited()
 
     // Keep track of the depth of each node, so that more than maxDepth nodes
     // aren't visited.
-    val depthMap = mutableMapOf<T, Int>().apply {
-      for (node in graph.adjacencyMap.keys) this[node] = Int.MAX_VALUE
-    }
+    val depthMap =
+        mutableMapOf<T, Int>().apply {
+          for (node in graph.adjacencyMap.keys) this[node] = Int.MAX_VALUE
+        }
 
     // Create a queue for BFS.
     class Queue {
@@ -150,7 +144,7 @@ object Graphs : Main {
     //
 
     // Initial step -> add the startNode to the queue.
-    queue.add(startNode, /* depth= */0)
+    queue.add(startNode, /* depth= */ 0)
 
     // Traverse the graph
     while (queue.isNotEmpty()) {
@@ -159,20 +153,16 @@ object Graphs : Main {
       val currentDepth = depthMap[currentNode]!!
 
       if (currentDepth <= maxDepth) {
-        if (visitedMap.isNotVisited(currentNode)) {
+        if (visited.isNotVisited(currentNode)) {
           // Mark the current node visited and add to traversal list.
-          visitedMap.markVisitedAndAddToTraversalList(currentNode)
+          visited.markVisitedAndAddToTraversalList(currentNode)
           // Add nodes in the adjacency map.
-          queue.addAdjacentNodes(
-            currentNode, /* depth= */
-            currentDepth + 1
-          )
+          queue.addAdjacentNodes(currentNode, /* depth= */ currentDepth + 1)
         }
       }
-
     }
 
-    return visitedMap.traversalList.toString()
+    return visited.traversalList.toString()
   }
 
   /**
@@ -185,9 +175,7 @@ object Graphs : Main {
    */
   fun <T> depthFirstTraversal(graph: Graph<T>, startNode: T): String {
     // Mark all the vertices / nodes as not visited.
-    val visitedMap = mutableMapOf<T, Boolean>().apply {
-      graph.adjacencyMap.keys.forEach { node -> put(node, false) }
-    }
+    val visited = mutableSetOf<T>()
 
     // Create a stack for DFS. Both ArrayDeque and LinkedList implement Deque.
     val stack: Deque<T> = ArrayDeque()
@@ -203,21 +191,17 @@ object Graphs : Main {
       // Pop the node off the top of the stack.
       val currentNode = stack.pop()
 
-      if (!visitedMap[currentNode]!!) {
+      if (!visited.contains(currentNode)) {
 
         // Store this for the result.
         traversalList.add(currentNode)
 
         // Mark the current node visited and add to the traversal list.
-        visitedMap[currentNode] = true
+        visited.add(currentNode)
 
         // Add nodes in the adjacency map.
-        graph.adjacencyMap[currentNode]?.forEach { node ->
-          stack.push(node)
-        }
-
+        graph.adjacencyMap[currentNode]?.forEach { node -> stack.push(node) }
       }
-
     }
 
     return traversalList.joinToString()
